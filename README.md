@@ -4,9 +4,8 @@ A Study of Lucene
 [![Build Status](https://travis-ci.org/lukhnos/lucenestudy.svg)](https://travis-ci.org/lukhnos/lucenestudy)
 
 This project is a study of Lucene and serves as an example of how you can use
-Lucene to index documents, search with sorting and paging, highlighting
-search results, and providing search suggestions (also known as
-"autocomplete").
+Lucene to index documents, search with sorting and paging, highlight search
+results, and provide search suggestions (also known as "autocomplete").
 
 The sample application in this project works like a movie review search
 engine. A sample dataset is provided for testing the app.
@@ -30,11 +29,11 @@ Dataset.
 
 The original dataset contains two subsets, one "training" and one "testing".
 This is the standard division in machine learning and natural language
-proceesing. In each subset, each review takes one file, and there are separate
+processing. In each subset, each review takes one file, and there are separate
 listings of the source URL.
 
 The sample subset here is from the "testing" dataset. I've converted the files
-into a JSON file in `sample/acl-imdb-subset.json`. The orginial dataset does
+into a JSON file in `sample/acl-imdb-subset.json`. The original dataset does
 not have the titles and the release years for the films reviewed. I've also
 collected them in the JSON file.
 
@@ -63,7 +62,7 @@ indices under /tmp/testidx:
     java -cp build/libs/lucenestudy.jar org.lukhnos.lucenestudy.Study \
         index sample/acl-imdb-subset.json /tmp/testidx
 
-Then, to search for reviews containg the keyword "robot":
+Then, to search for reviews containing the keyword "robot":
 
     java -cp build/libs/lucenestudy.jar org.lukhnos.lucenestudy.Study \
         search /tmp/testidx robot
@@ -91,7 +90,7 @@ On Building the "Far JAR"
 The Gradle build script contains a customized `jar` task that builds a fat
 JAR (sometimes also known as an "uber-JAR"), which combines all Lucene
 dependencies into one resulting JAR. Because of Lucene's use of Java's
-[Service Prodider Interface](https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html),
+[Service Provider Interface](https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html),
 we must make an extra step to include the service files (of the pattern
 `META-INF/services/*`) found in each Lucene library's JAR.
 
