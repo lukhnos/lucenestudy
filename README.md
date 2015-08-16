@@ -1,6 +1,8 @@
 A Study of Lucene
 =================
 
+[![Build Status](https://travis-ci.org/lukhnos/lucenestudy.svg)](https://travis-ci.org/lukhnos/lucenestudy)
+
 This project is a study of Lucene and serves as an example of how you can use
 Lucene to index documents, search with sorting and paging, highlighting
 search results, and providing search suggestions (also known as
