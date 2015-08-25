@@ -25,44 +25,44 @@
 apply plugin: 'java'
 
 repositories {
-    mavenCentral()
-    mavenLocal()
+  mavenCentral()
+  mavenLocal()
 }
 
 dependencies {
-    compile 'org.apache.lucene:lucene-core:5.3.0'
-    compile 'org.apache.lucene:lucene-queryparser:5.3.0'
-    compile 'org.apache.lucene:lucene-analyzers-common:5.3.0'
-    compile 'org.apache.lucene:lucene-suggest:5.3.0'
-    compile 'org.apache.lucene:lucene-highlighter:5.3.0'
-    compile 'org.json:json:20140107'
+  compile 'org.apache.lucene:lucene-core:5.3.0'
+  compile 'org.apache.lucene:lucene-queryparser:5.3.0'
+  compile 'org.apache.lucene:lucene-analyzers-common:5.3.0'
+  compile 'org.apache.lucene:lucene-suggest:5.3.0'
+  compile 'org.apache.lucene:lucene-highlighter:5.3.0'
+  compile 'org.json:json:20140107'
 
-    testCompile 'junit:junit:4.11'
+  testCompile 'junit:junit:4.11'
 }
 
 jar {
-    // From http://cmoz.me/blog/2014/11/service-files-uber-jars-and-gradle/
-    doFirst {
-        def serviceDir = file("$buildDir/META-INF/services")
-        serviceDir.deleteDir()
-        serviceDir.mkdirs()
+  // From http://cmoz.me/blog/2014/11/service-files-uber-jars-and-gradle/
+  doFirst {
+    def serviceDir = file("$buildDir/META-INF/services")
+    serviceDir.deleteDir()
+    serviceDir.mkdirs()
 
-        // copy all service files from deps to buildDir
-        for(file in configurations.runtime) {
-            zipTree(file).matching{ include 'META-INF/services/*' }.each { f ->
-                new File(serviceDir, f.name) << f.getText("UTF-8")
-            }
-        }
+    // copy all service files from deps to buildDir
+    for(file in configurations.runtime) {
+      zipTree(file).matching{ include 'META-INF/services/*' }.each { f ->
+        new File(serviceDir, f.name) << f.getText("UTF-8")
+      }
     }
+  }
 
-    manifest {
-        attributes "Main-Class": "org.lukhnos.lucenestudy"
-    }
+  manifest {
+    attributes "Main-Class": "org.lukhnos.lucenestudy"
+  }
 
-    from(configurations.runtime.collect{ it.isDirectory() ? it : zipTree(it) }) {
-        exclude 'META-INF/**' // Don't let Gradle merge service files
-    }
+  from(configurations.runtime.collect{ it.isDirectory() ? it : zipTree(it) }) {
+    exclude 'META-INF/**' // Don't let Gradle merge service files
+  }
 
-    // Include service files from the buildDir.
-    from fileTree(buildDir).matching{ include 'META-INF/services/*' }
+  // Include service files from the buildDir.
+  from fileTree(buildDir).matching{ include 'META-INF/services/*' }
 }
