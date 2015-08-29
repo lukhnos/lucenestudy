@@ -66,3 +66,22 @@ jar {
   // Include service files from the buildDir.
   from fileTree(buildDir).matching{ include 'META-INF/services/*' }
 }
+
+/**
+ * Create a 'testJar' so that the test classes can be used in downstream
+ * projects. That is, another project's tests can depend on ours.
+ *
+ * See https://discuss.gradle.org/t/how-do-i-declare-a-dependency-on-a-modules-test-code/7172/9
+ */
+configurations {
+  testArtifacts.extendsFrom testRuntime
+}
+
+task testJar(type: Jar) {
+  classifier 'test'
+  from sourceSets.test.output
+}
+
+artifacts {
+  testArtifacts testJar
+}
