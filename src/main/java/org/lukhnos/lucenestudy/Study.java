@@ -28,8 +28,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +62,7 @@ public class Study {
     System.exit(1);
   }
 
-  static void index(String sourcePath, String indexPath) throws Exception {
+  static void index(String sourcePath, String indexPath) {
     File dataFile = new File(sourcePath);
     if (!dataFile.exists()) {
       System.err.println("JSON source not found: " + sourcePath);
@@ -69,40 +73,51 @@ public class Study {
       System.exit(1);
     }
 
-    byte[] data = new byte[(int) dataFile.length()];
-    FileInputStream stream = new FileInputStream(sourcePath);
-    stream.read(data);
-    stream.close();
+    try (FileInputStream stream = new FileInputStream(sourcePath)) {
+      importData(stream, indexPath, true);
+    } catch (Exception e) {
+      // Should not happen
+      e.printStackTrace();
+      System.exit(1);
+    }
+  }
 
-    String dataStr = new String(data, "UTF-8");
+  static public int importData(InputStream stream, String indexPath, boolean withSuggestion) throws Exception {
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    final int bufSize = 4096;
+    byte[] buf = new byte[bufSize];
+    int read;
+    while ((read = stream.read(buf)) > 0) {
+      baos.write(buf, 0, read);
+    }
+    String dataStr = new String(baos.toByteArray(), "UTF-8");
 
     List<Document> docs = new ArrayList<>();
 
-    try {
-      JSONArray jsonArray = new JSONArray(dataStr);
+    JSONArray jsonArray = new JSONArray(dataStr);
 
-      for (int i = 0, len = jsonArray.length(); i < len; i++) {
-        JSONObject entry = jsonArray.getJSONObject(i);
-        String title = entry.getString("title");
-        int year = entry.getInt("year");
-        int rating = entry.getInt("rating");
-        boolean positive = entry.getBoolean("positive");
-        String review = entry.getString("review");
-        String source = entry.getString("source");
+    for (int i = 0, len = jsonArray.length(); i < len; i++) {
+      JSONObject entry = jsonArray.getJSONObject(i);
+      String title = entry.getString("title");
+      int year = entry.getInt("year");
+      int rating = entry.getInt("rating");
+      boolean positive = entry.getBoolean("positive");
+      String review = entry.getString("review");
+      String source = entry.getString("source");
 
-        Document doc = new Document(title, year, rating, positive, review, source);
-        docs.add(doc);
-      }
-    } catch (JSONException e) {
-      e.printStackTrace();
-      System.exit(1);
+      Document doc = new Document(title, year, rating, positive, review, source);
+      docs.add(doc);
     }
 
     Indexer indexer = new Indexer(indexPath, false);
     indexer.addDocuments(docs);
     indexer.close();
 
-    Suggester.rebuild(indexPath);
+    if (withSuggestion) {
+      Suggester.rebuild(indexPath);
+    }
+
+    return docs.size();
   }
 
   static void search(String indexPath, String query) throws Exception {
