@@ -35,8 +35,8 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import org.lukhnos.portmobile.file.Path;
+import org.lukhnos.portmobile.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 

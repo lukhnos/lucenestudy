@@ -25,11 +25,11 @@ package org.lukhnos.lucenestudy;
  */
 
 import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
+import org.lukhnos.portmobile.file.FileVisitResult;
+import org.lukhnos.portmobile.file.Files;
+import org.lukhnos.portmobile.file.Path;
+import org.lukhnos.portmobile.file.SimpleFileVisitor;
+import org.lukhnos.portmobile.file.attribute.BasicFileAttributes;
 
 public class Util {
   public static void deletePath(Path path) throws IOException {
