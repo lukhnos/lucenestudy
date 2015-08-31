@@ -529,7 +529,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/vendor/j2objc/include",
-					"$(TARGET_BUILD_DIR)/include/ObjCLucene",
+					"$(SRCROOT)/vendor/objclucene/include",
 					"$(SRCROOT)/src/main/objc",
 				);
 				LIBRARY_SEARCH_PATHS = (
@@ -632,7 +632,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/vendor/j2objc/include",
-					"$(TARGET_BUILD_DIR)/include/ObjCLucene",
+					"$(SRCROOT)/vendor/objclucene/include",
 					"$(SRCROOT)/src/main/objc",
 					"$(SRCROOT)/src/test/objc",
 				);
