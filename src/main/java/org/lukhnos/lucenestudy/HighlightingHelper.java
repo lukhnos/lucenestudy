@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
 class HighlightingHelper {
   // For removing any leading spaces or punctuations except "<" since <B> is used for highlights.
   static final Pattern cleanUpPattern = Pattern.compile(
-      "^[\\s\\p{Punct}&&[^<]]+", Pattern.UNICODE_CHARACTER_CLASS);
+      "^[\\s\\p{Punct}&&[^<]]+");
 
   // For concatenating paragraphes separated by \n.
   static final Pattern replaceLFPattern = Pattern.compile("\\n");
