@@ -70,3 +70,5 @@ proguard/
 # Log Files
 *.log
 
+# j2objc
+j2objc*.zip
