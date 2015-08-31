@@ -1,5 +1,5 @@
-A Study of Lucene
-=================
+A Study of Lucene (Mobile Version)
+==================================
 
 [![Build Status](https://travis-ci.org/lukhnos/lucenestudy.svg)](https://travis-ci.org/lukhnos/lucenestudy)
 
@@ -9,6 +9,16 @@ results, and provide search suggestions (also known as "autocomplete").
 
 The sample application in this project works like a movie review search
 engine. A sample dataset is provided for testing the app.
+
+**Mobile version notes**: This is a "mobile" version of lucenestudy that
+comes with the prebuilt JARs of
+[Mobile Lucene]().
+The source code is also transformed using Mobile Lucene's transform script
+to use the NIO.2 replacement classes. This enables the project to be part
+of an Android project. I've also included an Objective-C port, with code
+translated using Google's [j2objc](http://j2objc.org) transpiler. The Xcode
+project builds the main app, and can be used in command line. It also builds
+and runs the *translated* JUnit tests.
 
 
 Sample Dataset
