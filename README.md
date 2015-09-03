@@ -59,18 +59,15 @@ The built JAR is located at `./build/libs/lucenestudy.jar`. Once you have
 the JAR, you can build the indices. Suppose you want to put the built
 indices under /tmp/testidx:
 
-    java -cp build/libs/lucenestudy.jar org.lukhnos.lucenestudy.Study \
-        index sample/acl-imdb-subset.json /tmp/testidx
+    java -jar build/libs/lucenestudy.jar index sample/acl-imdb-subset.json /tmp/testidx
 
 Then, to search for reviews containing the keyword "robot":
 
-    java -cp build/libs/lucenestudy.jar org.lukhnos.lucenestudy.Study \
-        search /tmp/testidx robot
+    java -jar build/libs/lucenestudy.jar search /tmp/testidx robot
 
 And to see the search suggestion in action:
 
-    java -cp build/libs/lucenestudy.jar org.lukhnos.lucenestudy.Study \
-        suggest /tmp/testidx love
+    java -jar build/libs/lucenestudy.jar suggest /tmp/testidx love
 
 
 Boolean Searches
@@ -80,11 +77,10 @@ The sample app uses Lucene's query parser to process the query string. You can
 perform boolean searches with quote strings. For example, this searches for
 titles and reviews that contain the term "apocalypse" but not "now":
 
-    java -cp build/libs/lucenestudy.jar org.lukhnos.lucenestudy.Study \
-        search /tmp/testidx "apocalypse -now"
+    java -jar build/libs/lucenestudy.jar search /tmp/testidx "apocalypse -now"
 
 
-On Building the "Far JAR"
+On Building the "Fat JAR"
 -------------------------
 
 The Gradle build script contains a customized `jar` task that builds a fat

@@ -56,7 +56,7 @@ jar {
   }
 
   manifest {
-    attributes "Main-Class": "org.lukhnos.lucenestudy"
+    attributes "Main-Class": "org.lukhnos.lucenestudy.Study"
   }
 
   from(configurations.runtime.collect{ it.isDirectory() ? it : zipTree(it) }) {
