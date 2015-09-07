@@ -32,6 +32,15 @@ repositories {
   flatDir { dirs 'libs' }
 }
 
+buildscript {
+    repositories {
+        flatDir dirs: '/Users/lukhnos/opt/proguard5.2.1/lib'
+    }
+    dependencies {
+        classpath ':proguard:'
+    }
+}
+
 dependencies {
   compile 'org.apache.lucene:lucene-core:5.3.0-mobile-2'
   compile 'org.apache.lucene:lucene-queryparser:5.3.0-mobile-2'
@@ -94,4 +103,12 @@ task testJar(type: Jar) {
 
 artifacts {
   testArtifacts testJar
+}
+
+// https://github.com/loopj/proguard-gradle-example
+task proguardJar(type: proguard.gradle.ProGuardTask, dependsOn: ':jar') {
+    configuration 'proguard-rules.pro'
+    injars jar.archivePath
+    outjars "$jar.destinationDir/lucenestudy-shrunk.jar"
+    printusage "$project.buildDir/deadcode.txt"
 }
