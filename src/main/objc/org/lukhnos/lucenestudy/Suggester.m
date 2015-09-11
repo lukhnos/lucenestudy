@@ -47,7 +47,7 @@ NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME_ = @"suggestion";
 }
 
 - (id<JavaUtilList>)suggestWithNSString:(NSString *)query {
-  id<JavaUtilList> results = [((OrgApacheLuceneSearchSuggestAnalyzingAnalyzingInfixSuggester *) nil_chk(suggester_)) lookupWithJavaLangCharSequence:query withInt:suggestionCount_ withBoolean:NO withBoolean:YES];
+  id<JavaUtilList> results = [((OrgApacheLuceneSearchSuggestAnalyzingAnalyzingInfixSuggester *) nil_chk(suggester_)) lookupWithJavaLangCharSequence:query withInt:suggestionCount_ withBoolean:false withBoolean:true];
   id<JavaUtilList> suggestions = new_JavaUtilArrayList_init();
   for (OrgApacheLuceneSearchSuggestLookup_LookupResult * __strong result in nil_chk(results)) {
     if ([((OrgApacheLuceneSearchSuggestLookup_LookupResult *) nil_chk(result))->highlightKey_ isKindOfClass:[NSString class]]) {

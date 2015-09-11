@@ -26,7 +26,7 @@
 @implementation OrgLukhnosLucenestudyAppendDocumentTest
 
 - (void)setUp {
-  JreStrongAssign(&temp_, OrgLukhnosPortmobileFileFiles_createTempDirectoryWithNSString_([OrgLukhnosLucenestudySuggesterTest_class_() getCanonicalName]));
+  temp_ = OrgLukhnosPortmobileFileFiles_createTempDirectoryWithNSString_([OrgLukhnosLucenestudySuggesterTest_class_() getCanonicalName]);
 }
 
 - (void)tearDown {
@@ -35,46 +35,42 @@
 }
 
 - (void)appendDocumentTest {
-  IOSObjectArray *docs1 = [IOSObjectArray arrayWithObjects:(id[]){ [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"computer", 2000, 5, NO, @"", @"") autorelease], [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"compute", 2000, 2, NO, @"", @"") autorelease] } count:2 type:OrgLukhnosLucenestudyDocument_class_()];
-  IOSObjectArray *docs2 = [IOSObjectArray arrayWithObjects:(id[]){ [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"computing", 2000, 2, NO, @"", @"") autorelease] } count:1 type:OrgLukhnosLucenestudyDocument_class_()];
-  OrgLukhnosLucenestudyIndexer *indexer = [new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description], NO) autorelease];
+  IOSObjectArray *docs1 = [IOSObjectArray newArrayWithObjects:(id[]){ new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"computer", 2000, 5, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"compute", 2000, 2, false, @"", @"") } count:2 type:OrgLukhnosLucenestudyDocument_class_()];
+  IOSObjectArray *docs2 = [IOSObjectArray newArrayWithObjects:(id[]){ new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"computing", 2000, 2, false, @"", @"") } count:1 type:OrgLukhnosLucenestudyDocument_class_()];
+  OrgLukhnosLucenestudyIndexer *indexer = new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description], false);
   [indexer addDocumentsWithJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_(docs1)];
   [indexer close];
-  JreStrongAssignAndConsume(&searcher_, new_OrgLukhnosLucenestudySearcher_initWithNSString_([temp_ description]));
+  searcher_ = new_OrgLukhnosLucenestudySearcher_initWithNSString_([temp_ description]);
   OrgLukhnosLucenestudySearchResult *result;
   result = [searcher_ searchWithNSString:@"c*" withInt:10];
   OrgJunitAssert_assertEqualsWithLong_withLong_(docs1->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
   [searcher_ close];
-  indexer = [new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_([temp_ description], YES) autorelease];
+  indexer = new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_([temp_ description], true);
   [indexer addDocumentsWithJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_(docs2)];
   [indexer close];
-  JreStrongAssignAndConsume(&searcher_, new_OrgLukhnosLucenestudySearcher_initWithNSString_([temp_ description]));
+  searcher_ = new_OrgLukhnosLucenestudySearcher_initWithNSString_([temp_ description]);
   result = [searcher_ searchWithNSString:@"c*" withInt:10];
   OrgJunitAssert_assertEqualsWithLong_withLong_(docs1->size_ + docs2->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
   [searcher_ close];
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgLukhnosLucenestudyAppendDocumentTest_init(self);
   return self;
 }
-
-- (void)dealloc {
-  RELEASE_(temp_);
-  RELEASE_(searcher_);
-  [super dealloc];
-}
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (IOSObjectArray *)__annotations_setUp {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitBefore alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitBefore alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_tearDown {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitAfter alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitAfter alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_appendDocumentTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -95,7 +91,7 @@
 @end
 
 void OrgLukhnosLucenestudyAppendDocumentTest_init(OrgLukhnosLucenestudyAppendDocumentTest *self) {
-  NSObject_init(self);
+  (void) NSObject_init(self);
 }
 
 OrgLukhnosLucenestudyAppendDocumentTest *new_OrgLukhnosLucenestudyAppendDocumentTest_init() {

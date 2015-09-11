@@ -26,7 +26,7 @@
 @implementation OrgLukhnosLucenestudySuggesterTest
 
 - (void)setUp {
-  JreStrongAssign(&temp_, OrgLukhnosPortmobileFileFiles_createTempDirectoryWithNSString_([OrgLukhnosLucenestudySuggesterTest_class_() getCanonicalName]));
+  temp_ = OrgLukhnosPortmobileFileFiles_createTempDirectoryWithNSString_([OrgLukhnosLucenestudySuggesterTest_class_() getCanonicalName]);
 }
 
 - (void)tearDown {
@@ -34,37 +34,34 @@
 }
 
 - (void)basicTest {
-  OrgLukhnosLucenestudyIndexer *indexer = [new_OrgLukhnosLucenestudyIndexer_initWithNSString_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description]) autorelease];
-  IOSObjectArray *docs = [IOSObjectArray arrayWithObjects:(id[]){ [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"test", 2000, 5, NO, @"", @"") autorelease], [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"testing", 2000, 0, NO, @"", @"") autorelease], [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"tested", 2000, 0, NO, @"", @"") autorelease] } count:3 type:OrgLukhnosLucenestudyDocument_class_()];
+  OrgLukhnosLucenestudyIndexer *indexer = new_OrgLukhnosLucenestudyIndexer_initWithNSString_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description]);
+  IOSObjectArray *docs = [IOSObjectArray newArrayWithObjects:(id[]){ new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"test", 2000, 5, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"testing", 2000, 0, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"tested", 2000, 0, false, @"", @"") } count:3 type:OrgLukhnosLucenestudyDocument_class_()];
   [indexer addDocumentsWithJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_(docs)];
   [indexer close];
   OrgLukhnosLucenestudySuggester_rebuildWithNSString_([temp_ description]);
-  OrgLukhnosLucenestudySuggester *suggester = [new_OrgLukhnosLucenestudySuggester_initWithNSString_([temp_ description]) autorelease];
+  OrgLukhnosLucenestudySuggester *suggester = new_OrgLukhnosLucenestudySuggester_initWithNSString_([temp_ description]);
   id<JavaUtilList> results = [suggester suggestWithNSString:@"tes"];
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out_))) printlnWithId:results];
   [suggester close];
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgLukhnosLucenestudySuggesterTest_init(self);
   return self;
 }
-
-- (void)dealloc {
-  RELEASE_(temp_);
-  [super dealloc];
-}
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (IOSObjectArray *)__annotations_setUp {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitBefore alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitBefore alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_tearDown {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitAfter alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitAfter alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_basicTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -84,7 +81,7 @@
 @end
 
 void OrgLukhnosLucenestudySuggesterTest_init(OrgLukhnosLucenestudySuggesterTest *self) {
-  NSObject_init(self);
+  (void) NSObject_init(self);
 }
 
 OrgLukhnosLucenestudySuggesterTest *new_OrgLukhnosLucenestudySuggesterTest_init() {

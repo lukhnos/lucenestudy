@@ -140,7 +140,7 @@ NSString *OrgLukhnosLucenestudyIndexer_INDEX_NAME_ = @"main";
 @end
 
 void OrgLukhnosLucenestudyIndexer_initWithNSString_(OrgLukhnosLucenestudyIndexer *self, NSString *indexRoot) {
-  (void) OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_(self, indexRoot, NO);
+  (void) OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_(self, indexRoot, false);
 }
 
 OrgLukhnosLucenestudyIndexer *new_OrgLukhnosLucenestudyIndexer_initWithNSString_(NSString *indexRoot) {
@@ -199,7 +199,7 @@ OrgLukhnosLucenestudyDocument *OrgLukhnosLucenestudyIndexer_fromLuceneDocumentWi
   rating = (number == nil) ? 0 : [number intValue];
   jboolean positive;
   number = OrgLukhnosLucenestudyIndexer_getIntegerWithOrgApacheLuceneDocumentDocument_withNSString_(luceneDoc, OrgLukhnosLucenestudyIndexer_POSITIVE_FIELD_NAME_);
-  positive = (number == nil) ? NO : ([number intValue] != 0);
+  positive = (number == nil) ? false : ([number intValue] != 0);
   NSString *review = [luceneDoc getWithNSString:OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME_];
   NSString *source = [luceneDoc getWithNSString:OrgLukhnosLucenestudyIndexer_SOURCE_FIELD_NAME_];
   return new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(title, year, rating, positive, review, source);

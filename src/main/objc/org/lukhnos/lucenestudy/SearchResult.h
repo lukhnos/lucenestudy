@@ -27,6 +27,8 @@
 
 #pragma mark Public
 
+- (NSString *)getFullHighlightedReviewWithOrgLukhnosLucenestudyDocument:(OrgLukhnosLucenestudyDocument *)doc;
+
 - (NSString *)getHighlightedReviewWithOrgLukhnosLucenestudyDocument:(OrgLukhnosLucenestudyDocument *)doc;
 
 - (NSString *)getHighlightedTitleWithOrgLukhnosLucenestudyDocument:(OrgLukhnosLucenestudyDocument *)doc;

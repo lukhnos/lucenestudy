@@ -58,10 +58,12 @@
   OrgLukhnosLucenestudyStudy_suggestWithNSString_withNSString_(indexPath, query);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgLukhnosLucenestudyStudy_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {
@@ -115,32 +117,33 @@ void OrgLukhnosLucenestudyStudy_indexWithNSString_withNSString_(NSString *source
   if ([dataFile length] > JavaLangInteger_MAX_VALUE) {
     JavaLangSystem_exitWithInt_(1);
   }
-  {
-    JavaLangThrowable *__mainException = nil;
+  @try {
     JavaIoFileInputStream *stream = new_JavaIoFileInputStream_initWithNSString_(sourcePath);
+    JavaLangThrowable *__primaryException1 = nil;
     @try {
-      OrgLukhnosLucenestudyStudy_importDataWithJavaIoInputStream_withNSString_withBoolean_(stream, indexPath, YES);
+      OrgLukhnosLucenestudyStudy_importDataWithJavaIoInputStream_withNSString_withBoolean_(stream, indexPath, true);
     }
-    @catch (JavaLangException *e) {
-      __mainException = e;
-      [((JavaLangException *) nil_chk(e)) printStackTrace];
-      JavaLangSystem_exitWithInt_(1);
+    @catch (JavaLangThrowable *e) {
+      __primaryException1 = e;
+      @throw e;
     }
     @finally {
-      @try {
-        [stream close];
-      }
-      @catch (JavaLangThrowable *e) {
-        if (__mainException) {
-          [__mainException addSuppressedWithJavaLangThrowable:e];
+      if (stream != nil) {
+        if (__primaryException1 != nil) {
+          @try {
+            [stream close];
+          } @catch (JavaLangThrowable *e) {
+            [__primaryException1 addSuppressedWithJavaLangThrowable:e];
+          }
         } else {
-          __mainException = e;
+          [stream close];
         }
       }
-      if (__mainException) {
-        @throw __mainException;
-      }
     }
+  }
+  @catch (JavaLangException *e) {
+    [((JavaLangException *) nil_chk(e)) printStackTrace];
+    JavaLangSystem_exitWithInt_(1);
   }
 }
 
@@ -167,7 +170,7 @@ jint OrgLukhnosLucenestudyStudy_importDataWithJavaIoInputStream_withNSString_wit
     OrgLukhnosLucenestudyDocument *doc = new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(title, year, rating, positive, review, source);
     [docs addWithId:doc];
   }
-  OrgLukhnosLucenestudyIndexer *indexer = new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_(indexPath, NO);
+  OrgLukhnosLucenestudyIndexer *indexer = new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_(indexPath, false);
   [indexer addDocumentsWithJavaUtilList:docs];
   [indexer close];
   if (withSuggestion) {

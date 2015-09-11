@@ -39,10 +39,12 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyUtil_$1)
   OrgLukhnosLucenestudyUtil_deletePathWithOrgLukhnosPortmobileFilePath_(path);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgLukhnosLucenestudyUtil_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {
@@ -86,10 +88,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudyUtil)
   return JreLoadStatic(OrgLukhnosPortmobileFileFileVisitResultEnum, CONTINUE);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgLukhnosLucenestudyUtil_$1_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {

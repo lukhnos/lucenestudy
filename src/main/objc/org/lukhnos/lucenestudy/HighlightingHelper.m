@@ -114,7 +114,7 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_;
   static const J2ObjcFieldInfo fields[] = {
     { "cleanUpPattern_", NULL, 0x18, "Ljava.util.regex.Pattern;", &OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern_, NULL, .constantValue.asLong = 0 },
     { "replaceLFPattern_", NULL, 0x18, "Ljava.util.regex.Pattern;", &OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_, NULL, .constantValue.asLong = 0 },
-    { "DEFAULT_FRAGMENT_LENGTH", "DEFAULT_FRAGMENT_LENGTH", 0x18, "I", NULL, NULL, .constantValue.asInt = OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH },
+    { "DEFAULT_FRAGMENT_LENGTH", "DEFAULT_FRAGMENT_LENGTH", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH },
     { "scorer_", NULL, 0x10, "Lorg.apache.lucene.search.highlight.QueryScorer;", NULL, NULL, .constantValue.asLong = 0 },
     { "highlighter_", NULL, 0x10, "Lorg.apache.lucene.search.highlight.Highlighter;", NULL, NULL, .constantValue.asLong = 0 },
     { "analyzer_", NULL, 0x10, "Lorg.apache.lucene.analysis.Analyzer;", NULL, NULL, .constantValue.asLong = 0 },

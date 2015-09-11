@@ -28,11 +28,11 @@
 @implementation OrgLukhnosLucenestudySearcherTest
 
 - (void)setUp {
-  JreStrongAssign(&temp_, OrgLukhnosPortmobileFileFiles_createTempDirectoryWithNSString_([OrgLukhnosLucenestudySuggesterTest_class_() getCanonicalName]));
-  OrgLukhnosLucenestudyIndexer *indexer = [new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description], NO) autorelease];
+  temp_ = OrgLukhnosPortmobileFileFiles_createTempDirectoryWithNSString_([OrgLukhnosLucenestudySuggesterTest_class_() getCanonicalName]);
+  OrgLukhnosLucenestudyIndexer *indexer = new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description], false);
   [indexer addDocumentsWithJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_(docs_)];
   [indexer close];
-  JreStrongAssignAndConsume(&searcher_, new_OrgLukhnosLucenestudySearcher_initWithNSString_([temp_ description]));
+  searcher_ = new_OrgLukhnosLucenestudySearcher_initWithNSString_([temp_ description]);
 }
 
 - (void)tearDown {
@@ -101,44 +101,39 @@
   OrgJunitAssert_assertEqualsWithId_withId_(@"It's important to <B>test</B> &amp; fix", [result getHighlightedReviewWithOrgLukhnosLucenestudyDocument:[result->documents_ getWithInt:0]]);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgLukhnosLucenestudySearcherTest_init(self);
   return self;
 }
-
-- (void)dealloc {
-  RELEASE_(temp_);
-  RELEASE_(searcher_);
-  RELEASE_(docs_);
-  [super dealloc];
-}
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (IOSObjectArray *)__annotations_setUp {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitBefore alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitBefore alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_tearDown {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitAfter alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitAfter alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_basicTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_pagingTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_sortTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_sortAndPagingTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_highlightingTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -164,8 +159,8 @@
 @end
 
 void OrgLukhnosLucenestudySearcherTest_init(OrgLukhnosLucenestudySearcherTest *self) {
-  NSObject_init(self);
-  JreStrongAssignAndConsume(&self->docs_, [IOSObjectArray newArrayWithObjects:(id[]){ [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Test", 2000, 5, NO, @"It's important to test & fix", @"") autorelease], [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Testing", 2000, 2, NO, @"", @"") autorelease], [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Tested", 1999, 6, NO, @"", @"") autorelease], [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Tester", 1984, 0, NO, @"", @"") autorelease], [new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Testcase", 1970, 10, NO, @"It's all about testing and testers.", @"") autorelease] } count:5 type:OrgLukhnosLucenestudyDocument_class_()]);
+  (void) NSObject_init(self);
+  self->docs_ = [IOSObjectArray newArrayWithObjects:(id[]){ new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Test", 2000, 5, false, @"It's important to test & fix", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Testing", 2000, 2, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Tested", 1999, 6, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Tester", 1984, 0, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Testcase", 1970, 10, false, @"It's all about testing and testers.", @"") } count:5 type:OrgLukhnosLucenestudyDocument_class_()];
 }
 
 OrgLukhnosLucenestudySearcherTest *new_OrgLukhnosLucenestudySearcherTest_init() {

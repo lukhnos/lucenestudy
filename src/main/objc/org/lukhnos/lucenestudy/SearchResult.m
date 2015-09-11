@@ -4,6 +4,7 @@
 //
 
 #include "J2ObjC_source.h"
+#include "java/lang/Integer.h"
 #include "java/util/List.h"
 #include "org/apache/lucene/search/Query.h"
 #include "org/apache/lucene/search/ScoreDoc.h"
@@ -30,11 +31,18 @@ withOrgLukhnosLucenestudyHighlightingHelper:(OrgLukhnosLucenestudyHighlightingHe
 }
 
 - (NSString *)getHighlightedTitleWithOrgLukhnosLucenestudyDocument:(OrgLukhnosLucenestudyDocument *)doc {
-  return [((OrgLukhnosLucenestudyHighlightingHelper *) nil_chk(highlightingHelper_)) highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME_ withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->title_];
+  [((OrgLukhnosLucenestudyHighlightingHelper *) nil_chk(highlightingHelper_)) setFragmentLengthWithInt:OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH];
+  return [highlightingHelper_ highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME_ withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->title_];
 }
 
 - (NSString *)getHighlightedReviewWithOrgLukhnosLucenestudyDocument:(OrgLukhnosLucenestudyDocument *)doc {
-  return [((OrgLukhnosLucenestudyHighlightingHelper *) nil_chk(highlightingHelper_)) highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME_ withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->review_];
+  [((OrgLukhnosLucenestudyHighlightingHelper *) nil_chk(highlightingHelper_)) setFragmentLengthWithInt:OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH];
+  return [highlightingHelper_ highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME_ withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->review_];
+}
+
+- (NSString *)getFullHighlightedReviewWithOrgLukhnosLucenestudyDocument:(OrgLukhnosLucenestudyDocument *)doc {
+  [((OrgLukhnosLucenestudyHighlightingHelper *) nil_chk(highlightingHelper_)) setFragmentLengthWithInt:JavaLangInteger_MAX_VALUE];
+  return [highlightingHelper_ highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME_ withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->review_];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -43,6 +51,7 @@ withOrgLukhnosLucenestudyHighlightingHelper:(OrgLukhnosLucenestudyHighlightingHe
     { "hasMore", NULL, "Z", 0x1, NULL, NULL },
     { "getHighlightedTitleWithOrgLukhnosLucenestudyDocument:", "getHighlightedTitle", "Ljava.lang.String;", 0x1, NULL, NULL },
     { "getHighlightedReviewWithOrgLukhnosLucenestudyDocument:", "getHighlightedReview", "Ljava.lang.String;", 0x1, NULL, NULL },
+    { "getFullHighlightedReviewWithOrgLukhnosLucenestudyDocument:", "getFullHighlightedReview", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
     { "totalHits_", NULL, 0x11, "I", NULL, NULL, .constantValue.asLong = 0 },
@@ -52,7 +61,7 @@ withOrgLukhnosLucenestudyHighlightingHelper:(OrgLukhnosLucenestudyHighlightingHe
     { "sort_", NULL, 0x10, "Lorg.apache.lucene.search.Sort;", NULL, NULL, .constantValue.asLong = 0 },
     { "highlightingHelper_", NULL, 0x10, "Lorg.lukhnos.lucenestudy.HighlightingHelper;", NULL, NULL, .constantValue.asLong = 0 },
   };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudySearchResult = { 2, "SearchResult", "org.lukhnos.lucenestudy", NULL, 0x1, 4, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudySearchResult = { 2, "SearchResult", "org.lukhnos.lucenestudy", NULL, 0x1, 5, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgLukhnosLucenestudySearchResult;
 }
 
