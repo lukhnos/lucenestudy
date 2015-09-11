@@ -46,7 +46,7 @@ class HighlightingHelper {
   // For concatenating paragraphes separated by \n.
   static final Pattern replaceLFPattern = Pattern.compile("\\n");
 
-  static final int DEFAULT_FRAGMENT_LENGTH = 120;
+  public static final int DEFAULT_FRAGMENT_LENGTH = 120;
 
   final QueryScorer scorer;
   final Highlighter highlighter;
