@@ -37,6 +37,7 @@ public class SearchResult {
   final Query query;
   final Sort sort;
   final HighlightingHelper highlightingHelper;
+  int fragmentLength = HighlightingHelper.DEFAULT_FRAGMENT_LENGTH;
 
   SearchResult(int totalHits, List<Document> documents, ScoreDoc lastScoreDoc, Query query, Sort sort,
                HighlightingHelper highlightingHelper) {
@@ -53,10 +54,21 @@ public class SearchResult {
   }
 
   public String getHighlightedTitle(Document doc) {
+    highlightingHelper.setFragmentLength(Integer.MAX_VALUE);
     return highlightingHelper.highlightOrOriginal(Indexer.TITLE_FIELD_NAME, doc.title);
   }
 
   public String getHighlightedReview(Document doc) {
+    highlightingHelper.setFragmentLength(fragmentLength);
     return highlightingHelper.highlightOrOriginal(Indexer.REVIEW_FIELD_NAME, doc.review);
+  }
+
+  public String getFullHighlightedReview(Document doc) {
+    highlightingHelper.setFragmentLength(Integer.MAX_VALUE);
+    return highlightingHelper.highlightOrOriginal(Indexer.REVIEW_FIELD_NAME, doc.review);
+  }
+
+  public void setFragmentLength(int length) {
+    fragmentLength = length;
   }
 }
