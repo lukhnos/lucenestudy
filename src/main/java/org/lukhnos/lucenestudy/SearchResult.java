@@ -55,16 +55,19 @@ public class SearchResult {
 
   public String getHighlightedTitle(Document doc) {
     highlightingHelper.setFragmentLength(Integer.MAX_VALUE);
+    highlightingHelper.setLineFeedHTMLEscape(false);
     return highlightingHelper.highlightOrOriginal(Indexer.TITLE_FIELD_NAME, doc.title);
   }
 
   public String getHighlightedReview(Document doc) {
     highlightingHelper.setFragmentLength(fragmentLength);
+    highlightingHelper.setLineFeedHTMLEscape(false);
     return highlightingHelper.highlightOrOriginal(Indexer.REVIEW_FIELD_NAME, doc.review);
   }
 
   public String getFullHighlightedReview(Document doc) {
     highlightingHelper.setFragmentLength(Integer.MAX_VALUE);
+    highlightingHelper.setLineFeedHTMLEscape(true);
     return highlightingHelper.highlightOrOriginal(Indexer.REVIEW_FIELD_NAME, doc.review);
   }
 

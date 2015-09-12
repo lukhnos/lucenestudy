@@ -48,6 +48,7 @@ class HighlightingHelper {
 
   public static final int DEFAULT_FRAGMENT_LENGTH = 120;
 
+  final MinimalHTMLEncoder encoder;
   final QueryScorer scorer;
   final Highlighter highlighter;
   final Analyzer analyzer;
@@ -57,7 +58,7 @@ class HighlightingHelper {
     this.analyzer = analyzer;
 
     Formatter formatter = new SimpleHTMLFormatter();
-    Encoder encoder = new MinimalHTMLEncoder();
+    encoder = new MinimalHTMLEncoder();
     scorer = new QueryScorer(query);
     highlighter = new Highlighter(formatter, encoder, scorer);
 
@@ -81,6 +82,10 @@ class HighlightingHelper {
       highlighter.setTextFragmenter(fragmenter);
       fragmentLength = length;
     }
+  }
+
+  void setLineFeedHTMLEscape(boolean newLineToBr) {
+    encoder.setNewlineToBr(newLineToBr);
   }
 
   String highlightOrOriginal(String fieldName, String text) {
