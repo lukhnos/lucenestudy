@@ -102,10 +102,10 @@
 /* Begin PBXFileReference section */
 		6A1BC9961B8C3E5800DA92C6 /* LuceneStudy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LuceneStudy; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjCLucene.xcodeproj; path = vendor/objclucene/ObjCLucene.xcodeproj; sourceTree = "<group>"; };
-		6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjre_emul.a; path = vendor/objclucene/vendor/j2objc/lib/libjre_emul.a; sourceTree = "<group>"; };
+		6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjre_emul.a; path = vendor/objclucene/vendor/j2objc/lib/macosx/libjre_emul.a; sourceTree = "<group>"; };
 		6A1BC9D01B8C42BC00DA92C6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		6A1BC9D21B8C42C000DA92C6 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libj2objc_main.a; path = vendor/objclucene/vendor/j2objc/lib/libj2objc_main.a; sourceTree = "<group>"; };
+		6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libj2objc_main.a; path = vendor/objclucene/vendor/j2objc/lib/macosx/libj2objc_main.a; sourceTree = "<group>"; };
 		6A1BC9DE1B8C4F2000DA92C6 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		6A1BC9DF1B8C4F2000DA92C6 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
 		6A1BC9E01B8C4F2000DA92C6 /* HighlightingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightingHelper.h; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 		6A1BCA0C1B8C4FB500DA92C6 /* SearcherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearcherTest.m; sourceTree = "<group>"; };
 		6A1BCA0D1B8C4FB500DA92C6 /* SuggesterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggesterTest.h; sourceTree = "<group>"; };
 		6A1BCA0E1B8C4FB500DA92C6 /* SuggesterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggesterTest.m; sourceTree = "<group>"; };
-		6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjunit.a; path = vendor/objclucene/vendor/j2objc/lib/libjunit.a; sourceTree = "<group>"; };
+		6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjunit.a; path = vendor/objclucene/vendor/j2objc/lib/macosx/libjunit.a; sourceTree = "<group>"; };
 		6A49A9C81B8D7C8900FF2824 /* vendor */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vendor; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -355,7 +355,7 @@
 		6A1BC98C1B8C3E2E00DA92C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					6A1BC9951B8C3E5800DA92C6 = {
 						CreatedOnToolsVersion = 6.4;
@@ -481,6 +481,8 @@
 		6A1BC9901B8C3E2E00DA92C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
