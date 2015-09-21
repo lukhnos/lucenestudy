@@ -106,7 +106,7 @@ artifacts {
 }
 
 // https://github.com/loopj/proguard-gradle-example
-task proguardJar(type: proguard.gradle.ProGuardTask, dependsOn: ':jar') {
+task proguardJar(type: proguard.gradle.ProGuardTask, dependsOn: jar) {
     configuration 'proguard-rules.pro'
     injars jar.archivePath
     outjars "$jar.destinationDir/lucenestudy-shrunk.jar"
