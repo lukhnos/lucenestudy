@@ -34,10 +34,10 @@ repositories {
 
 buildscript {
     repositories {
-        flatDir dirs: '/Users/lukhnos/opt/proguard5.2.1/lib'
+        flatDir { dirs 'libs' }
     }
     dependencies {
-        classpath ':proguard:'
+        classpath ':proguard-5.2.1:'
     }
 }
 
