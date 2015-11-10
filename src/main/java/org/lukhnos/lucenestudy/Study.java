@@ -35,6 +35,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Study {
@@ -50,6 +51,12 @@ public class Study {
       search(args[1], args[2]);
     } else if (args[0].equalsIgnoreCase("suggest")) {
       suggest(args[1], args[2]);
+    } else if (args[0].equalsIgnoreCase("add")) {
+      if (args.length < 8) {
+        showHelpAndExit();
+        return;
+      }
+      add(args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
     }
 
   }
@@ -59,6 +66,7 @@ public class Study {
     System.err.println("    index <source JSON> <index path>");
     System.err.println("    search <index path> <query>");
     System.err.println("    suggest <index path> <keyword(s)>");
+    System.err.println("    add <index path> <title> <year> <rating> <positive> <review> <source>");
     System.exit(1);
   }
 
@@ -143,5 +151,17 @@ public class Study {
       System.out.println("Suggestion: " + text);
     }
     suggester.close();
+  }
+
+  static void add(String indexPath, String title, String year, String rating, String positive,
+                  String review, String source) throws Exception {
+
+    Document doc = new Document(title, Integer.parseInt(year), Integer.parseInt(year),
+        rating.equalsIgnoreCase("true"), review, source);
+    Indexer indexer = new Indexer(indexPath, true);
+    indexer.addDocuments(Collections.singletonList(doc));
+    indexer.close();
+
+    Suggester.rebuild(indexPath);
   }
 }
