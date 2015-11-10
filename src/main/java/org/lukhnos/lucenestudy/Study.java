@@ -54,11 +54,12 @@ public class Study {
     } else if (args[0].equalsIgnoreCase("add")) {
       if (args.length < 8) {
         showHelpAndExit();
-        return;
       }
       add(args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
     } else if (args[0].equalsIgnoreCase("delete")) {
       delete(args[1], args[2]);
+    } else {
+      showHelpAndExit();
     }
   }
 
