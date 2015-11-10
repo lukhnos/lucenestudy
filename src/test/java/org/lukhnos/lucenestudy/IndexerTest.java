@@ -34,7 +34,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
-public class AppendDocumentTest {
+public class IndexerTest {
   Path temp;
   Searcher searcher;
 
@@ -79,4 +79,39 @@ public class AppendDocumentTest {
     assertEquals(docs1.length + docs2.length, result.totalHits);
     searcher.close();
   }
+
+  @Test
+  public void deleteDocumentTest() throws Exception {
+    Document docs[] = {
+        new Document("apple", 2000, 5, false, "", ""),
+        new Document("apricot", 2000, 5, false, "", ""),
+        new Document("berry", 2000, 2, false, "", ""),
+        new Document("citrus", 2000, 2, false, "", "")
+    };
+
+    Indexer indexer = new Indexer(temp.toString(), false);
+    indexer.addDocuments(Arrays.asList(docs));
+    indexer.close();
+
+    searcher = new Searcher(temp.toString());
+    SearchResult result;
+    result = searcher.search("ap*", 10);
+    assertEquals(2, result.totalHits);
+    searcher.close();
+
+    indexer = new Indexer(temp.toString(), true);
+    indexer.deleteDocumentsByQuery("apple");
+    indexer.close();
+
+    searcher = new Searcher(temp.toString());
+    result = searcher.search("apple", 10);
+    assertEquals(0, result.totalHits);
+
+    result = searcher.search("ap*", 10);
+    assertEquals(1, result.totalHits);
+    assertEquals("apricot", result.documents.get(0).title);
+
+    searcher.close();
+  }
+
 }
