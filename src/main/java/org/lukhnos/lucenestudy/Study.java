@@ -57,8 +57,9 @@ public class Study {
         return;
       }
       add(args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
+    } else if (args[0].equalsIgnoreCase("delete")) {
+      delete(args[1], args[2]);
     }
-
   }
 
   static void showHelpAndExit() {
@@ -67,6 +68,7 @@ public class Study {
     System.err.println("    search <index path> <query>");
     System.err.println("    suggest <index path> <keyword(s)>");
     System.err.println("    add <index path> <title> <year> <rating> <positive> <review> <source>");
+    System.err.println("    delete <index path> <query>");
     System.exit(1);
   }
 
@@ -142,6 +144,13 @@ public class Study {
     }
 
     searcher.close();
+  }
+
+  static void delete(String indexPath, String query) throws Exception {
+    Indexer indexer = new Indexer(indexPath, true);
+    indexer.deleteDocumentsByQuery(query);
+    indexer.close();
+    Suggester.rebuild(indexPath);
   }
 
   static void suggest(String indexPath, String query) throws Exception {
