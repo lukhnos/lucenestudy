@@ -53,10 +53,17 @@ public class SearchResult {
   }
 
   public String getHighlightedTitle(Document doc) {
+    highlightingHelper.setFragmentLength(HighlightingHelper.DEFAULT_FRAGMENT_LENGTH);
     return highlightingHelper.highlightOrOriginal(Indexer.TITLE_FIELD_NAME, doc.title);
   }
 
   public String getHighlightedReview(Document doc) {
+    highlightingHelper.setFragmentLength(HighlightingHelper.DEFAULT_FRAGMENT_LENGTH);
+    return highlightingHelper.highlightOrOriginal(Indexer.REVIEW_FIELD_NAME, doc.review);
+  }
+
+  public String getFullHighlightedReview(Document doc) {
+    highlightingHelper.setFragmentLength(Integer.MAX_VALUE);
     return highlightingHelper.highlightOrOriginal(Indexer.REVIEW_FIELD_NAME, doc.review);
   }
 }

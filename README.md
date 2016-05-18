@@ -1,5 +1,5 @@
-A Study of Lucene
-=================
+A Study of Lucene (Mobile Version)
+==================================
 
 [![Build Status](https://travis-ci.org/lukhnos/lucenestudy.svg)](https://travis-ci.org/lukhnos/lucenestudy)
 
@@ -9,6 +9,17 @@ results, and provide search suggestions (also known as "autocomplete").
 
 The sample application in this project works like a movie review search
 engine. A sample dataset is provided for testing the app.
+
+**Mobile version notes**: This is a "mobile" version of lucenestudy that
+comes with the prebuilt JARs of
+[Mobile Lucene](https://github.com/lukhnos/mobilelucene).
+The source code is also transformed using Mobile Lucene's transform script
+to use the NIO.2 replacement classes. This enables the project to be part
+of an Android project. I've also included an Objective-C port, with code
+translated using Google's [j2objc](http://j2objc.org) transpiler. The Xcode
+project builds the main app, and can be used in command line. It also builds
+and runs the *translated* JUnit tests. See the end of this document for
+details.
 
 
 Sample Dataset
@@ -101,3 +112,28 @@ Extending the App
 This is nowhere near a comprehensive survey of Lucene. It is a big library
 that covers a wide range of use cases. Pull requests that extend the app are
 therefore more than welcome.
+
+
+Building the Objective-C Targets
+--------------------------------
+
+To build the targets in Xcode, first make sure you have the git submodules
+checked out:
+
+    git submodule update --init --recursive
+
+Then, run `setup-j2objc.sh` to make sure that you have the required version
+of j2objc.
+
+Now you can build the targets in Xcode. The resulting OS X binary works just
+like its Java counterpart. Suppose the built product is in:
+
+    $HOME/Library/Developer/Xcode/DerivedData/LuceneStudy-<some hash>/Build/Products/Debug
+
+Then, run the binary:
+
+    ./LuceneStudy org.lukhnos.lucenestudy.Study
+
+Currently there's a known issue that the Objective-C version's suggester does
+not produce correct suggestion indices, but it reads fine suggestion indices
+built elsewhere. Search indexing and query work correctly.

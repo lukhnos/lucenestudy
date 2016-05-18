@@ -1,0 +1,736 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A1BC9CC1B8C429000DA92C6 /* libObjCLucene.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9C21B8C3F6500DA92C6 /* libObjCLucene.a */; };
+		6A1BC9CF1B8C42B700DA92C6 /* libjre_emul.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */; };
+		6A1BC9D11B8C42BC00DA92C6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9D01B8C42BC00DA92C6 /* libz.dylib */; };
+		6A1BC9D31B8C42C000DA92C6 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9D21B8C42C000DA92C6 /* libicucore.dylib */; };
+		6A1BC9D51B8C42E800DA92C6 /* libj2objc_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */; };
+		6A1BC9F01B8C4F2000DA92C6 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9DF1B8C4F2000DA92C6 /* Document.m */; };
+		6A1BC9F11B8C4F2000DA92C6 /* HighlightingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E11B8C4F2000DA92C6 /* HighlightingHelper.m */; };
+		6A1BC9F21B8C4F2000DA92C6 /* Indexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E31B8C4F2000DA92C6 /* Indexer.m */; };
+		6A1BC9F31B8C4F2000DA92C6 /* MinimalHTMLEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E51B8C4F2000DA92C6 /* MinimalHTMLEncoder.m */; };
+		6A1BC9F41B8C4F2000DA92C6 /* Searcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E71B8C4F2000DA92C6 /* Searcher.m */; };
+		6A1BC9F51B8C4F2000DA92C6 /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E91B8C4F2000DA92C6 /* SearchResult.m */; };
+		6A1BC9F61B8C4F2000DA92C6 /* Study.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9EB1B8C4F2000DA92C6 /* Study.m */; };
+		6A1BC9F71B8C4F2000DA92C6 /* Suggester.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9ED1B8C4F2000DA92C6 /* Suggester.m */; };
+		6A1BC9F81B8C4F2000DA92C6 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9EF1B8C4F2000DA92C6 /* Util.m */; };
+		6A1BCA0F1B8C4FB500DA92C6 /* AppendDocumentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BCA0A1B8C4FB500DA92C6 /* AppendDocumentTest.m */; };
+		6A1BCA101B8C4FB500DA92C6 /* SearcherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BCA0C1B8C4FB500DA92C6 /* SearcherTest.m */; };
+		6A1BCA111B8C4FB500DA92C6 /* SuggesterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BCA0E1B8C4FB500DA92C6 /* SuggesterTest.m */; };
+		6A1BCA121B8C4FC400DA92C6 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9DF1B8C4F2000DA92C6 /* Document.m */; };
+		6A1BCA131B8C4FC400DA92C6 /* HighlightingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E11B8C4F2000DA92C6 /* HighlightingHelper.m */; };
+		6A1BCA141B8C4FC400DA92C6 /* Indexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E31B8C4F2000DA92C6 /* Indexer.m */; };
+		6A1BCA151B8C4FC400DA92C6 /* MinimalHTMLEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E51B8C4F2000DA92C6 /* MinimalHTMLEncoder.m */; };
+		6A1BCA161B8C4FC400DA92C6 /* Searcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E71B8C4F2000DA92C6 /* Searcher.m */; };
+		6A1BCA171B8C4FC400DA92C6 /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E91B8C4F2000DA92C6 /* SearchResult.m */; };
+		6A1BCA181B8C4FC400DA92C6 /* Suggester.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9ED1B8C4F2000DA92C6 /* Suggester.m */; };
+		6A1BCA191B8C4FC400DA92C6 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9EF1B8C4F2000DA92C6 /* Util.m */; };
+		6A1BCA1C1B8C4FD600DA92C6 /* libObjCLucene.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9C21B8C3F6500DA92C6 /* libObjCLucene.a */; };
+		6A1BCA1D1B8C4FDA00DA92C6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9D01B8C42BC00DA92C6 /* libz.dylib */; };
+		6A1BCA1E1B8C4FDF00DA92C6 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9D21B8C42C000DA92C6 /* libicucore.dylib */; };
+		6A1BCA201B8C4FF500DA92C6 /* libjunit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */; };
+		6A1BCA211B8C4FFD00DA92C6 /* libjre_emul.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */; };
+		6A1BCA221B8C50E600DA92C6 /* libj2objc_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6A1BC9C11B8C3F6500DA92C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6AD2F54A1B877C9D003F2171;
+			remoteInfo = ObjCLucene;
+		};
+		6A1BC9C31B8C3F6500DA92C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6AD2F5551B877C9D003F2171;
+			remoteInfo = ObjCLuceneTests;
+		};
+		6A1BC9C81B8C3FC000DA92C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AD2F5491B877C9D003F2171;
+			remoteInfo = ObjCLucene;
+		};
+		6A1BCA1A1B8C4FD100DA92C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AD2F5491B877C9D003F2171;
+			remoteInfo = ObjCLucene;
+		};
+		6AD3FD661B8CC3B900363CD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A1BC98C1B8C3E2E00DA92C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A1BC9951B8C3E5800DA92C6;
+			remoteInfo = LuceneStudy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6A1BC9941B8C3E5800DA92C6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		6A1BC9FD1B8C4F4600DA92C6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6A1BC9961B8C3E5800DA92C6 /* LuceneStudy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LuceneStudy; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjCLucene.xcodeproj; path = vendor/objclucene/ObjCLucene.xcodeproj; sourceTree = "<group>"; };
+		6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjre_emul.a; path = vendor/j2objc/lib/macosx/libjre_emul.a; sourceTree = "<group>"; };
+		6A1BC9D01B8C42BC00DA92C6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		6A1BC9D21B8C42C000DA92C6 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libj2objc_main.a; path = vendor/j2objc/lib/macosx/libj2objc_main.a; sourceTree = "<group>"; };
+		6A1BC9DE1B8C4F2000DA92C6 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
+		6A1BC9DF1B8C4F2000DA92C6 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		6A1BC9E01B8C4F2000DA92C6 /* HighlightingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightingHelper.h; sourceTree = "<group>"; };
+		6A1BC9E11B8C4F2000DA92C6 /* HighlightingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightingHelper.m; sourceTree = "<group>"; };
+		6A1BC9E21B8C4F2000DA92C6 /* Indexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Indexer.h; sourceTree = "<group>"; };
+		6A1BC9E31B8C4F2000DA92C6 /* Indexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Indexer.m; sourceTree = "<group>"; };
+		6A1BC9E41B8C4F2000DA92C6 /* MinimalHTMLEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinimalHTMLEncoder.h; sourceTree = "<group>"; };
+		6A1BC9E51B8C4F2000DA92C6 /* MinimalHTMLEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinimalHTMLEncoder.m; sourceTree = "<group>"; };
+		6A1BC9E61B8C4F2000DA92C6 /* Searcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Searcher.h; sourceTree = "<group>"; };
+		6A1BC9E71B8C4F2000DA92C6 /* Searcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Searcher.m; sourceTree = "<group>"; };
+		6A1BC9E81B8C4F2000DA92C6 /* SearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResult.h; sourceTree = "<group>"; };
+		6A1BC9E91B8C4F2000DA92C6 /* SearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResult.m; sourceTree = "<group>"; };
+		6A1BC9EA1B8C4F2000DA92C6 /* Study.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Study.h; sourceTree = "<group>"; };
+		6A1BC9EB1B8C4F2000DA92C6 /* Study.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Study.m; sourceTree = "<group>"; };
+		6A1BC9EC1B8C4F2000DA92C6 /* Suggester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Suggester.h; sourceTree = "<group>"; };
+		6A1BC9ED1B8C4F2000DA92C6 /* Suggester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Suggester.m; sourceTree = "<group>"; };
+		6A1BC9EE1B8C4F2000DA92C6 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		6A1BC9EF1B8C4F2000DA92C6 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		6A1BC9FF1B8C4F4600DA92C6 /* LuceneStudyJUnitTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LuceneStudyJUnitTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A1BCA091B8C4FB500DA92C6 /* AppendDocumentTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppendDocumentTest.h; sourceTree = "<group>"; };
+		6A1BCA0A1B8C4FB500DA92C6 /* AppendDocumentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppendDocumentTest.m; sourceTree = "<group>"; };
+		6A1BCA0B1B8C4FB500DA92C6 /* SearcherTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearcherTest.h; sourceTree = "<group>"; };
+		6A1BCA0C1B8C4FB500DA92C6 /* SearcherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearcherTest.m; sourceTree = "<group>"; };
+		6A1BCA0D1B8C4FB500DA92C6 /* SuggesterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggesterTest.h; sourceTree = "<group>"; };
+		6A1BCA0E1B8C4FB500DA92C6 /* SuggesterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggesterTest.m; sourceTree = "<group>"; };
+		6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjunit.a; path = vendor/j2objc/lib/macosx/libjunit.a; sourceTree = "<group>"; };
+		6A49A9C81B8D7C8900FF2824 /* vendor */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vendor; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6A1BC9931B8C3E5800DA92C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A1BC9D31B8C42C000DA92C6 /* libicucore.dylib in Frameworks */,
+				6A1BC9D11B8C42BC00DA92C6 /* libz.dylib in Frameworks */,
+				6A1BC9CC1B8C429000DA92C6 /* libObjCLucene.a in Frameworks */,
+				6A1BC9CF1B8C42B700DA92C6 /* libjre_emul.a in Frameworks */,
+				6A1BC9D51B8C42E800DA92C6 /* libj2objc_main.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A1BC9FC1B8C4F4600DA92C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A1BCA211B8C4FFD00DA92C6 /* libjre_emul.a in Frameworks */,
+				6A1BCA1E1B8C4FDF00DA92C6 /* libicucore.dylib in Frameworks */,
+				6A1BCA1D1B8C4FDA00DA92C6 /* libz.dylib in Frameworks */,
+				6A1BCA201B8C4FF500DA92C6 /* libjunit.a in Frameworks */,
+				6A1BCA1C1B8C4FD600DA92C6 /* libObjCLucene.a in Frameworks */,
+				6A1BCA221B8C50E600DA92C6 /* libj2objc_main.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6A1BC98B1B8C3E2E00DA92C6 = {
+			isa = PBXGroup;
+			children = (
+				6A49A9C81B8D7C8900FF2824 /* vendor */,
+				6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */,
+				6A1BC9D81B8C4EBD00DA92C6 /* src */,
+				6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */,
+				6A1BC9D21B8C42C000DA92C6 /* libicucore.dylib */,
+				6A1BC9D01B8C42BC00DA92C6 /* libz.dylib */,
+				6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */,
+				6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */,
+				6A1BC9971B8C3E5800DA92C6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6A1BC9971B8C3E5800DA92C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BC9961B8C3E5800DA92C6 /* LuceneStudy */,
+				6A1BC9FF1B8C4F4600DA92C6 /* LuceneStudyJUnitTest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A1BC9981B8C3E5800DA92C6 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BC9D91B8C4EDE00DA92C6 /* objc */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		6A1BC9BD1B8C3F6500DA92C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BC9C21B8C3F6500DA92C6 /* libObjCLucene.a */,
+				6A1BC9C41B8C3F6500DA92C6 /* ObjCLuceneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A1BC9D81B8C4EBD00DA92C6 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BC9F91B8C4F2A00DA92C6 /* test */,
+				6A1BC9981B8C3E5800DA92C6 /* main */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		6A1BC9D91B8C4EDE00DA92C6 /* objc */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BC9DB1B8C4F2000DA92C6 /* org */,
+			);
+			path = objc;
+			sourceTree = "<group>";
+		};
+		6A1BC9DB1B8C4F2000DA92C6 /* org */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BC9DC1B8C4F2000DA92C6 /* lukhnos */,
+			);
+			path = org;
+			sourceTree = "<group>";
+		};
+		6A1BC9DC1B8C4F2000DA92C6 /* lukhnos */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BC9DD1B8C4F2000DA92C6 /* lucenestudy */,
+			);
+			path = lukhnos;
+			sourceTree = "<group>";
+		};
+		6A1BC9DD1B8C4F2000DA92C6 /* lucenestudy */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BC9DE1B8C4F2000DA92C6 /* Document.h */,
+				6A1BC9DF1B8C4F2000DA92C6 /* Document.m */,
+				6A1BC9E01B8C4F2000DA92C6 /* HighlightingHelper.h */,
+				6A1BC9E11B8C4F2000DA92C6 /* HighlightingHelper.m */,
+				6A1BC9E21B8C4F2000DA92C6 /* Indexer.h */,
+				6A1BC9E31B8C4F2000DA92C6 /* Indexer.m */,
+				6A1BC9E41B8C4F2000DA92C6 /* MinimalHTMLEncoder.h */,
+				6A1BC9E51B8C4F2000DA92C6 /* MinimalHTMLEncoder.m */,
+				6A1BC9E61B8C4F2000DA92C6 /* Searcher.h */,
+				6A1BC9E71B8C4F2000DA92C6 /* Searcher.m */,
+				6A1BC9E81B8C4F2000DA92C6 /* SearchResult.h */,
+				6A1BC9E91B8C4F2000DA92C6 /* SearchResult.m */,
+				6A1BC9EA1B8C4F2000DA92C6 /* Study.h */,
+				6A1BC9EB1B8C4F2000DA92C6 /* Study.m */,
+				6A1BC9EC1B8C4F2000DA92C6 /* Suggester.h */,
+				6A1BC9ED1B8C4F2000DA92C6 /* Suggester.m */,
+				6A1BC9EE1B8C4F2000DA92C6 /* Util.h */,
+				6A1BC9EF1B8C4F2000DA92C6 /* Util.m */,
+			);
+			path = lucenestudy;
+			sourceTree = "<group>";
+		};
+		6A1BC9F91B8C4F2A00DA92C6 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BC9FA1B8C4F3700DA92C6 /* objc */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		6A1BC9FA1B8C4F3700DA92C6 /* objc */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BCA061B8C4FB500DA92C6 /* org */,
+			);
+			path = objc;
+			sourceTree = "<group>";
+		};
+		6A1BCA061B8C4FB500DA92C6 /* org */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BCA071B8C4FB500DA92C6 /* lukhnos */,
+			);
+			path = org;
+			sourceTree = "<group>";
+		};
+		6A1BCA071B8C4FB500DA92C6 /* lukhnos */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BCA081B8C4FB500DA92C6 /* lucenestudy */,
+			);
+			path = lukhnos;
+			sourceTree = "<group>";
+		};
+		6A1BCA081B8C4FB500DA92C6 /* lucenestudy */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BCA091B8C4FB500DA92C6 /* AppendDocumentTest.h */,
+				6A1BCA0A1B8C4FB500DA92C6 /* AppendDocumentTest.m */,
+				6A1BCA0B1B8C4FB500DA92C6 /* SearcherTest.h */,
+				6A1BCA0C1B8C4FB500DA92C6 /* SearcherTest.m */,
+				6A1BCA0D1B8C4FB500DA92C6 /* SuggesterTest.h */,
+				6A1BCA0E1B8C4FB500DA92C6 /* SuggesterTest.m */,
+			);
+			path = lucenestudy;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6A1BC9951B8C3E5800DA92C6 /* LuceneStudy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A1BC99D1B8C3E5800DA92C6 /* Build configuration list for PBXNativeTarget "LuceneStudy" */;
+			buildPhases = (
+				6A1BC9921B8C3E5800DA92C6 /* Sources */,
+				6A1BC9931B8C3E5800DA92C6 /* Frameworks */,
+				6A1BC9941B8C3E5800DA92C6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A1BC9C91B8C3FC000DA92C6 /* PBXTargetDependency */,
+			);
+			name = LuceneStudy;
+			productName = LuceneStudy;
+			productReference = 6A1BC9961B8C3E5800DA92C6 /* LuceneStudy */;
+			productType = "com.apple.product-type.tool";
+		};
+		6A1BC9FE1B8C4F4600DA92C6 /* LuceneStudyJUnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A1BCA031B8C4F4600DA92C6 /* Build configuration list for PBXNativeTarget "LuceneStudyJUnitTest" */;
+			buildPhases = (
+				6A1BC9FB1B8C4F4600DA92C6 /* Sources */,
+				6A1BC9FC1B8C4F4600DA92C6 /* Frameworks */,
+				6A1BC9FD1B8C4F4600DA92C6 /* CopyFiles */,
+				6A1BCA241B8C638200DA92C6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AD3FD671B8CC3B900363CD4 /* PBXTargetDependency */,
+				6A1BCA1B1B8C4FD100DA92C6 /* PBXTargetDependency */,
+			);
+			name = LuceneStudyJUnitTest;
+			productName = LuceneStudyTest;
+			productReference = 6A1BC9FF1B8C4F4600DA92C6 /* LuceneStudyJUnitTest */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6A1BC98C1B8C3E2E00DA92C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					6A1BC9951B8C3E5800DA92C6 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					6A1BC9FE1B8C4F4600DA92C6 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 6A1BC98F1B8C3E2E00DA92C6 /* Build configuration list for PBXProject "LuceneStudy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6A1BC98B1B8C3E2E00DA92C6;
+			productRefGroup = 6A1BC9971B8C3E5800DA92C6 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6A1BC9BD1B8C3F6500DA92C6 /* Products */;
+					ProjectRef = 6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				6A1BC9951B8C3E5800DA92C6 /* LuceneStudy */,
+				6A1BC9FE1B8C4F4600DA92C6 /* LuceneStudyJUnitTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6A1BC9C21B8C3F6500DA92C6 /* libObjCLucene.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libObjCLucene.a;
+			remoteRef = 6A1BC9C11B8C3F6500DA92C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6A1BC9C41B8C3F6500DA92C6 /* ObjCLuceneTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ObjCLuceneTests.xctest;
+			remoteRef = 6A1BC9C31B8C3F6500DA92C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6A1BCA241B8C638200DA92C6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${TARGET_BUILD_DIR}/${EXECUTABLE_NAME}\" \\\n  org.junit.runner.JUnitCore \\\n  org.lukhnos.lucenestudy.SuggesterTest \\\n  org.lukhnos.lucenestudy.AppendDocumentTest \\\n  org.lukhnos.lucenestudy.SearcherTest\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A1BC9921B8C3E5800DA92C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A1BC9F51B8C4F2000DA92C6 /* SearchResult.m in Sources */,
+				6A1BC9F21B8C4F2000DA92C6 /* Indexer.m in Sources */,
+				6A1BC9F01B8C4F2000DA92C6 /* Document.m in Sources */,
+				6A1BC9F11B8C4F2000DA92C6 /* HighlightingHelper.m in Sources */,
+				6A1BC9F41B8C4F2000DA92C6 /* Searcher.m in Sources */,
+				6A1BC9F31B8C4F2000DA92C6 /* MinimalHTMLEncoder.m in Sources */,
+				6A1BC9F61B8C4F2000DA92C6 /* Study.m in Sources */,
+				6A1BC9F71B8C4F2000DA92C6 /* Suggester.m in Sources */,
+				6A1BC9F81B8C4F2000DA92C6 /* Util.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A1BC9FB1B8C4F4600DA92C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A1BCA171B8C4FC400DA92C6 /* SearchResult.m in Sources */,
+				6A1BCA0F1B8C4FB500DA92C6 /* AppendDocumentTest.m in Sources */,
+				6A1BCA181B8C4FC400DA92C6 /* Suggester.m in Sources */,
+				6A1BCA141B8C4FC400DA92C6 /* Indexer.m in Sources */,
+				6A1BCA151B8C4FC400DA92C6 /* MinimalHTMLEncoder.m in Sources */,
+				6A1BCA101B8C4FB500DA92C6 /* SearcherTest.m in Sources */,
+				6A1BCA161B8C4FC400DA92C6 /* Searcher.m in Sources */,
+				6A1BCA121B8C4FC400DA92C6 /* Document.m in Sources */,
+				6A1BCA111B8C4FB500DA92C6 /* SuggesterTest.m in Sources */,
+				6A1BCA131B8C4FC400DA92C6 /* HighlightingHelper.m in Sources */,
+				6A1BCA191B8C4FC400DA92C6 /* Util.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6A1BC9C91B8C3FC000DA92C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjCLucene;
+			targetProxy = 6A1BC9C81B8C3FC000DA92C6 /* PBXContainerItemProxy */;
+		};
+		6A1BCA1B1B8C4FD100DA92C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjCLucene;
+			targetProxy = 6A1BCA1A1B8C4FD100DA92C6 /* PBXContainerItemProxy */;
+		};
+		6AD3FD671B8CC3B900363CD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A1BC9951B8C3E5800DA92C6 /* LuceneStudy */;
+			targetProxy = 6AD3FD661B8CC3B900363CD4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6A1BC9901B8C3E2E00DA92C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		6A1BC9911B8C3E2E00DA92C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		6A1BC99B1B8C3E5800DA92C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/vendor/j2objc/include",
+					"$(SRCROOT)/vendor/objclucene/include",
+					"$(SRCROOT)/src/main/objc",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/vendor/j2objc/lib/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6A1BC99C1B8C3E5800DA92C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/vendor/j2objc/include",
+					"$(TARGET_BUILD_DIR)/include/ObjCLucene",
+					"$(SRCROOT)/src/main/objc",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/vendor/j2objc/lib/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6A1BCA041B8C4F4600DA92C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/vendor/j2objc/include",
+					"$(SRCROOT)/vendor/objclucene/include",
+					"$(SRCROOT)/src/main/objc",
+					"$(SRCROOT)/src/test/objc",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/vendor/j2objc/lib/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6A1BCA051B8C4F4600DA92C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/vendor/j2objc/include",
+					"$(TARGET_BUILD_DIR)/include/ObjCLucene",
+					"$(SRCROOT)/src/main/objc",
+					"$(SRCROOT)/src/test/objc",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/vendor/j2objc/lib/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6A1BC98F1B8C3E2E00DA92C6 /* Build configuration list for PBXProject "LuceneStudy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A1BC9901B8C3E2E00DA92C6 /* Debug */,
+				6A1BC9911B8C3E2E00DA92C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A1BC99D1B8C3E5800DA92C6 /* Build configuration list for PBXNativeTarget "LuceneStudy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A1BC99B1B8C3E5800DA92C6 /* Debug */,
+				6A1BC99C1B8C3E5800DA92C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A1BCA031B8C4F4600DA92C6 /* Build configuration list for PBXNativeTarget "LuceneStudyJUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A1BCA041B8C4F4600DA92C6 /* Debug */,
+				6A1BCA051B8C4F4600DA92C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6A1BC98C1B8C3E2E00DA92C6 /* Project object */;
+}
