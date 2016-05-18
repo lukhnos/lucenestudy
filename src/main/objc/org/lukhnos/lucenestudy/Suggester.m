@@ -29,7 +29,7 @@
 #include "org/lukhnos/portmobile/file/Path.h"
 #include "org/lukhnos/portmobile/file/Paths.h"
 
-NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME_ = @"suggestion";
+NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME = @"suggestion";
 
 @implementation OrgLukhnosLucenestudySuggester
 
@@ -51,7 +51,7 @@ NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME_ = @"suggestion";
   id<JavaUtilList> suggestions = new_JavaUtilArrayList_init();
   for (OrgApacheLuceneSearchSuggestLookup_LookupResult * __strong result in nil_chk(results)) {
     if ([((OrgApacheLuceneSearchSuggestLookup_LookupResult *) nil_chk(result))->highlightKey_ isKindOfClass:[NSString class]]) {
-      [suggestions addWithId:(NSString *) check_class_cast(result->highlightKey_, [NSString class])];
+      [suggestions addWithId:(NSString *) cast_chk(result->highlightKey_, [NSString class])];
     }
     else {
       [suggestions addWithId:[((id<JavaLangCharSequence>) nil_chk(result->key_)) description]];
@@ -69,12 +69,12 @@ NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME_ = @"suggestion";
     { "initWithNSString:", "Suggester", NULL, 0x1, "Ljava.io.IOException;", NULL },
     { "getSuggestionIndexPathWithOrgLukhnosPortmobileFilePath:", "getSuggestionIndexPath", "Lorg.lukhnos.portmobile.file.Path;", 0x8, NULL, NULL },
     { "rebuildWithNSString:", "rebuild", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "suggestWithNSString:", "suggest", "Ljava.util.List;", 0x1, "Ljava.io.IOException;", NULL },
+    { "suggestWithNSString:", "suggest", "Ljava.util.List;", 0x1, "Ljava.io.IOException;", "(Ljava/lang/String;)Ljava/util/List<Ljava/lang/String;>;" },
     { "close", NULL, "V", 0x1, "Ljava.lang.Exception;", NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
     { "DEFAULT_SUGGESTION_COUNT", "DEFAULT_SUGGESTION_COUNT", 0x18, "I", NULL, NULL, .constantValue.asInt = OrgLukhnosLucenestudySuggester_DEFAULT_SUGGESTION_COUNT },
-    { "INDEX_NAME_", NULL, 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudySuggester_INDEX_NAME_, NULL, .constantValue.asLong = 0 },
+    { "INDEX_NAME", "INDEX_NAME", 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudySuggester_INDEX_NAME, NULL, .constantValue.asLong = 0 },
     { "indexRootPath_", NULL, 0x10, "Lorg.lukhnos.portmobile.file.Path;", NULL, NULL, .constantValue.asLong = 0 },
     { "suggester_", NULL, 0x10, "Lorg.apache.lucene.search.suggest.analyzing.AnalyzingInfixSuggester;", NULL, NULL, .constantValue.asLong = 0 },
     { "suggestionCount_", NULL, 0x0, "I", NULL, NULL, .constantValue.asLong = 0 },
@@ -86,7 +86,7 @@ NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME_ = @"suggestion";
 @end
 
 void OrgLukhnosLucenestudySuggester_initWithNSString_(OrgLukhnosLucenestudySuggester *self, NSString *indexRoot) {
-  (void) NSObject_init(self);
+  NSObject_init(self);
   self->indexRootPath_ = OrgLukhnosPortmobileFilePaths_getWithNSString_(indexRoot);
   OrgApacheLuceneAnalysisAnalyzer *analyzer = OrgLukhnosLucenestudyIndexer_getAnalyzer();
   OrgApacheLuceneStoreDirectory *suggestionDir = OrgApacheLuceneStoreFSDirectory_openWithOrgLukhnosPortmobileFilePath_(OrgLukhnosLucenestudySuggester_getSuggestionIndexPathWithOrgLukhnosPortmobileFilePath_(self->indexRootPath_));
@@ -95,14 +95,16 @@ void OrgLukhnosLucenestudySuggester_initWithNSString_(OrgLukhnosLucenestudySugge
 }
 
 OrgLukhnosLucenestudySuggester *new_OrgLukhnosLucenestudySuggester_initWithNSString_(NSString *indexRoot) {
-  OrgLukhnosLucenestudySuggester *self = [OrgLukhnosLucenestudySuggester alloc];
-  OrgLukhnosLucenestudySuggester_initWithNSString_(self, indexRoot);
-  return self;
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudySuggester, initWithNSString_, indexRoot)
+}
+
+OrgLukhnosLucenestudySuggester *create_OrgLukhnosLucenestudySuggester_initWithNSString_(NSString *indexRoot) {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudySuggester, initWithNSString_, indexRoot)
 }
 
 OrgLukhnosPortmobileFilePath *OrgLukhnosLucenestudySuggester_getSuggestionIndexPathWithOrgLukhnosPortmobileFilePath_(OrgLukhnosPortmobileFilePath *indexRoot) {
   OrgLukhnosLucenestudySuggester_initialize();
-  return [((OrgLukhnosPortmobileFilePath *) nil_chk(indexRoot)) resolveWithNSString:OrgLukhnosLucenestudySuggester_INDEX_NAME_];
+  return [((OrgLukhnosPortmobileFilePath *) nil_chk(indexRoot)) resolveWithNSString:OrgLukhnosLucenestudySuggester_INDEX_NAME];
 }
 
 void OrgLukhnosLucenestudySuggester_rebuildWithNSString_(NSString *indexRoot) {
@@ -117,7 +119,7 @@ void OrgLukhnosLucenestudySuggester_rebuildWithNSString_(NSString *indexRoot) {
   OrgApacheLuceneSearchSuggestAnalyzingAnalyzingInfixSuggester *suggester = new_OrgApacheLuceneSearchSuggestAnalyzingAnalyzingInfixSuggester_initWithOrgApacheLuceneStoreDirectory_withOrgApacheLuceneAnalysisAnalyzer_(suggestionDir, analyzer);
   OrgApacheLuceneStoreDirectory *indexDir = OrgApacheLuceneStoreFSDirectory_openWithOrgLukhnosPortmobileFilePath_(OrgLukhnosLucenestudyIndexer_getMainIndexPathWithOrgLukhnosPortmobileFilePath_(indexRootPath));
   OrgApacheLuceneIndexIndexReader *reader = OrgApacheLuceneIndexDirectoryReader_openWithOrgApacheLuceneStoreDirectory_(indexDir);
-  OrgApacheLuceneSearchSuggestDocumentDictionary *docDict = new_OrgApacheLuceneSearchSuggestDocumentDictionary_initWithOrgApacheLuceneIndexIndexReader_withNSString_withNSString_(reader, OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME_, nil);
+  OrgApacheLuceneSearchSuggestDocumentDictionary *docDict = new_OrgApacheLuceneSearchSuggestDocumentDictionary_initWithOrgApacheLuceneIndexIndexReader_withNSString_withNSString_(reader, OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME, nil);
   id<OrgApacheLuceneSearchSuggestInputIterator> iterator = [docDict getEntryIterator];
   id<JavaUtilSet> titleSet = new_JavaUtilHashSet_init();
   OrgApacheLuceneUtilBytesRef *next;

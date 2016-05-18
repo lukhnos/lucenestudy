@@ -45,7 +45,7 @@
 @end
 
 void OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(OrgLukhnosLucenestudyDocument *self, NSString *title, jint year, jint rating, jboolean positive, NSString *review, NSString *source) {
-  (void) NSObject_init(self);
+  NSObject_init(self);
   self->title_ = title;
   self->year_ = year;
   self->rating_ = rating;
@@ -55,9 +55,11 @@ void OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_
 }
 
 OrgLukhnosLucenestudyDocument *new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(NSString *title, jint year, jint rating, jboolean positive, NSString *review, NSString *source) {
-  OrgLukhnosLucenestudyDocument *self = [OrgLukhnosLucenestudyDocument alloc];
-  OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(self, title, year, rating, positive, review, source);
-  return self;
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudyDocument, initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_, title, year, rating, positive, review, source)
+}
+
+OrgLukhnosLucenestudyDocument *create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(NSString *title, jint year, jint rating, jboolean positive, NSString *review, NSString *source) {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyDocument, initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_, title, year, rating, positive, review, source)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudyDocument)

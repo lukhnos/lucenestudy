@@ -3,10 +3,18 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/Util.java
 //
 
-#ifndef _OrgLukhnosLucenestudyUtil_H_
-#define _OrgLukhnosLucenestudyUtil_H_
-
 #include "J2ObjC_header.h"
+
+#pragma push_macro("INCLUDE_ALL_OrgLukhnosLucenestudyUtil")
+#ifdef RESTRICT_OrgLukhnosLucenestudyUtil
+#define INCLUDE_ALL_OrgLukhnosLucenestudyUtil 0
+#else
+#define INCLUDE_ALL_OrgLukhnosLucenestudyUtil 1
+#endif
+#undef RESTRICT_OrgLukhnosLucenestudyUtil
+
+#if !defined (OrgLukhnosLucenestudyUtil_) && (INCLUDE_ALL_OrgLukhnosLucenestudyUtil || defined(INCLUDE_OrgLukhnosLucenestudyUtil))
+#define OrgLukhnosLucenestudyUtil_
 
 @class OrgLukhnosPortmobileFilePath;
 
@@ -28,6 +36,10 @@ FOUNDATION_EXPORT void OrgLukhnosLucenestudyUtil_init(OrgLukhnosLucenestudyUtil 
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudyUtil *new_OrgLukhnosLucenestudyUtil_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgLukhnosLucenestudyUtil *create_OrgLukhnosLucenestudyUtil_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyUtil)
 
-#endif // _OrgLukhnosLucenestudyUtil_H_
+#endif
+
+#pragma pop_macro("INCLUDE_ALL_OrgLukhnosLucenestudyUtil")

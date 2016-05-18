@@ -28,7 +28,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   static const J2ObjcMethodInfo methods[] = {
     { "htmlEncodeWithNSString:", "htmlEncode", "Ljava.lang.String;", 0x19, NULL, NULL },
     { "encodeTextWithNSString:", "encodeText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "init", NULL, NULL, 0x1, NULL, NULL },
+    { "init", "MinimalHTMLEncoder", NULL, 0x1, NULL, NULL },
   };
   static const J2ObjcClassInfo _OrgLukhnosLucenestudyMinimalHTMLEncoder = { 2, "MinimalHTMLEncoder", "org.lukhnos.lucenestudy", NULL, 0x1, 3, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgLukhnosLucenestudyMinimalHTMLEncoder;
@@ -41,7 +41,7 @@ NSString *OrgLukhnosLucenestudyMinimalHTMLEncoder_htmlEncodeWithNSString_(NSStri
   if (plainText == nil || ((jint) [plainText length]) == 0) {
     return @"";
   }
-  JavaLangStringBuilder *result = new_JavaLangStringBuilder_initWithInt_(((jint) [((NSString *) nil_chk(plainText)) length]));
+  JavaLangStringBuilder *result = new_JavaLangStringBuilder_initWithInt_(((jint) [plainText length]));
   for (jint index = 0; index < ((jint) [plainText length]); index++) {
     jchar ch = [plainText charAtWithInt:index];
     switch (ch) {
@@ -62,13 +62,15 @@ NSString *OrgLukhnosLucenestudyMinimalHTMLEncoder_htmlEncodeWithNSString_(NSStri
 }
 
 void OrgLukhnosLucenestudyMinimalHTMLEncoder_init(OrgLukhnosLucenestudyMinimalHTMLEncoder *self) {
-  (void) NSObject_init(self);
+  NSObject_init(self);
 }
 
 OrgLukhnosLucenestudyMinimalHTMLEncoder *new_OrgLukhnosLucenestudyMinimalHTMLEncoder_init() {
-  OrgLukhnosLucenestudyMinimalHTMLEncoder *self = [OrgLukhnosLucenestudyMinimalHTMLEncoder alloc];
-  OrgLukhnosLucenestudyMinimalHTMLEncoder_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudyMinimalHTMLEncoder, init)
+}
+
+OrgLukhnosLucenestudyMinimalHTMLEncoder *create_OrgLukhnosLucenestudyMinimalHTMLEncoder_init() {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyMinimalHTMLEncoder, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudyMinimalHTMLEncoder)

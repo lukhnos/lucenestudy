@@ -17,9 +17,7 @@
 #include "org/apache/lucene/document/Document.h"
 #include "org/apache/lucene/index/DirectoryReader.h"
 #include "org/apache/lucene/index/IndexReader.h"
-#include "org/apache/lucene/queryparser/classic/MultiFieldQueryParser.h"
 #include "org/apache/lucene/queryparser/classic/ParseException.h"
-#include "org/apache/lucene/queryparser/classic/QueryParser.h"
 #include "org/apache/lucene/search/IndexSearcher.h"
 #include "org/apache/lucene/search/Query.h"
 #include "org/apache/lucene/search/ScoreDoc.h"
@@ -37,9 +35,9 @@
 #include "org/lukhnos/portmobile/file/Path.h"
 #include "org/lukhnos/portmobile/file/Paths.h"
 
-__attribute__((unused)) static void OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(OrgLukhnosLucenestudySearcher_SortByEnum *self, OrgApacheLuceneSearchSort *sort, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(OrgLukhnosLucenestudySearcher_SortBy *self, OrgApacheLuceneSearchSort *sort, NSString *__name, jint __ordinal);
 
-__attribute__((unused)) static OrgLukhnosLucenestudySearcher_SortByEnum *new_OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(OrgApacheLuceneSearchSort *sort, NSString *__name, jint __ordinal) NS_RETURNS_RETAINED;
+__attribute__((unused)) static OrgLukhnosLucenestudySearcher_SortBy *new_OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(OrgApacheLuceneSearchSort *sort, NSString *__name, jint __ordinal) NS_RETURNS_RETAINED;
 
 @implementation OrgLukhnosLucenestudySearcher
 
@@ -50,15 +48,13 @@ __attribute__((unused)) static OrgLukhnosLucenestudySearcher_SortByEnum *new_Org
 
 - (OrgLukhnosLucenestudySearchResult *)searchWithNSString:(NSString *)queryStr
                                                   withInt:(jint)maxCount {
-  return [self searchWithNSString:queryStr withOrgLukhnosLucenestudySearcher_SortByEnum:nil withInt:maxCount];
+  return [self searchWithNSString:queryStr withOrgLukhnosLucenestudySearcher_SortBy:nil withInt:maxCount];
 }
 
 - (OrgLukhnosLucenestudySearchResult *)searchWithNSString:(NSString *)queryStr
-             withOrgLukhnosLucenestudySearcher_SortByEnum:(OrgLukhnosLucenestudySearcher_SortByEnum *)sortBy
+                 withOrgLukhnosLucenestudySearcher_SortBy:(OrgLukhnosLucenestudySearcher_SortBy *)sortBy
                                                   withInt:(jint)maxCount {
-  IOSObjectArray *fields = [IOSObjectArray newArrayWithObjects:(id[]){ OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME_, OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME_ } count:2 type:NSString_class_()];
-  OrgApacheLuceneQueryparserClassicQueryParser *parser = new_OrgApacheLuceneQueryparserClassicMultiFieldQueryParser_initWithNSStringArray_withOrgApacheLuceneAnalysisAnalyzer_(fields, analyzer_);
-  OrgApacheLuceneSearchQuery *query = [parser parseWithNSString:queryStr];
+  OrgApacheLuceneSearchQuery *query = OrgLukhnosLucenestudyIndexer_parseQueryWithOrgApacheLuceneAnalysisAnalyzer_withNSString_(analyzer_, queryStr);
   OrgApacheLuceneSearchSort *sort = nil;
   if (sortBy != nil) {
     sort = sortBy->sort_;
@@ -116,7 +112,7 @@ __attribute__((unused)) static OrgLukhnosLucenestudySearcher_SortByEnum *new_Org
   OrgLukhnosLucenestudyHighlightingHelper *highlightingHelper = new_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(query, analyzer_);
   id<JavaUtilList> docs = new_JavaUtilArrayList_init();
   for (jint i = 0; i < topDocsLen; i++) {
-    OrgApacheLuceneDocumentDocument *luceneDoc = [((OrgApacheLuceneIndexIndexReader *) nil_chk(indexReader_)) documentWithInt:((OrgApacheLuceneSearchScoreDoc *) nil_chk(IOSObjectArray_Get(topDocs->scoreDocs_, i)))->doc_];
+    OrgApacheLuceneDocumentDocument *luceneDoc = [((OrgApacheLuceneIndexIndexReader *) nil_chk(indexReader_)) documentWithInt:((OrgApacheLuceneSearchScoreDoc *) nil_chk(IOSObjectArray_Get(nil_chk(topDocs->scoreDocs_), i)))->doc_];
     OrgLukhnosLucenestudyDocument *doc = OrgLukhnosLucenestudyIndexer_fromLuceneDocumentWithOrgApacheLuceneDocumentDocument_(luceneDoc);
     [docs addWithId:doc];
   }
@@ -127,7 +123,7 @@ __attribute__((unused)) static OrgLukhnosLucenestudySearcher_SortByEnum *new_Org
   static const J2ObjcMethodInfo methods[] = {
     { "initWithNSString:", "Searcher", NULL, 0x1, "Ljava.io.IOException;", NULL },
     { "searchWithNSString:withInt:", "search", "Lorg.lukhnos.lucenestudy.SearchResult;", 0x1, "Lorg.apache.lucene.queryparser.classic.ParseException;Ljava.io.IOException;", NULL },
-    { "searchWithNSString:withOrgLukhnosLucenestudySearcher_SortByEnum:withInt:", "search", "Lorg.lukhnos.lucenestudy.SearchResult;", 0x1, "Lorg.apache.lucene.queryparser.classic.ParseException;Ljava.io.IOException;", NULL },
+    { "searchWithNSString:withOrgLukhnosLucenestudySearcher_SortBy:withInt:", "search", "Lorg.lukhnos.lucenestudy.SearchResult;", 0x1, "Lorg.apache.lucene.queryparser.classic.ParseException;Ljava.io.IOException;", NULL },
     { "searchAfterWithOrgLukhnosLucenestudySearchResult:withInt:", "searchAfter", "Lorg.lukhnos.lucenestudy.SearchResult;", 0x1, "Ljava.io.IOException;", NULL },
     { "close", NULL, "V", 0x1, "Ljava.lang.Exception;", NULL },
     { "searchAfterWithOrgApacheLuceneSearchScoreDoc:withOrgApacheLuceneSearchQuery:withOrgApacheLuceneSearchSort:withInt:", "searchAfter", "Lorg.lukhnos.lucenestudy.SearchResult;", 0x0, "Ljava.io.IOException;", NULL },
@@ -144,7 +140,7 @@ __attribute__((unused)) static OrgLukhnosLucenestudySearcher_SortByEnum *new_Org
 @end
 
 void OrgLukhnosLucenestudySearcher_initWithNSString_(OrgLukhnosLucenestudySearcher *self, NSString *indexRoot) {
-  (void) NSObject_init(self);
+  NSObject_init(self);
   OrgLukhnosPortmobileFilePath *indexRootPath = OrgLukhnosPortmobileFilePaths_getWithNSString_(indexRoot);
   self->analyzer_ = OrgLukhnosLucenestudyIndexer_getAnalyzer();
   OrgApacheLuceneStoreDirectory *mainIndexDir = OrgApacheLuceneStoreFSDirectory_openWithOrgLukhnosPortmobileFilePath_(OrgLukhnosLucenestudyIndexer_getMainIndexPathWithOrgLukhnosPortmobileFilePath_(indexRootPath));
@@ -152,43 +148,78 @@ void OrgLukhnosLucenestudySearcher_initWithNSString_(OrgLukhnosLucenestudySearch
 }
 
 OrgLukhnosLucenestudySearcher *new_OrgLukhnosLucenestudySearcher_initWithNSString_(NSString *indexRoot) {
-  OrgLukhnosLucenestudySearcher *self = [OrgLukhnosLucenestudySearcher alloc];
-  OrgLukhnosLucenestudySearcher_initWithNSString_(self, indexRoot);
-  return self;
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudySearcher, initWithNSString_, indexRoot)
+}
+
+OrgLukhnosLucenestudySearcher *create_OrgLukhnosLucenestudySearcher_initWithNSString_(NSString *indexRoot) {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudySearcher, initWithNSString_, indexRoot)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudySearcher)
 
-J2OBJC_INITIALIZED_DEFN(OrgLukhnosLucenestudySearcher_SortByEnum)
+J2OBJC_INITIALIZED_DEFN(OrgLukhnosLucenestudySearcher_SortBy)
 
-OrgLukhnosLucenestudySearcher_SortByEnum *OrgLukhnosLucenestudySearcher_SortByEnum_values_[5];
+OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_values_[5];
 
-@implementation OrgLukhnosLucenestudySearcher_SortByEnum
+@implementation OrgLukhnosLucenestudySearcher_SortBy
 
-- (instancetype)initWithOrgApacheLuceneSearchSort:(OrgApacheLuceneSearchSort *)sort
-                                     withNSString:(NSString *)__name
-                                          withInt:(jint)__ordinal {
-  OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(self, sort, __name, __ordinal);
++ (IOSObjectArray *)values {
+  return OrgLukhnosLucenestudySearcher_SortBy_values();
+}
+
++ (OrgLukhnosLucenestudySearcher_SortBy *)valueOfWithNSString:(NSString *)name {
+  return OrgLukhnosLucenestudySearcher_SortBy_valueOfWithNSString_(name);
+}
+
+- (id)copyWithZone:(NSZone *)zone {
   return self;
 }
 
-IOSObjectArray *OrgLukhnosLucenestudySearcher_SortByEnum_values() {
-  OrgLukhnosLucenestudySearcher_SortByEnum_initialize();
-  return [IOSObjectArray arrayWithObjects:OrgLukhnosLucenestudySearcher_SortByEnum_values_ count:5 type:OrgLukhnosLucenestudySearcher_SortByEnum_class_()];
++ (void)initialize {
+  if (self == [OrgLukhnosLucenestudySearcher_SortBy class]) {
+    JreEnum(OrgLukhnosLucenestudySearcher_SortBy, RELEVANCE) = new_OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(JreLoadStatic(OrgApacheLuceneSearchSort, RELEVANCE), @"RELEVANCE", 0);
+    JreEnum(OrgLukhnosLucenestudySearcher_SortBy, DOCUMENT_ORDER) = new_OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(JreLoadStatic(OrgApacheLuceneSearchSort, INDEXORDER), @"DOCUMENT_ORDER", 1);
+    JreEnum(OrgLukhnosLucenestudySearcher_SortBy, TITLE) = new_OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(new_OrgApacheLuceneSearchSort_initWithOrgApacheLuceneSearchSortField_(new_OrgApacheLuceneSearchSortField_initWithNSString_withOrgApacheLuceneSearchSortField_Type_(OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME, JreLoadEnum(OrgApacheLuceneSearchSortField_Type, STRING))), @"TITLE", 2);
+    JreEnum(OrgLukhnosLucenestudySearcher_SortBy, YEAR) = new_OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(new_OrgApacheLuceneSearchSort_initWithOrgApacheLuceneSearchSortField_(new_OrgApacheLuceneSearchSortField_initWithNSString_withOrgApacheLuceneSearchSortField_Type_withBoolean_(OrgLukhnosLucenestudyIndexer_YEAR_FIELD_NAME, JreLoadEnum(OrgApacheLuceneSearchSortField_Type, INT), true)), @"YEAR", 3);
+    JreEnum(OrgLukhnosLucenestudySearcher_SortBy, RATING) = new_OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(new_OrgApacheLuceneSearchSort_initWithOrgApacheLuceneSearchSortField_(new_OrgApacheLuceneSearchSortField_initWithNSString_withOrgApacheLuceneSearchSortField_Type_withBoolean_(OrgLukhnosLucenestudyIndexer_RATING_FIELD_NAME, JreLoadEnum(OrgApacheLuceneSearchSortField_Type, INT), true)), @"RATING", 4);
+    J2OBJC_SET_INITIALIZED(OrgLukhnosLucenestudySearcher_SortBy)
+  }
 }
 
-+ (IOSObjectArray *)values {
-  return OrgLukhnosLucenestudySearcher_SortByEnum_values();
++ (const J2ObjcClassInfo *)__metadata {
+  static const J2ObjcFieldInfo fields[] = {
+    { "RELEVANCE", "RELEVANCE", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, RELEVANCE), NULL, .constantValue.asLong = 0 },
+    { "DOCUMENT_ORDER", "DOCUMENT_ORDER", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, DOCUMENT_ORDER), NULL, .constantValue.asLong = 0 },
+    { "TITLE", "TITLE", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, TITLE), NULL, .constantValue.asLong = 0 },
+    { "YEAR", "YEAR", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, YEAR), NULL, .constantValue.asLong = 0 },
+    { "RATING", "RATING", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, RATING), NULL, .constantValue.asLong = 0 },
+    { "sort_", NULL, 0x10, "Lorg.apache.lucene.search.Sort;", NULL, NULL, .constantValue.asLong = 0 },
+  };
+  static const char *superclass_type_args[] = {"Lorg.lukhnos.lucenestudy.Searcher$SortBy;"};
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudySearcher_SortBy = { 2, "SortBy", "org.lukhnos.lucenestudy", "Searcher", 0x4019, 0, NULL, 6, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lorg/lukhnos/lucenestudy/Searcher$SortBy;>;" };
+  return &_OrgLukhnosLucenestudySearcher_SortBy;
 }
 
-+ (OrgLukhnosLucenestudySearcher_SortByEnum *)valueOfWithNSString:(NSString *)name {
-  return OrgLukhnosLucenestudySearcher_SortByEnum_valueOfWithNSString_(name);
+@end
+
+void OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(OrgLukhnosLucenestudySearcher_SortBy *self, OrgApacheLuceneSearchSort *sort, NSString *__name, jint __ordinal) {
+  JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
+  self->sort_ = sort;
 }
 
-OrgLukhnosLucenestudySearcher_SortByEnum *OrgLukhnosLucenestudySearcher_SortByEnum_valueOfWithNSString_(NSString *name) {
-  OrgLukhnosLucenestudySearcher_SortByEnum_initialize();
+OrgLukhnosLucenestudySearcher_SortBy *new_OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(OrgApacheLuceneSearchSort *sort, NSString *__name, jint __ordinal) {
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudySearcher_SortBy, initWithOrgApacheLuceneSearchSort_withNSString_withInt_, sort, __name, __ordinal)
+}
+
+IOSObjectArray *OrgLukhnosLucenestudySearcher_SortBy_values() {
+  OrgLukhnosLucenestudySearcher_SortBy_initialize();
+  return [IOSObjectArray arrayWithObjects:OrgLukhnosLucenestudySearcher_SortBy_values_ count:5 type:OrgLukhnosLucenestudySearcher_SortBy_class_()];
+}
+
+OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_valueOfWithNSString_(NSString *name) {
+  OrgLukhnosLucenestudySearcher_SortBy_initialize();
   for (int i = 0; i < 5; i++) {
-    OrgLukhnosLucenestudySearcher_SortByEnum *e = OrgLukhnosLucenestudySearcher_SortByEnum_values_[i];
+    OrgLukhnosLucenestudySearcher_SortBy *e = OrgLukhnosLucenestudySearcher_SortBy_values_[i];
     if ([name isEqual:[e name]]) {
       return e;
     }
@@ -197,46 +228,12 @@ OrgLukhnosLucenestudySearcher_SortByEnum *OrgLukhnosLucenestudySearcher_SortByEn
   return nil;
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-  return self;
-}
-
-+ (void)initialize {
-  if (self == [OrgLukhnosLucenestudySearcher_SortByEnum class]) {
-    OrgLukhnosLucenestudySearcher_SortByEnum_RELEVANCE = new_OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(JreLoadStatic(OrgApacheLuceneSearchSort, RELEVANCE_), @"RELEVANCE", 0);
-    OrgLukhnosLucenestudySearcher_SortByEnum_DOCUMENT_ORDER = new_OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(JreLoadStatic(OrgApacheLuceneSearchSort, INDEXORDER_), @"DOCUMENT_ORDER", 1);
-    OrgLukhnosLucenestudySearcher_SortByEnum_TITLE = new_OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(new_OrgApacheLuceneSearchSort_initWithOrgApacheLuceneSearchSortField_(new_OrgApacheLuceneSearchSortField_initWithNSString_withOrgApacheLuceneSearchSortField_TypeEnum_(OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME_, JreLoadStatic(OrgApacheLuceneSearchSortField_TypeEnum, STRING))), @"TITLE", 2);
-    OrgLukhnosLucenestudySearcher_SortByEnum_YEAR = new_OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(new_OrgApacheLuceneSearchSort_initWithOrgApacheLuceneSearchSortField_(new_OrgApacheLuceneSearchSortField_initWithNSString_withOrgApacheLuceneSearchSortField_TypeEnum_withBoolean_(OrgLukhnosLucenestudyIndexer_YEAR_FIELD_NAME_, JreLoadStatic(OrgApacheLuceneSearchSortField_TypeEnum, INT), true)), @"YEAR", 3);
-    OrgLukhnosLucenestudySearcher_SortByEnum_RATING = new_OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(new_OrgApacheLuceneSearchSort_initWithOrgApacheLuceneSearchSortField_(new_OrgApacheLuceneSearchSortField_initWithNSString_withOrgApacheLuceneSearchSortField_TypeEnum_withBoolean_(OrgLukhnosLucenestudyIndexer_RATING_FIELD_NAME_, JreLoadStatic(OrgApacheLuceneSearchSortField_TypeEnum, INT), true)), @"RATING", 4);
-    J2OBJC_SET_INITIALIZED(OrgLukhnosLucenestudySearcher_SortByEnum)
+OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_fromOrdinal(NSUInteger ordinal) {
+  OrgLukhnosLucenestudySearcher_SortBy_initialize();
+  if (ordinal >= 5) {
+    return nil;
   }
+  return OrgLukhnosLucenestudySearcher_SortBy_values_[ordinal];
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcFieldInfo fields[] = {
-    { "RELEVANCE", "RELEVANCE", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &OrgLukhnosLucenestudySearcher_SortByEnum_RELEVANCE, NULL, .constantValue.asLong = 0 },
-    { "DOCUMENT_ORDER", "DOCUMENT_ORDER", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &OrgLukhnosLucenestudySearcher_SortByEnum_DOCUMENT_ORDER, NULL, .constantValue.asLong = 0 },
-    { "TITLE", "TITLE", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &OrgLukhnosLucenestudySearcher_SortByEnum_TITLE, NULL, .constantValue.asLong = 0 },
-    { "YEAR", "YEAR", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &OrgLukhnosLucenestudySearcher_SortByEnum_YEAR, NULL, .constantValue.asLong = 0 },
-    { "RATING", "RATING", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &OrgLukhnosLucenestudySearcher_SortByEnum_RATING, NULL, .constantValue.asLong = 0 },
-    { "sort_", NULL, 0x10, "Lorg.apache.lucene.search.Sort;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const char *superclass_type_args[] = {"Lorg.lukhnos.lucenestudy.Searcher$SortBy;"};
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudySearcher_SortByEnum = { 2, "SortBy", "org.lukhnos.lucenestudy", "Searcher", 0x4019, 0, NULL, 6, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lorg/lukhnos/lucenestudy/Searcher$SortBy;>;" };
-  return &_OrgLukhnosLucenestudySearcher_SortByEnum;
-}
-
-@end
-
-void OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(OrgLukhnosLucenestudySearcher_SortByEnum *self, OrgApacheLuceneSearchSort *sort, NSString *__name, jint __ordinal) {
-  (void) JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
-  self->sort_ = sort;
-}
-
-OrgLukhnosLucenestudySearcher_SortByEnum *new_OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(OrgApacheLuceneSearchSort *sort, NSString *__name, jint __ordinal) {
-  OrgLukhnosLucenestudySearcher_SortByEnum *self = [OrgLukhnosLucenestudySearcher_SortByEnum alloc];
-  OrgLukhnosLucenestudySearcher_SortByEnum_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(self, sort, __name, __ordinal);
-  return self;
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudySearcher_SortByEnum)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudySearcher_SortBy)

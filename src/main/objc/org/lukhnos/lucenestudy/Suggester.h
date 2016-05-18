@@ -3,17 +3,26 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/Suggester.java
 //
 
-#ifndef _OrgLukhnosLucenestudySuggester_H_
-#define _OrgLukhnosLucenestudySuggester_H_
-
 #include "J2ObjC_header.h"
+
+#pragma push_macro("INCLUDE_ALL_OrgLukhnosLucenestudySuggester")
+#ifdef RESTRICT_OrgLukhnosLucenestudySuggester
+#define INCLUDE_ALL_OrgLukhnosLucenestudySuggester 0
+#else
+#define INCLUDE_ALL_OrgLukhnosLucenestudySuggester 1
+#endif
+#undef RESTRICT_OrgLukhnosLucenestudySuggester
+
+#if !defined (OrgLukhnosLucenestudySuggester_) && (INCLUDE_ALL_OrgLukhnosLucenestudySuggester || defined(INCLUDE_OrgLukhnosLucenestudySuggester))
+#define OrgLukhnosLucenestudySuggester_
+
+#define RESTRICT_JavaLangAutoCloseable 1
+#define INCLUDE_JavaLangAutoCloseable 1
 #include "java/lang/AutoCloseable.h"
 
 @class OrgApacheLuceneSearchSuggestAnalyzingAnalyzingInfixSuggester;
 @class OrgLukhnosPortmobileFilePath;
 @protocol JavaUtilList;
-
-#define OrgLukhnosLucenestudySuggester_DEFAULT_SUGGESTION_COUNT 10
 
 @interface OrgLukhnosLucenestudySuggester : NSObject < JavaLangAutoCloseable > {
  @public
@@ -43,14 +52,20 @@ J2OBJC_EMPTY_STATIC_INIT(OrgLukhnosLucenestudySuggester)
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudySuggester, indexRootPath_, OrgLukhnosPortmobileFilePath *)
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudySuggester, suggester_, OrgApacheLuceneSearchSuggestAnalyzingAnalyzingInfixSuggester *)
 
-J2OBJC_STATIC_FIELD_GETTER(OrgLukhnosLucenestudySuggester, DEFAULT_SUGGESTION_COUNT, jint)
+inline jint OrgLukhnosLucenestudySuggester_get_DEFAULT_SUGGESTION_COUNT();
+#define OrgLukhnosLucenestudySuggester_DEFAULT_SUGGESTION_COUNT 10
+J2OBJC_STATIC_FIELD_CONSTANT(OrgLukhnosLucenestudySuggester, DEFAULT_SUGGESTION_COUNT, jint)
 
-FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME_;
-J2OBJC_STATIC_FIELD_GETTER(OrgLukhnosLucenestudySuggester, INDEX_NAME_, NSString *)
+inline NSString *OrgLukhnosLucenestudySuggester_get_INDEX_NAME();
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudySuggester, INDEX_NAME, NSString *)
 
 FOUNDATION_EXPORT void OrgLukhnosLucenestudySuggester_initWithNSString_(OrgLukhnosLucenestudySuggester *self, NSString *indexRoot);
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudySuggester *new_OrgLukhnosLucenestudySuggester_initWithNSString_(NSString *indexRoot) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgLukhnosLucenestudySuggester *create_OrgLukhnosLucenestudySuggester_initWithNSString_(NSString *indexRoot);
 
 FOUNDATION_EXPORT OrgLukhnosPortmobileFilePath *OrgLukhnosLucenestudySuggester_getSuggestionIndexPathWithOrgLukhnosPortmobileFilePath_(OrgLukhnosPortmobileFilePath *indexRoot);
 
@@ -58,4 +73,6 @@ FOUNDATION_EXPORT void OrgLukhnosLucenestudySuggester_rebuildWithNSString_(NSStr
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudySuggester)
 
-#endif // _OrgLukhnosLucenestudySuggester_H_
+#endif
+
+#pragma pop_macro("INCLUDE_ALL_OrgLukhnosLucenestudySuggester")

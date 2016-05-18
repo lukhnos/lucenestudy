@@ -3,18 +3,24 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/HighlightingHelper.java
 //
 
-#ifndef _OrgLukhnosLucenestudyHighlightingHelper_H_
-#define _OrgLukhnosLucenestudyHighlightingHelper_H_
-
 #include "J2ObjC_header.h"
+
+#pragma push_macro("INCLUDE_ALL_OrgLukhnosLucenestudyHighlightingHelper")
+#ifdef RESTRICT_OrgLukhnosLucenestudyHighlightingHelper
+#define INCLUDE_ALL_OrgLukhnosLucenestudyHighlightingHelper 0
+#else
+#define INCLUDE_ALL_OrgLukhnosLucenestudyHighlightingHelper 1
+#endif
+#undef RESTRICT_OrgLukhnosLucenestudyHighlightingHelper
+
+#if !defined (OrgLukhnosLucenestudyHighlightingHelper_) && (INCLUDE_ALL_OrgLukhnosLucenestudyHighlightingHelper || defined(INCLUDE_OrgLukhnosLucenestudyHighlightingHelper))
+#define OrgLukhnosLucenestudyHighlightingHelper_
 
 @class JavaUtilRegexPattern;
 @class OrgApacheLuceneAnalysisAnalyzer;
 @class OrgApacheLuceneSearchHighlightHighlighter;
 @class OrgApacheLuceneSearchHighlightQueryScorer;
 @class OrgApacheLuceneSearchQuery;
-
-#define OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH 120
 
 @interface OrgLukhnosLucenestudyHighlightingHelper : NSObject {
  @public
@@ -47,18 +53,28 @@ J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudyHighlightingHelper, scorer_, OrgApacheL
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudyHighlightingHelper, highlighter_, OrgApacheLuceneSearchHighlightHighlighter *)
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudyHighlightingHelper, analyzer_, OrgApacheLuceneAnalysisAnalyzer *)
 
-FOUNDATION_EXPORT JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern_;
-J2OBJC_STATIC_FIELD_GETTER(OrgLukhnosLucenestudyHighlightingHelper, cleanUpPattern_, JavaUtilRegexPattern *)
+inline JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_get_cleanUpPattern();
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyHighlightingHelper, cleanUpPattern, JavaUtilRegexPattern *)
 
-FOUNDATION_EXPORT JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_;
-J2OBJC_STATIC_FIELD_GETTER(OrgLukhnosLucenestudyHighlightingHelper, replaceLFPattern_, JavaUtilRegexPattern *)
+inline JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_get_replaceLFPattern();
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyHighlightingHelper, replaceLFPattern, JavaUtilRegexPattern *)
 
-J2OBJC_STATIC_FIELD_GETTER(OrgLukhnosLucenestudyHighlightingHelper, DEFAULT_FRAGMENT_LENGTH, jint)
+inline jint OrgLukhnosLucenestudyHighlightingHelper_get_DEFAULT_FRAGMENT_LENGTH();
+#define OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH 120
+J2OBJC_STATIC_FIELD_CONSTANT(OrgLukhnosLucenestudyHighlightingHelper, DEFAULT_FRAGMENT_LENGTH, jint)
 
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgLukhnosLucenestudyHighlightingHelper *self, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer);
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudyHighlightingHelper *new_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgLukhnosLucenestudyHighlightingHelper *create_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyHighlightingHelper)
 
-#endif // _OrgLukhnosLucenestudyHighlightingHelper_H_
+#endif
+
+#pragma pop_macro("INCLUDE_ALL_OrgLukhnosLucenestudyHighlightingHelper")
