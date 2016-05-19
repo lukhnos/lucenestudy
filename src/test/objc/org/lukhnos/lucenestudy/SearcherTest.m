@@ -8,6 +8,7 @@
 #include "J2ObjC_source.h"
 #include "java/io/IOException.h"
 #include "java/lang/Exception.h"
+#include "java/lang/annotation/Annotation.h"
 #include "java/util/Arrays.h"
 #include "java/util/List.h"
 #include "org/apache/lucene/queryparser/classic/ParseException.h"
@@ -32,7 +33,7 @@
   OrgLukhnosLucenestudyIndexer *indexer = new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description], false);
   [indexer addDocumentsWithJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_(docs_)];
   [indexer close];
-  searcher_ = new_OrgLukhnosLucenestudySearcher_initWithNSString_([temp_ description]);
+  searcher_ = new_OrgLukhnosLucenestudySearcher_initWithNSString_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description]);
 }
 
 - (void)tearDown {
@@ -44,36 +45,36 @@
   OrgLukhnosLucenestudySearchResult *result;
   result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withInt:10];
   OrgJunitAssert_assertEqualsWithLong_withLong_(((IOSObjectArray *) nil_chk(docs_))->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
-  OrgJunitAssert_assertEqualsWithLong_withLong_(docs_->size_, [((id<JavaUtilList>) nil_chk(result->documents_)) size]);
+  OrgJunitAssert_assertEqualsWithLong_withLong_(((IOSObjectArray *) nil_chk(docs_))->size_, [((id<JavaUtilList>) nil_chk(result->documents_)) size]);
 }
 
 - (void)pagingTest {
   OrgLukhnosLucenestudySearchResult *result;
   result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withInt:((IOSObjectArray *) nil_chk(docs_))->size_];
-  OrgJunitAssert_assertEqualsWithLong_withLong_(docs_->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
-  OrgJunitAssert_assertEqualsWithLong_withLong_(docs_->size_, [((id<JavaUtilList>) nil_chk(result->documents_)) size]);
-  result = [searcher_ searchWithNSString:@"t*" withInt:3];
-  OrgJunitAssert_assertEqualsWithLong_withLong_(docs_->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
+  OrgJunitAssert_assertEqualsWithLong_withLong_(((IOSObjectArray *) nil_chk(docs_))->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
+  OrgJunitAssert_assertEqualsWithLong_withLong_(((IOSObjectArray *) nil_chk(docs_))->size_, [((id<JavaUtilList>) nil_chk(result->documents_)) size]);
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withInt:3];
+  OrgJunitAssert_assertEqualsWithLong_withLong_(((IOSObjectArray *) nil_chk(docs_))->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
   OrgJunitAssert_assertEqualsWithLong_withLong_(3, [result->documents_ size]);
   OrgJunitAssert_assertTrueWithBoolean_([result hasMore]);
-  result = [searcher_ searchAfterWithOrgLukhnosLucenestudySearchResult:result withInt:3];
-  OrgJunitAssert_assertEqualsWithLong_withLong_(docs_->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchAfterWithOrgLukhnosLucenestudySearchResult:result withInt:3];
+  OrgJunitAssert_assertEqualsWithLong_withLong_(((IOSObjectArray *) nil_chk(docs_))->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
   OrgJunitAssert_assertEqualsWithLong_withLong_(2, [result->documents_ size]);
   OrgJunitAssert_assertFalseWithBoolean_([result hasMore]);
 }
 
 - (void)sortTest {
   OrgLukhnosLucenestudySearchResult *result;
-  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortByEnum:JreLoadStatic(OrgLukhnosLucenestudySearcher_SortByEnum, TITLE) withInt:5];
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortBy:JreLoadEnum(OrgLukhnosLucenestudySearcher_SortBy, TITLE) withInt:5];
   OrgJunitAssert_assertEqualsWithId_withId_(@"Test", ((OrgLukhnosLucenestudyDocument *) nil_chk([((id<JavaUtilList>) nil_chk(((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->documents_)) getWithInt:0]))->title_);
   OrgJunitAssert_assertEqualsWithId_withId_(@"Testing", ((OrgLukhnosLucenestudyDocument *) nil_chk([result->documents_ getWithInt:4]))->title_);
-  result = [searcher_ searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortByEnum:JreLoadStatic(OrgLukhnosLucenestudySearcher_SortByEnum, RELEVANCE) withInt:5];
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortBy:JreLoadEnum(OrgLukhnosLucenestudySearcher_SortBy, RELEVANCE) withInt:5];
   OrgJunitAssert_assertEqualsWithId_withId_(@"Test", ((OrgLukhnosLucenestudyDocument *) nil_chk([((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->documents_ getWithInt:0]))->title_);
-  result = [searcher_ searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortByEnum:JreLoadStatic(OrgLukhnosLucenestudySearcher_SortByEnum, DOCUMENT_ORDER) withInt:2];
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortBy:JreLoadEnum(OrgLukhnosLucenestudySearcher_SortBy, DOCUMENT_ORDER) withInt:2];
   OrgJunitAssert_assertEqualsWithId_withId_(@"Testing", ((OrgLukhnosLucenestudyDocument *) nil_chk([((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->documents_ getWithInt:1]))->title_);
-  result = [searcher_ searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortByEnum:JreLoadStatic(OrgLukhnosLucenestudySearcher_SortByEnum, YEAR) withInt:5];
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortBy:JreLoadEnum(OrgLukhnosLucenestudySearcher_SortBy, YEAR) withInt:5];
   OrgJunitAssert_assertEqualsWithLong_withLong_(2000, ((OrgLukhnosLucenestudyDocument *) nil_chk([((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->documents_ getWithInt:0]))->year_);
-  result = [searcher_ searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortByEnum:JreLoadStatic(OrgLukhnosLucenestudySearcher_SortByEnum, RATING) withInt:3];
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortBy:JreLoadEnum(OrgLukhnosLucenestudySearcher_SortBy, RATING) withInt:3];
   OrgJunitAssert_assertEqualsWithLong_withLong_(((IOSObjectArray *) nil_chk(docs_))->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
   OrgJunitAssert_assertEqualsWithLong_withLong_(3, [result->documents_ size]);
   OrgJunitAssert_assertEqualsWithId_withId_(@"Testcase", ((OrgLukhnosLucenestudyDocument *) nil_chk([result->documents_ getWithInt:0]))->title_);
@@ -82,13 +83,13 @@
 
 - (void)sortAndPagingTest {
   OrgLukhnosLucenestudySearchResult *result;
-  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortByEnum:JreLoadStatic(OrgLukhnosLucenestudySearcher_SortByEnum, RATING) withInt:3];
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"t*" withOrgLukhnosLucenestudySearcher_SortBy:JreLoadEnum(OrgLukhnosLucenestudySearcher_SortBy, RATING) withInt:3];
   OrgJunitAssert_assertEqualsWithLong_withLong_(((IOSObjectArray *) nil_chk(docs_))->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
   OrgJunitAssert_assertEqualsWithLong_withLong_(3, [((id<JavaUtilList>) nil_chk(result->documents_)) size]);
   OrgJunitAssert_assertEqualsWithId_withId_(@"Testcase", ((OrgLukhnosLucenestudyDocument *) nil_chk([result->documents_ getWithInt:0]))->title_);
   OrgJunitAssert_assertTrueWithBoolean_([result hasMore]);
-  result = [searcher_ searchAfterWithOrgLukhnosLucenestudySearchResult:result withInt:2];
-  OrgJunitAssert_assertEqualsWithLong_withLong_(docs_->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchAfterWithOrgLukhnosLucenestudySearchResult:result withInt:2];
+  OrgJunitAssert_assertEqualsWithLong_withLong_(((IOSObjectArray *) nil_chk(docs_))->size_, ((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->totalHits_);
   OrgJunitAssert_assertEqualsWithLong_withLong_(2, [result->documents_ size]);
   OrgJunitAssert_assertEqualsWithId_withId_(@"Testing", ((OrgLukhnosLucenestudyDocument *) nil_chk([result->documents_ getWithInt:0]))->title_);
   OrgJunitAssert_assertFalseWithBoolean_([result hasMore]);
@@ -96,8 +97,8 @@
 
 - (void)highlightingTest {
   OrgLukhnosLucenestudySearchResult *result;
-  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"test" withOrgLukhnosLucenestudySearcher_SortByEnum:JreLoadStatic(OrgLukhnosLucenestudySearcher_SortByEnum, DOCUMENT_ORDER) withInt:5];
-  OrgJunitAssert_assertEqualsWithId_withId_(@"<B>Test</B>", [result getHighlightedTitleWithOrgLukhnosLucenestudyDocument:[((id<JavaUtilList>) nil_chk(((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->documents_)) getWithInt:0]]);
+  result = [((OrgLukhnosLucenestudySearcher *) nil_chk(searcher_)) searchWithNSString:@"test" withOrgLukhnosLucenestudySearcher_SortBy:JreLoadEnum(OrgLukhnosLucenestudySearcher_SortBy, DOCUMENT_ORDER) withInt:5];
+  OrgJunitAssert_assertEqualsWithId_withId_(@"<B>Test</B>", [((OrgLukhnosLucenestudySearchResult *) nil_chk(result)) getHighlightedTitleWithOrgLukhnosLucenestudyDocument:[((id<JavaUtilList>) nil_chk(result->documents_)) getWithInt:0]]);
   OrgJunitAssert_assertEqualsWithId_withId_(@"It's important to <B>test</B> &amp; fix", [result getHighlightedReviewWithOrgLukhnosLucenestudyDocument:[result->documents_ getWithInt:0]]);
 }
 
@@ -109,31 +110,31 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (IOSObjectArray *)__annotations_setUp {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitBefore alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitBefore() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_tearDown {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitAfter alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitAfter() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_basicTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitTest(OrgJunitTest_None_class_(), 0LL) } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_pagingTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitTest(OrgJunitTest_None_class_(), 0LL) } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_sortTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitTest(OrgJunitTest_None_class_(), 0LL) } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_sortAndPagingTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitTest(OrgJunitTest_None_class_(), 0LL) } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_highlightingTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitTest(OrgJunitTest_None_class_(), 0LL) } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -145,7 +146,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "sortTest", NULL, "V", 0x1, "Ljava.lang.Exception;", NULL },
     { "sortAndPagingTest", NULL, "V", 0x1, "Ljava.io.IOException;Lorg.apache.lucene.queryparser.classic.ParseException;", NULL },
     { "highlightingTest", NULL, "V", 0x1, "Ljava.lang.Exception;", NULL },
-    { "init", NULL, NULL, 0x1, NULL, NULL },
+    { "init", "SearcherTest", NULL, 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
     { "temp_", NULL, 0x0, "Lorg.lukhnos.portmobile.file.Path;", NULL, NULL, .constantValue.asLong = 0 },
@@ -159,14 +160,16 @@ J2OBJC_IGNORE_DESIGNATED_END
 @end
 
 void OrgLukhnosLucenestudySearcherTest_init(OrgLukhnosLucenestudySearcherTest *self) {
-  (void) NSObject_init(self);
-  self->docs_ = [IOSObjectArray newArrayWithObjects:(id[]){ new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Test", 2000, 5, false, @"It's important to test & fix", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Testing", 2000, 2, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Tested", 1999, 6, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Tester", 1984, 0, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Testcase", 1970, 10, false, @"It's all about testing and testers.", @"") } count:5 type:OrgLukhnosLucenestudyDocument_class_()];
+  NSObject_init(self);
+  self->docs_ = [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Test", 2000, 5, false, @"It's important to test & fix", @""), create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Testing", 2000, 2, false, @"", @""), create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Tested", 1999, 6, false, @"", @""), create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Tester", 1984, 0, false, @"", @""), create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"Testcase", 1970, 10, false, @"It's all about testing and testers.", @"") } count:5 type:OrgLukhnosLucenestudyDocument_class_()];
 }
 
 OrgLukhnosLucenestudySearcherTest *new_OrgLukhnosLucenestudySearcherTest_init() {
-  OrgLukhnosLucenestudySearcherTest *self = [OrgLukhnosLucenestudySearcherTest alloc];
-  OrgLukhnosLucenestudySearcherTest_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudySearcherTest, init)
+}
+
+OrgLukhnosLucenestudySearcherTest *create_OrgLukhnosLucenestudySearcherTest_init() {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudySearcherTest, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudySearcherTest)

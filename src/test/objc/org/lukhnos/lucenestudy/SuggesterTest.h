@@ -3,11 +3,20 @@
 //  source: src/test/java/org/lukhnos/lucenestudy/SuggesterTest.java
 //
 
-#ifndef _OrgLukhnosLucenestudySuggesterTest_H_
-#define _OrgLukhnosLucenestudySuggesterTest_H_
-
 #include "J2ObjC_header.h"
 
+#pragma push_macro("INCLUDE_ALL_OrgLukhnosLucenestudySuggesterTest")
+#ifdef RESTRICT_OrgLukhnosLucenestudySuggesterTest
+#define INCLUDE_ALL_OrgLukhnosLucenestudySuggesterTest 0
+#else
+#define INCLUDE_ALL_OrgLukhnosLucenestudySuggesterTest 1
+#endif
+#undef RESTRICT_OrgLukhnosLucenestudySuggesterTest
+
+#if !defined (OrgLukhnosLucenestudySuggesterTest_) && (INCLUDE_ALL_OrgLukhnosLucenestudySuggesterTest || defined(INCLUDE_OrgLukhnosLucenestudySuggesterTest))
+#define OrgLukhnosLucenestudySuggesterTest_
+
+@class IOSObjectArray;
 @class OrgLukhnosPortmobileFilePath;
 
 @interface OrgLukhnosLucenestudySuggesterTest : NSObject {
@@ -35,6 +44,10 @@ FOUNDATION_EXPORT void OrgLukhnosLucenestudySuggesterTest_init(OrgLukhnosLucenes
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudySuggesterTest *new_OrgLukhnosLucenestudySuggesterTest_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgLukhnosLucenestudySuggesterTest *create_OrgLukhnosLucenestudySuggesterTest_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudySuggesterTest)
 
-#endif // _OrgLukhnosLucenestudySuggesterTest_H_
+#endif
+
+#pragma pop_macro("INCLUDE_ALL_OrgLukhnosLucenestudySuggesterTest")

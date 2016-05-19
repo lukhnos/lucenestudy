@@ -3,10 +3,18 @@
 //  source: src/test/java/org/lukhnos/lucenestudy/SearcherTest.java
 //
 
-#ifndef _OrgLukhnosLucenestudySearcherTest_H_
-#define _OrgLukhnosLucenestudySearcherTest_H_
-
 #include "J2ObjC_header.h"
+
+#pragma push_macro("INCLUDE_ALL_OrgLukhnosLucenestudySearcherTest")
+#ifdef RESTRICT_OrgLukhnosLucenestudySearcherTest
+#define INCLUDE_ALL_OrgLukhnosLucenestudySearcherTest 0
+#else
+#define INCLUDE_ALL_OrgLukhnosLucenestudySearcherTest 1
+#endif
+#undef RESTRICT_OrgLukhnosLucenestudySearcherTest
+
+#if !defined (OrgLukhnosLucenestudySearcherTest_) && (INCLUDE_ALL_OrgLukhnosLucenestudySearcherTest || defined(INCLUDE_OrgLukhnosLucenestudySearcherTest))
+#define OrgLukhnosLucenestudySearcherTest_
 
 @class IOSObjectArray;
 @class OrgLukhnosLucenestudySearcher;
@@ -49,6 +57,10 @@ FOUNDATION_EXPORT void OrgLukhnosLucenestudySearcherTest_init(OrgLukhnosLucenest
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudySearcherTest *new_OrgLukhnosLucenestudySearcherTest_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgLukhnosLucenestudySearcherTest *create_OrgLukhnosLucenestudySearcherTest_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudySearcherTest)
 
-#endif // _OrgLukhnosLucenestudySearcherTest_H_
+#endif
+
+#pragma pop_macro("INCLUDE_ALL_OrgLukhnosLucenestudySearcherTest")

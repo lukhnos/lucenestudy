@@ -10,6 +10,7 @@
 #include "java/io/PrintStream.h"
 #include "java/lang/Exception.h"
 #include "java/lang/System.h"
+#include "java/lang/annotation/Annotation.h"
 #include "java/util/Arrays.h"
 #include "java/util/List.h"
 #include "org/junit/After.h"
@@ -35,13 +36,13 @@
 
 - (void)basicTest {
   OrgLukhnosLucenestudyIndexer *indexer = new_OrgLukhnosLucenestudyIndexer_initWithNSString_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description]);
-  IOSObjectArray *docs = [IOSObjectArray newArrayWithObjects:(id[]){ new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"test", 2000, 5, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"testing", 2000, 0, false, @"", @""), new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"tested", 2000, 0, false, @"", @"") } count:3 type:OrgLukhnosLucenestudyDocument_class_()];
+  IOSObjectArray *docs = [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"test", 2000, 5, false, @"", @""), create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"testing", 2000, 0, false, @"", @""), create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(@"tested", 2000, 0, false, @"", @"") } count:3 type:OrgLukhnosLucenestudyDocument_class_()];
   [indexer addDocumentsWithJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_(docs)];
   [indexer close];
-  OrgLukhnosLucenestudySuggester_rebuildWithNSString_([temp_ description]);
-  OrgLukhnosLucenestudySuggester *suggester = new_OrgLukhnosLucenestudySuggester_initWithNSString_([temp_ description]);
+  OrgLukhnosLucenestudySuggester_rebuildWithNSString_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description]);
+  OrgLukhnosLucenestudySuggester *suggester = new_OrgLukhnosLucenestudySuggester_initWithNSString_([((OrgLukhnosPortmobileFilePath *) nil_chk(temp_)) description]);
   id<JavaUtilList> results = [suggester suggestWithNSString:@"tes"];
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out_))) printlnWithId:results];
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithId:results];
   [suggester close];
 }
 
@@ -53,15 +54,15 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (IOSObjectArray *)__annotations_setUp {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitBefore alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitBefore() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_tearDown {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitAfter alloc] init] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitAfter() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_basicTest {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[OrgJunitTest alloc] initWithExpected:OrgJunitTest_None_class_() withTimeout:0] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitTest(OrgJunitTest_None_class_(), 0LL) } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -69,7 +70,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "setUp", NULL, "V", 0x1, "Ljava.io.IOException;", NULL },
     { "tearDown", NULL, "V", 0x1, "Ljava.io.IOException;", NULL },
     { "basicTest", NULL, "V", 0x1, "Ljava.lang.Exception;", NULL },
-    { "init", NULL, NULL, 0x1, NULL, NULL },
+    { "init", "SuggesterTest", NULL, 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
     { "temp_", NULL, 0x0, "Lorg.lukhnos.portmobile.file.Path;", NULL, NULL, .constantValue.asLong = 0 },
@@ -81,13 +82,15 @@ J2OBJC_IGNORE_DESIGNATED_END
 @end
 
 void OrgLukhnosLucenestudySuggesterTest_init(OrgLukhnosLucenestudySuggesterTest *self) {
-  (void) NSObject_init(self);
+  NSObject_init(self);
 }
 
 OrgLukhnosLucenestudySuggesterTest *new_OrgLukhnosLucenestudySuggesterTest_init() {
-  OrgLukhnosLucenestudySuggesterTest *self = [OrgLukhnosLucenestudySuggesterTest alloc];
-  OrgLukhnosLucenestudySuggesterTest_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudySuggesterTest, init)
+}
+
+OrgLukhnosLucenestudySuggesterTest *create_OrgLukhnosLucenestudySuggesterTest_init() {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudySuggesterTest, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudySuggesterTest)
