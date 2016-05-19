@@ -35,6 +35,12 @@ import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.IndexableField;
+import org.apache.lucene.index.SegmentCommitInfo;
+import org.apache.lucene.index.SegmentInfo;
+import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.Query;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.BytesRef;
@@ -96,6 +102,12 @@ public class Indexer implements AutoCloseable {
 
   public static Analyzer getAnalyzer() {
     return new EnglishAnalyzer();
+  }
+
+  public static Query parseQuery(Analyzer analyzer, String queryStr) throws ParseException {
+    String[] fields = { Indexer.TITLE_FIELD_NAME, Indexer.REVIEW_FIELD_NAME };
+    QueryParser parser = new MultiFieldQueryParser(fields, analyzer);
+    return parser.parse(queryStr);
   }
 
   static Integer getInteger(org.apache.lucene.document.Document luceneDoc, String fieldName) {
@@ -191,6 +203,12 @@ public class Indexer implements AutoCloseable {
       indexWriter.addDocument(luceneDoc);
     }
 
+    indexWriter.commit();
+  }
+
+  public void deleteDocumentsByQuery(String queryStr) throws ParseException, IOException {
+    Query query = parseQuery(indexWriter.getAnalyzer(), queryStr);
+    indexWriter.deleteDocuments(query);
     indexWriter.commit();
   }
 }

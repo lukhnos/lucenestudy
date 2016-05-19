@@ -3,10 +3,18 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/Document.java
 //
 
-#ifndef _OrgLukhnosLucenestudyDocument_H_
-#define _OrgLukhnosLucenestudyDocument_H_
-
 #include "J2ObjC_header.h"
+
+#pragma push_macro("INCLUDE_ALL_OrgLukhnosLucenestudyDocument")
+#ifdef RESTRICT_OrgLukhnosLucenestudyDocument
+#define INCLUDE_ALL_OrgLukhnosLucenestudyDocument 0
+#else
+#define INCLUDE_ALL_OrgLukhnosLucenestudyDocument 1
+#endif
+#undef RESTRICT_OrgLukhnosLucenestudyDocument
+
+#if !defined (OrgLukhnosLucenestudyDocument_) && (INCLUDE_ALL_OrgLukhnosLucenestudyDocument || defined(INCLUDE_OrgLukhnosLucenestudyDocument))
+#define OrgLukhnosLucenestudyDocument_
 
 @interface OrgLukhnosLucenestudyDocument : NSObject {
  @public
@@ -41,6 +49,10 @@ FOUNDATION_EXPORT void OrgLukhnosLucenestudyDocument_initWithNSString_withInt_wi
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudyDocument *new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(NSString *title, jint year, jint rating, jboolean positive, NSString *review, NSString *source) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgLukhnosLucenestudyDocument *create_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(NSString *title, jint year, jint rating, jboolean positive, NSString *review, NSString *source);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyDocument)
 
-#endif // _OrgLukhnosLucenestudyDocument_H_
+#endif
+
+#pragma pop_macro("INCLUDE_ALL_OrgLukhnosLucenestudyDocument")

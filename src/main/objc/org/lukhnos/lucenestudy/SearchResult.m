@@ -32,22 +32,22 @@ withOrgLukhnosLucenestudyHighlightingHelper:(OrgLukhnosLucenestudyHighlightingHe
 
 - (NSString *)getHighlightedTitleWithOrgLukhnosLucenestudyDocument:(OrgLukhnosLucenestudyDocument *)doc {
   [((OrgLukhnosLucenestudyHighlightingHelper *) nil_chk(highlightingHelper_)) setFragmentLengthWithInt:OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH];
-  return [highlightingHelper_ highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME_ withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->title_];
+  return [highlightingHelper_ highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->title_];
 }
 
 - (NSString *)getHighlightedReviewWithOrgLukhnosLucenestudyDocument:(OrgLukhnosLucenestudyDocument *)doc {
   [((OrgLukhnosLucenestudyHighlightingHelper *) nil_chk(highlightingHelper_)) setFragmentLengthWithInt:OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH];
-  return [highlightingHelper_ highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME_ withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->review_];
+  return [highlightingHelper_ highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->review_];
 }
 
 - (NSString *)getFullHighlightedReviewWithOrgLukhnosLucenestudyDocument:(OrgLukhnosLucenestudyDocument *)doc {
   [((OrgLukhnosLucenestudyHighlightingHelper *) nil_chk(highlightingHelper_)) setFragmentLengthWithInt:JavaLangInteger_MAX_VALUE];
-  return [highlightingHelper_ highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME_ withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->review_];
+  return [highlightingHelper_ highlightOrOriginalWithNSString:OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME withNSString:((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->review_];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {
-    { "initWithInt:withJavaUtilList:withOrgApacheLuceneSearchScoreDoc:withOrgApacheLuceneSearchQuery:withOrgApacheLuceneSearchSort:withOrgLukhnosLucenestudyHighlightingHelper:", "SearchResult", NULL, 0x0, NULL, NULL },
+    { "initWithInt:withJavaUtilList:withOrgApacheLuceneSearchScoreDoc:withOrgApacheLuceneSearchQuery:withOrgApacheLuceneSearchSort:withOrgLukhnosLucenestudyHighlightingHelper:", "SearchResult", NULL, 0x0, NULL, "(ILjava/util/List<Lorg/lukhnos/lucenestudy/Document;>;Lorg/apache/lucene/search/ScoreDoc;Lorg/apache/lucene/search/Query;Lorg/apache/lucene/search/Sort;Lorg/lukhnos/lucenestudy/HighlightingHelper;)V" },
     { "hasMore", NULL, "Z", 0x1, NULL, NULL },
     { "getHighlightedTitleWithOrgLukhnosLucenestudyDocument:", "getHighlightedTitle", "Ljava.lang.String;", 0x1, NULL, NULL },
     { "getHighlightedReviewWithOrgLukhnosLucenestudyDocument:", "getHighlightedReview", "Ljava.lang.String;", 0x1, NULL, NULL },
@@ -68,7 +68,7 @@ withOrgLukhnosLucenestudyHighlightingHelper:(OrgLukhnosLucenestudyHighlightingHe
 @end
 
 void OrgLukhnosLucenestudySearchResult_initWithInt_withJavaUtilList_withOrgApacheLuceneSearchScoreDoc_withOrgApacheLuceneSearchQuery_withOrgApacheLuceneSearchSort_withOrgLukhnosLucenestudyHighlightingHelper_(OrgLukhnosLucenestudySearchResult *self, jint totalHits, id<JavaUtilList> documents, OrgApacheLuceneSearchScoreDoc *lastScoreDoc, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneSearchSort *sort, OrgLukhnosLucenestudyHighlightingHelper *highlightingHelper) {
-  (void) NSObject_init(self);
+  NSObject_init(self);
   self->totalHits_ = totalHits;
   self->documents_ = documents;
   self->lastScoreDoc_ = lastScoreDoc;
@@ -78,9 +78,11 @@ void OrgLukhnosLucenestudySearchResult_initWithInt_withJavaUtilList_withOrgApach
 }
 
 OrgLukhnosLucenestudySearchResult *new_OrgLukhnosLucenestudySearchResult_initWithInt_withJavaUtilList_withOrgApacheLuceneSearchScoreDoc_withOrgApacheLuceneSearchQuery_withOrgApacheLuceneSearchSort_withOrgLukhnosLucenestudyHighlightingHelper_(jint totalHits, id<JavaUtilList> documents, OrgApacheLuceneSearchScoreDoc *lastScoreDoc, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneSearchSort *sort, OrgLukhnosLucenestudyHighlightingHelper *highlightingHelper) {
-  OrgLukhnosLucenestudySearchResult *self = [OrgLukhnosLucenestudySearchResult alloc];
-  OrgLukhnosLucenestudySearchResult_initWithInt_withJavaUtilList_withOrgApacheLuceneSearchScoreDoc_withOrgApacheLuceneSearchQuery_withOrgApacheLuceneSearchSort_withOrgLukhnosLucenestudyHighlightingHelper_(self, totalHits, documents, lastScoreDoc, query, sort, highlightingHelper);
-  return self;
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudySearchResult, initWithInt_withJavaUtilList_withOrgApacheLuceneSearchScoreDoc_withOrgApacheLuceneSearchQuery_withOrgApacheLuceneSearchSort_withOrgLukhnosLucenestudyHighlightingHelper_, totalHits, documents, lastScoreDoc, query, sort, highlightingHelper)
+}
+
+OrgLukhnosLucenestudySearchResult *create_OrgLukhnosLucenestudySearchResult_initWithInt_withJavaUtilList_withOrgApacheLuceneSearchScoreDoc_withOrgApacheLuceneSearchQuery_withOrgApacheLuceneSearchSort_withOrgLukhnosLucenestudyHighlightingHelper_(jint totalHits, id<JavaUtilList> documents, OrgApacheLuceneSearchScoreDoc *lastScoreDoc, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneSearchSort *sort, OrgLukhnosLucenestudyHighlightingHelper *highlightingHelper) {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudySearchResult, initWithInt_withJavaUtilList_withOrgApacheLuceneSearchScoreDoc_withOrgApacheLuceneSearchQuery_withOrgApacheLuceneSearchSort_withOrgLukhnosLucenestudyHighlightingHelper_, totalHits, documents, lastScoreDoc, query, sort, highlightingHelper)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudySearchResult)

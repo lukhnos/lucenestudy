@@ -21,23 +21,24 @@
 		6A1BC9F61B8C4F2000DA92C6 /* Study.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9EB1B8C4F2000DA92C6 /* Study.m */; };
 		6A1BC9F71B8C4F2000DA92C6 /* Suggester.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9ED1B8C4F2000DA92C6 /* Suggester.m */; };
 		6A1BC9F81B8C4F2000DA92C6 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9EF1B8C4F2000DA92C6 /* Util.m */; };
-		6A1BCA0F1B8C4FB500DA92C6 /* AppendDocumentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BCA0A1B8C4FB500DA92C6 /* AppendDocumentTest.m */; };
-		6A1BCA101B8C4FB500DA92C6 /* SearcherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BCA0C1B8C4FB500DA92C6 /* SearcherTest.m */; };
-		6A1BCA111B8C4FB500DA92C6 /* SuggesterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BCA0E1B8C4FB500DA92C6 /* SuggesterTest.m */; };
-		6A1BCA121B8C4FC400DA92C6 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9DF1B8C4F2000DA92C6 /* Document.m */; };
-		6A1BCA131B8C4FC400DA92C6 /* HighlightingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E11B8C4F2000DA92C6 /* HighlightingHelper.m */; };
-		6A1BCA141B8C4FC400DA92C6 /* Indexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E31B8C4F2000DA92C6 /* Indexer.m */; };
-		6A1BCA151B8C4FC400DA92C6 /* MinimalHTMLEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E51B8C4F2000DA92C6 /* MinimalHTMLEncoder.m */; };
-		6A1BCA161B8C4FC400DA92C6 /* Searcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E71B8C4F2000DA92C6 /* Searcher.m */; };
-		6A1BCA171B8C4FC400DA92C6 /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E91B8C4F2000DA92C6 /* SearchResult.m */; };
-		6A1BCA181B8C4FC400DA92C6 /* Suggester.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9ED1B8C4F2000DA92C6 /* Suggester.m */; };
-		6A1BCA191B8C4FC400DA92C6 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9EF1B8C4F2000DA92C6 /* Util.m */; };
 		6A1BCA1C1B8C4FD600DA92C6 /* libObjCLucene.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9C21B8C3F6500DA92C6 /* libObjCLucene.a */; };
 		6A1BCA1D1B8C4FDA00DA92C6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9D01B8C42BC00DA92C6 /* libz.dylib */; };
 		6A1BCA1E1B8C4FDF00DA92C6 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9D21B8C42C000DA92C6 /* libicucore.dylib */; };
 		6A1BCA201B8C4FF500DA92C6 /* libjunit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */; };
 		6A1BCA211B8C4FFD00DA92C6 /* libjre_emul.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */; };
 		6A1BCA221B8C50E600DA92C6 /* libj2objc_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */; };
+		758862871CEDA75900871ECC /* IndexerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 758862811CEDA75900871ECC /* IndexerTest.m */; };
+		758862891CEDA75900871ECC /* SearcherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 758862831CEDA75900871ECC /* SearcherTest.m */; };
+		7588628B1CEDA75900871ECC /* SuggesterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 758862851CEDA75900871ECC /* SuggesterTest.m */; };
+		7588628D1CEDA77900871ECC /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9DF1B8C4F2000DA92C6 /* Document.m */; };
+		7588628E1CEDA77900871ECC /* HighlightingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E11B8C4F2000DA92C6 /* HighlightingHelper.m */; };
+		7588628F1CEDA77900871ECC /* Indexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E31B8C4F2000DA92C6 /* Indexer.m */; };
+		758862901CEDA77900871ECC /* MinimalHTMLEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E51B8C4F2000DA92C6 /* MinimalHTMLEncoder.m */; };
+		758862911CEDA77900871ECC /* Searcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E71B8C4F2000DA92C6 /* Searcher.m */; };
+		758862921CEDA77900871ECC /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9E91B8C4F2000DA92C6 /* SearchResult.m */; };
+		758862931CEDA77900871ECC /* Study.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9EB1B8C4F2000DA92C6 /* Study.m */; };
+		758862941CEDA77900871ECC /* Suggester.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9ED1B8C4F2000DA92C6 /* Suggester.m */; };
+		758862951CEDA77900871ECC /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BC9EF1B8C4F2000DA92C6 /* Util.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,10 +103,10 @@
 /* Begin PBXFileReference section */
 		6A1BC9961B8C3E5800DA92C6 /* LuceneStudy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LuceneStudy; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjCLucene.xcodeproj; path = vendor/objclucene/ObjCLucene.xcodeproj; sourceTree = "<group>"; };
-		6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjre_emul.a; path = vendor/j2objc/lib/macosx/libjre_emul.a; sourceTree = "<group>"; };
+		6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjre_emul.a; path = ../vendor/j2objc/lib/macosx/libjre_emul.a; sourceTree = "<group>"; };
 		6A1BC9D01B8C42BC00DA92C6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		6A1BC9D21B8C42C000DA92C6 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libj2objc_main.a; path = vendor/j2objc/lib/macosx/libj2objc_main.a; sourceTree = "<group>"; };
+		6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libj2objc_main.a; path = ../vendor/j2objc/lib/macosx/libj2objc_main.a; sourceTree = "<group>"; };
 		6A1BC9DE1B8C4F2000DA92C6 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		6A1BC9DF1B8C4F2000DA92C6 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
 		6A1BC9E01B8C4F2000DA92C6 /* HighlightingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightingHelper.h; sourceTree = "<group>"; };
@@ -125,14 +126,14 @@
 		6A1BC9EE1B8C4F2000DA92C6 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		6A1BC9EF1B8C4F2000DA92C6 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		6A1BC9FF1B8C4F4600DA92C6 /* LuceneStudyJUnitTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LuceneStudyJUnitTest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A1BCA091B8C4FB500DA92C6 /* AppendDocumentTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppendDocumentTest.h; sourceTree = "<group>"; };
-		6A1BCA0A1B8C4FB500DA92C6 /* AppendDocumentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppendDocumentTest.m; sourceTree = "<group>"; };
-		6A1BCA0B1B8C4FB500DA92C6 /* SearcherTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearcherTest.h; sourceTree = "<group>"; };
-		6A1BCA0C1B8C4FB500DA92C6 /* SearcherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearcherTest.m; sourceTree = "<group>"; };
-		6A1BCA0D1B8C4FB500DA92C6 /* SuggesterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggesterTest.h; sourceTree = "<group>"; };
-		6A1BCA0E1B8C4FB500DA92C6 /* SuggesterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggesterTest.m; sourceTree = "<group>"; };
-		6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjunit.a; path = vendor/j2objc/lib/macosx/libjunit.a; sourceTree = "<group>"; };
+		6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjunit.a; path = ../vendor/j2objc/lib/macosx/libjunit.a; sourceTree = "<group>"; };
 		6A49A9C81B8D7C8900FF2824 /* vendor */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vendor; sourceTree = "<group>"; };
+		758862801CEDA75900871ECC /* IndexerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexerTest.h; sourceTree = "<group>"; };
+		758862811CEDA75900871ECC /* IndexerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexerTest.m; sourceTree = "<group>"; };
+		758862821CEDA75900871ECC /* SearcherTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearcherTest.h; sourceTree = "<group>"; };
+		758862831CEDA75900871ECC /* SearcherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearcherTest.m; sourceTree = "<group>"; };
+		758862841CEDA75900871ECC /* SuggesterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggesterTest.h; sourceTree = "<group>"; };
+		758862851CEDA75900871ECC /* SuggesterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggesterTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,12 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				6A49A9C81B8D7C8900FF2824 /* vendor */,
-				6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */,
 				6A1BC9D81B8C4EBD00DA92C6 /* src */,
-				6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */,
-				6A1BC9D21B8C42C000DA92C6 /* libicucore.dylib */,
-				6A1BC9D01B8C42BC00DA92C6 /* libz.dylib */,
-				6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */,
+				7588627F1CEDA73D00871ECC /* Libraries */,
 				6A1BC9BC1B8C3F6500DA92C6 /* ObjCLucene.xcodeproj */,
 				6A1BC9971B8C3E5800DA92C6 /* Products */,
 			);
@@ -298,14 +295,27 @@
 		6A1BCA081B8C4FB500DA92C6 /* lucenestudy */ = {
 			isa = PBXGroup;
 			children = (
-				6A1BCA091B8C4FB500DA92C6 /* AppendDocumentTest.h */,
-				6A1BCA0A1B8C4FB500DA92C6 /* AppendDocumentTest.m */,
-				6A1BCA0B1B8C4FB500DA92C6 /* SearcherTest.h */,
-				6A1BCA0C1B8C4FB500DA92C6 /* SearcherTest.m */,
-				6A1BCA0D1B8C4FB500DA92C6 /* SuggesterTest.h */,
-				6A1BCA0E1B8C4FB500DA92C6 /* SuggesterTest.m */,
+				758862801CEDA75900871ECC /* IndexerTest.h */,
+				758862811CEDA75900871ECC /* IndexerTest.m */,
+				758862821CEDA75900871ECC /* SearcherTest.h */,
+				758862831CEDA75900871ECC /* SearcherTest.m */,
+				758862841CEDA75900871ECC /* SuggesterTest.h */,
+				758862851CEDA75900871ECC /* SuggesterTest.m */,
 			);
 			path = lucenestudy;
+			sourceTree = "<group>";
+		};
+		7588627F1CEDA73D00871ECC /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BCA1F1B8C4FF500DA92C6 /* libjunit.a */,
+				6A1BC9D41B8C42E800DA92C6 /* libj2objc_main.a */,
+				6A1BC9D21B8C42C000DA92C6 /* libicucore.dylib */,
+				6A1BC9D01B8C42BC00DA92C6 /* libz.dylib */,
+				6A1BC9CE1B8C42B700DA92C6 /* libjre_emul.a */,
+			);
+			name = Libraries;
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,7 +428,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${TARGET_BUILD_DIR}/${EXECUTABLE_NAME}\" \\\n  org.junit.runner.JUnitCore \\\n  org.lukhnos.lucenestudy.SuggesterTest \\\n  org.lukhnos.lucenestudy.AppendDocumentTest \\\n  org.lukhnos.lucenestudy.SearcherTest\n";
+			shellScript = "\"${TARGET_BUILD_DIR}/${EXECUTABLE_NAME}\" \\\n  org.junit.runner.JUnitCore \\\n  org.lukhnos.lucenestudy.SuggesterTest \\\n  org.lukhnos.lucenestudy.IndexerTest \\\n  org.lukhnos.lucenestudy.SearcherTest\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -443,17 +453,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A1BCA171B8C4FC400DA92C6 /* SearchResult.m in Sources */,
-				6A1BCA0F1B8C4FB500DA92C6 /* AppendDocumentTest.m in Sources */,
-				6A1BCA181B8C4FC400DA92C6 /* Suggester.m in Sources */,
-				6A1BCA141B8C4FC400DA92C6 /* Indexer.m in Sources */,
-				6A1BCA151B8C4FC400DA92C6 /* MinimalHTMLEncoder.m in Sources */,
-				6A1BCA101B8C4FB500DA92C6 /* SearcherTest.m in Sources */,
-				6A1BCA161B8C4FC400DA92C6 /* Searcher.m in Sources */,
-				6A1BCA121B8C4FC400DA92C6 /* Document.m in Sources */,
-				6A1BCA111B8C4FB500DA92C6 /* SuggesterTest.m in Sources */,
-				6A1BCA131B8C4FC400DA92C6 /* HighlightingHelper.m in Sources */,
-				6A1BCA191B8C4FC400DA92C6 /* Util.m in Sources */,
+				758862921CEDA77900871ECC /* SearchResult.m in Sources */,
+				7588628D1CEDA77900871ECC /* Document.m in Sources */,
+				758862941CEDA77900871ECC /* Suggester.m in Sources */,
+				758862891CEDA75900871ECC /* SearcherTest.m in Sources */,
+				758862911CEDA77900871ECC /* Searcher.m in Sources */,
+				7588628E1CEDA77900871ECC /* HighlightingHelper.m in Sources */,
+				7588628F1CEDA77900871ECC /* Indexer.m in Sources */,
+				758862901CEDA77900871ECC /* MinimalHTMLEncoder.m in Sources */,
+				7588628B1CEDA75900871ECC /* SuggesterTest.m in Sources */,
+				758862871CEDA75900871ECC /* IndexerTest.m in Sources */,
+				758862931CEDA77900871ECC /* Study.m in Sources */,
+				758862951CEDA77900871ECC /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +549,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/vendor/j2objc/lib/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -587,7 +597,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/vendor/j2objc/lib/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -642,7 +651,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/vendor/j2objc/lib/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -692,7 +700,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/vendor/j2objc/lib/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -57,9 +57,7 @@ public class Searcher implements AutoCloseable {
 
   public SearchResult search(String queryStr, SortBy sortBy, int maxCount)
       throws ParseException, IOException {
-    String[] fields = { Indexer.TITLE_FIELD_NAME, Indexer.REVIEW_FIELD_NAME };
-    QueryParser parser = new MultiFieldQueryParser(fields, analyzer);
-    Query query = parser.parse(queryStr);
+    Query query = Indexer.parseQuery(analyzer, queryStr);
 
     Sort sort = null;
     if (sortBy != null) {

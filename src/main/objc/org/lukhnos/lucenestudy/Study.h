@@ -3,10 +3,18 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/Study.java
 //
 
-#ifndef _OrgLukhnosLucenestudyStudy_H_
-#define _OrgLukhnosLucenestudyStudy_H_
-
 #include "J2ObjC_header.h"
+
+#pragma push_macro("INCLUDE_ALL_OrgLukhnosLucenestudyStudy")
+#ifdef RESTRICT_OrgLukhnosLucenestudyStudy
+#define INCLUDE_ALL_OrgLukhnosLucenestudyStudy 0
+#else
+#define INCLUDE_ALL_OrgLukhnosLucenestudyStudy 1
+#endif
+#undef RESTRICT_OrgLukhnosLucenestudyStudy
+
+#if !defined (OrgLukhnosLucenestudyStudy_) && (INCLUDE_ALL_OrgLukhnosLucenestudyStudy || defined(INCLUDE_OrgLukhnosLucenestudyStudy))
+#define OrgLukhnosLucenestudyStudy_
 
 @class IOSObjectArray;
 @class JavaIoInputStream;
@@ -24,6 +32,17 @@
 + (void)mainWithNSStringArray:(IOSObjectArray *)args;
 
 #pragma mark Package-Private
+
++ (void)addWithNSString:(NSString *)indexPath
+           withNSString:(NSString *)title
+           withNSString:(NSString *)year
+           withNSString:(NSString *)rating
+           withNSString:(NSString *)positive
+           withNSString:(NSString *)review
+           withNSString:(NSString *)source;
+
++ (void)delete__WithNSString:(NSString *)indexPath
+                withNSString:(NSString *)query;
 
 + (void)indexWithNSString:(NSString *)sourcePath
              withNSString:(NSString *)indexPath;
@@ -50,12 +69,20 @@ FOUNDATION_EXPORT jint OrgLukhnosLucenestudyStudy_importDataWithJavaIoInputStrea
 
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_searchWithNSString_withNSString_(NSString *indexPath, NSString *query);
 
+FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_delete__WithNSString_withNSString_(NSString *indexPath, NSString *query);
+
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_suggestWithNSString_withNSString_(NSString *indexPath, NSString *query);
+
+FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_addWithNSString_withNSString_withNSString_withNSString_withNSString_withNSString_withNSString_(NSString *indexPath, NSString *title, NSString *year, NSString *rating, NSString *positive, NSString *review, NSString *source);
 
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_init(OrgLukhnosLucenestudyStudy *self);
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudyStudy *new_OrgLukhnosLucenestudyStudy_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgLukhnosLucenestudyStudy *create_OrgLukhnosLucenestudyStudy_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyStudy)
 
-#endif // _OrgLukhnosLucenestudyStudy_H_
+#endif
+
+#pragma pop_macro("INCLUDE_ALL_OrgLukhnosLucenestudyStudy")

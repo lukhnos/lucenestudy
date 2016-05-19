@@ -3,10 +3,18 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/SearchResult.java
 //
 
-#ifndef _OrgLukhnosLucenestudySearchResult_H_
-#define _OrgLukhnosLucenestudySearchResult_H_
-
 #include "J2ObjC_header.h"
+
+#pragma push_macro("INCLUDE_ALL_OrgLukhnosLucenestudySearchResult")
+#ifdef RESTRICT_OrgLukhnosLucenestudySearchResult
+#define INCLUDE_ALL_OrgLukhnosLucenestudySearchResult 0
+#else
+#define INCLUDE_ALL_OrgLukhnosLucenestudySearchResult 1
+#endif
+#undef RESTRICT_OrgLukhnosLucenestudySearchResult
+
+#if !defined (OrgLukhnosLucenestudySearchResult_) && (INCLUDE_ALL_OrgLukhnosLucenestudySearchResult || defined(INCLUDE_OrgLukhnosLucenestudySearchResult))
+#define OrgLukhnosLucenestudySearchResult_
 
 @class OrgApacheLuceneSearchQuery;
 @class OrgApacheLuceneSearchScoreDoc;
@@ -58,6 +66,10 @@ FOUNDATION_EXPORT void OrgLukhnosLucenestudySearchResult_initWithInt_withJavaUti
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudySearchResult *new_OrgLukhnosLucenestudySearchResult_initWithInt_withJavaUtilList_withOrgApacheLuceneSearchScoreDoc_withOrgApacheLuceneSearchQuery_withOrgApacheLuceneSearchSort_withOrgLukhnosLucenestudyHighlightingHelper_(jint totalHits, id<JavaUtilList> documents, OrgApacheLuceneSearchScoreDoc *lastScoreDoc, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneSearchSort *sort, OrgLukhnosLucenestudyHighlightingHelper *highlightingHelper) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgLukhnosLucenestudySearchResult *create_OrgLukhnosLucenestudySearchResult_initWithInt_withJavaUtilList_withOrgApacheLuceneSearchScoreDoc_withOrgApacheLuceneSearchQuery_withOrgApacheLuceneSearchSort_withOrgLukhnosLucenestudyHighlightingHelper_(jint totalHits, id<JavaUtilList> documents, OrgApacheLuceneSearchScoreDoc *lastScoreDoc, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneSearchSort *sort, OrgLukhnosLucenestudyHighlightingHelper *highlightingHelper);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudySearchResult)
 
-#endif // _OrgLukhnosLucenestudySearchResult_H_
+#endif
+
+#pragma pop_macro("INCLUDE_ALL_OrgLukhnosLucenestudySearchResult")

@@ -3,6 +3,7 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/HighlightingHelper.java
 //
 
+#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/io/IOException.h"
 #include "java/lang/AssertionError.h"
@@ -24,8 +25,8 @@
 
 J2OBJC_INITIALIZED_DEFN(OrgLukhnosLucenestudyHighlightingHelper)
 
-JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern_;
-JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_;
+JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern;
+JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern;
 
 @implementation OrgLukhnosLucenestudyHighlightingHelper
 
@@ -59,7 +60,7 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_;
   if (highlighted != nil) {
     return highlighted;
   }
-  jint cpCount = [text codePointCount:0 endIndex:((jint) [((NSString *) nil_chk(text)) length])];
+  jint cpCount = [text codePointCount:0 endIndex:((jint) [text length])];
   if (cpCount < fragmentLength_) {
     return text;
   }
@@ -77,8 +78,8 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_;
     if (highlighted == nil) {
       return nil;
     }
-    highlighted = [((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern_)) matcherWithJavaLangCharSequence:highlighted])) replaceAllWithNSString:@""];
-    highlighted = [((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_)) matcherWithJavaLangCharSequence:highlighted])) replaceAllWithNSString:@" "];
+    highlighted = [((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern)) matcherWithJavaLangCharSequence:highlighted])) replaceAllWithNSString:@""];
+    highlighted = [((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern)) matcherWithJavaLangCharSequence:highlighted])) replaceAllWithNSString:@" "];
     if ([((NSString *) nil_chk(highlighted)) isEmpty]) {
       highlighted = nil;
     }
@@ -97,8 +98,8 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_;
 
 + (void)initialize {
   if (self == [OrgLukhnosLucenestudyHighlightingHelper class]) {
-    OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern_ = JavaUtilRegexPattern_compileWithNSString_(@"^[\\s\\p{Punct}&&[^<]]+");
-    OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_ = JavaUtilRegexPattern_compileWithNSString_(@"\\n");
+    OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern = JavaUtilRegexPattern_compileWithNSString_(@"^[\\s\\p{Punct}&&[^<]]+");
+    OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern = JavaUtilRegexPattern_compileWithNSString_(@"\\n");
     J2OBJC_SET_INITIALIZED(OrgLukhnosLucenestudyHighlightingHelper)
   }
 }
@@ -112,8 +113,8 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_;
     { "highlightWithNSString:withNSString:", "highlight", "Ljava.lang.String;", 0x0, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "cleanUpPattern_", NULL, 0x18, "Ljava.util.regex.Pattern;", &OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern_, NULL, .constantValue.asLong = 0 },
-    { "replaceLFPattern_", NULL, 0x18, "Ljava.util.regex.Pattern;", &OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_, NULL, .constantValue.asLong = 0 },
+    { "cleanUpPattern", "cleanUpPattern", 0x18, "Ljava.util.regex.Pattern;", &OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern, NULL, .constantValue.asLong = 0 },
+    { "replaceLFPattern", "replaceLFPattern", 0x18, "Ljava.util.regex.Pattern;", &OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern, NULL, .constantValue.asLong = 0 },
     { "DEFAULT_FRAGMENT_LENGTH", "DEFAULT_FRAGMENT_LENGTH", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH },
     { "scorer_", NULL, 0x10, "Lorg.apache.lucene.search.highlight.QueryScorer;", NULL, NULL, .constantValue.asLong = 0 },
     { "highlighter_", NULL, 0x10, "Lorg.apache.lucene.search.highlight.Highlighter;", NULL, NULL, .constantValue.asLong = 0 },
@@ -127,7 +128,7 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern_;
 @end
 
 void OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgLukhnosLucenestudyHighlightingHelper *self, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) {
-  (void) NSObject_init(self);
+  NSObject_init(self);
   self->analyzer_ = analyzer;
   id<OrgApacheLuceneSearchHighlightFormatter> formatter = new_OrgApacheLuceneSearchHighlightSimpleHTMLFormatter_init();
   id<OrgApacheLuceneSearchHighlightEncoder> encoder = new_OrgLukhnosLucenestudyMinimalHTMLEncoder_init();
@@ -139,9 +140,11 @@ void OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_
 }
 
 OrgLukhnosLucenestudyHighlightingHelper *new_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) {
-  OrgLukhnosLucenestudyHighlightingHelper *self = [OrgLukhnosLucenestudyHighlightingHelper alloc];
-  OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(self, query, analyzer);
-  return self;
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudyHighlightingHelper, initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_, query, analyzer)
+}
+
+OrgLukhnosLucenestudyHighlightingHelper *create_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyHighlightingHelper, initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_, query, analyzer)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudyHighlightingHelper)
