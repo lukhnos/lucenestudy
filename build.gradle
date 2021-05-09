@@ -30,25 +30,29 @@ repositories {
 }
 
 dependencies {
-  compile 'org.apache.lucene:lucene-core:5.3.0'
-  compile 'org.apache.lucene:lucene-queryparser:5.3.0'
-  compile 'org.apache.lucene:lucene-analyzers-common:5.3.0'
-  compile 'org.apache.lucene:lucene-suggest:5.3.0'
-  compile 'org.apache.lucene:lucene-highlighter:5.3.0'
-  compile 'org.json:json:20140107'
+  implementation 'org.apache.lucene:lucene-core:5.3.0'
+  implementation 'org.apache.lucene:lucene-queryparser:5.3.0'
+  implementation 'org.apache.lucene:lucene-analyzers-common:5.3.0'
+  implementation 'org.apache.lucene:lucene-suggest:5.3.0'
+  implementation 'org.apache.lucene:lucene-highlighter:5.3.0'
+  implementation 'org.json:json:20140107'
 
-  testCompile 'junit:junit:4.11'
+  testImplementation 'junit:junit:4.11'
+}
+
+configurations {
+  implementationArtifacts.extendsFrom implementation
 }
 
 jar {
-  // From http://cmoz.me/blog/2014/11/service-files-uber-jars-and-gradle/
   doFirst {
+  // From http://cmoz.me/blog/2014/11/service-files-uber-jars-and-gradle/
     def serviceDir = file("$buildDir/META-INF/services")
     serviceDir.deleteDir()
     serviceDir.mkdirs()
 
     // copy all service files from deps to buildDir
-    for(file in configurations.runtime) {
+    for(file in configurations.implementationArtifacts) {
       zipTree(file).matching{ include 'META-INF/services/*' }.each { f ->
         new File(serviceDir, f.name) << f.getText("UTF-8")
       }
@@ -59,7 +63,7 @@ jar {
     attributes "Main-Class": "org.lukhnos.lucenestudy.Study"
   }
 
-  from(configurations.runtime.collect{ it.isDirectory() ? it : zipTree(it) }) {
+  from(configurations.implementationArtifacts.collect{ it.isDirectory() ? it : zipTree(it) }) {
     exclude 'META-INF/**' // Don't let Gradle merge service files
   }
 
@@ -74,7 +78,7 @@ jar {
  * See https://discuss.gradle.org/t/how-do-i-declare-a-dependency-on-a-modules-test-code/7172/9
  */
 configurations {
-  testArtifacts.extendsFrom testRuntime
+  testArtifacts.extendsFrom testRuntimeOnly
 }
 
 task testJar(type: Jar) {
@@ -84,4 +88,8 @@ task testJar(type: Jar) {
 
 artifacts {
   testArtifacts testJar
+}
+
+test {
+  jvmArgs '--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED'
 }

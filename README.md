@@ -69,6 +69,10 @@ And to see the search suggestion in action:
 
     java -jar build/libs/lucenestudy.jar suggest /tmp/testidx love
 
+If you are on JDK 11 or above, you'll need to add
+`--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED` before the `-jar`
+argument. This is due to Lucene 5 still using [jdk.internal.refCleaner](https://bugs.openjdk.java.net/browse/JDK-8149925).
+
 
 Boolean Searches
 ----------------
