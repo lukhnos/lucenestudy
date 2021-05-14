@@ -32,7 +32,14 @@ import org.apache.lucene.search.highlight.Encoder;
  * This implementation only escapes three XML entity characters.
  */
 public class MinimalHTMLEncoder implements Encoder {
-  public final static String htmlEncode(String plainText) {
+  boolean newlineToBr = false;
+
+  public void setNewlineToBr(boolean newlineToBr) {
+    this.newlineToBr = newlineToBr;
+  }
+
+  @Override
+  public String encodeText(String plainText) {
     if (plainText == null || plainText.length() == 0) {
       return "";
     }
@@ -52,15 +59,13 @@ public class MinimalHTMLEncoder implements Encoder {
           result.append("&gt;");
           break;
         default:
-          result.append(ch);
+          if (newlineToBr && ch == '\n') {
+            result.append("<br>");
+          } else {
+            result.append(ch);
+          }
       }
     }
-
     return result.toString();
-  }
-
-  @Override
-  public String encodeText(String originalText) {
-    return htmlEncode(originalText);
   }
 }
