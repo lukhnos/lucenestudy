@@ -34,10 +34,10 @@ repositories {
 
 buildscript {
     repositories {
-        flatDir { dirs 'libs' }
+        mavenCentral()
     }
     dependencies {
-        classpath ':proguard-5.2.1:'
+        classpath 'net.sf.proguard:proguard-gradle:5.2.1'
     }
 }
 
