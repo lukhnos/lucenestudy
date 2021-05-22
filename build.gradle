@@ -119,5 +119,5 @@ task proguardJar(type: proguard.gradle.ProGuardTask, dependsOn: jar) {
 }
 
 test {
-  // jvmArgs '--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED'
+  jvmArgs '--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED'
 }
