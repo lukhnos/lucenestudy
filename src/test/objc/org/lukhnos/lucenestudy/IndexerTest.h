@@ -16,7 +16,6 @@
 #if !defined (OrgLukhnosLucenestudyIndexerTest_) && (INCLUDE_ALL_OrgLukhnosLucenestudyIndexerTest || defined(INCLUDE_OrgLukhnosLucenestudyIndexerTest))
 #define OrgLukhnosLucenestudyIndexerTest_
 
-@class IOSObjectArray;
 @class OrgLukhnosLucenestudySearcher;
 @class OrgLukhnosPortmobileFilePath;
 
@@ -47,9 +46,9 @@ J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudyIndexerTest, searcher_, OrgLukhnosLucen
 
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyIndexerTest_init(OrgLukhnosLucenestudyIndexerTest *self);
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudyIndexerTest *new_OrgLukhnosLucenestudyIndexerTest_init() NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT OrgLukhnosLucenestudyIndexerTest *new_OrgLukhnosLucenestudyIndexerTest_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudyIndexerTest *create_OrgLukhnosLucenestudyIndexerTest_init();
+FOUNDATION_EXPORT OrgLukhnosLucenestudyIndexerTest *create_OrgLukhnosLucenestudyIndexerTest_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyIndexerTest)
 

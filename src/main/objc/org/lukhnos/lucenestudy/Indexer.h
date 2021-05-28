@@ -61,43 +61,47 @@
 
 + (OrgLukhnosPortmobileFilePath *)getMainIndexPathWithOrgLukhnosPortmobileFilePath:(OrgLukhnosPortmobileFilePath *)indexRoot;
 
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(OrgLukhnosLucenestudyIndexer)
 
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudyIndexer, indexWriter_, OrgApacheLuceneIndexIndexWriter *)
 
-inline NSString *OrgLukhnosLucenestudyIndexer_get_TITLE_FIELD_NAME();
+inline NSString *OrgLukhnosLucenestudyIndexer_get_TITLE_FIELD_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyIndexer, TITLE_FIELD_NAME, NSString *)
 
-inline NSString *OrgLukhnosLucenestudyIndexer_get_YEAR_FIELD_NAME();
+inline NSString *OrgLukhnosLucenestudyIndexer_get_YEAR_FIELD_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudyIndexer_YEAR_FIELD_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyIndexer, YEAR_FIELD_NAME, NSString *)
 
-inline NSString *OrgLukhnosLucenestudyIndexer_get_RATING_FIELD_NAME();
+inline NSString *OrgLukhnosLucenestudyIndexer_get_RATING_FIELD_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudyIndexer_RATING_FIELD_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyIndexer, RATING_FIELD_NAME, NSString *)
 
-inline NSString *OrgLukhnosLucenestudyIndexer_get_POSITIVE_FIELD_NAME();
+inline NSString *OrgLukhnosLucenestudyIndexer_get_POSITIVE_FIELD_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudyIndexer_POSITIVE_FIELD_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyIndexer, POSITIVE_FIELD_NAME, NSString *)
 
-inline NSString *OrgLukhnosLucenestudyIndexer_get_REVIEW_FIELD_NAME();
+inline NSString *OrgLukhnosLucenestudyIndexer_get_REVIEW_FIELD_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyIndexer, REVIEW_FIELD_NAME, NSString *)
 
-inline NSString *OrgLukhnosLucenestudyIndexer_get_SOURCE_FIELD_NAME();
+inline NSString *OrgLukhnosLucenestudyIndexer_get_SOURCE_FIELD_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudyIndexer_SOURCE_FIELD_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyIndexer, SOURCE_FIELD_NAME, NSString *)
 
-inline NSString *OrgLukhnosLucenestudyIndexer_get_INDEX_NAME();
+inline NSString *OrgLukhnosLucenestudyIndexer_get_INDEX_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudyIndexer_INDEX_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyIndexer, INDEX_NAME, NSString *)
@@ -114,7 +118,7 @@ FOUNDATION_EXPORT OrgLukhnosLucenestudyIndexer *new_OrgLukhnosLucenestudyIndexer
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudyIndexer *create_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_(NSString *indexRoot, jboolean appendIfExists);
 
-FOUNDATION_EXPORT OrgApacheLuceneAnalysisAnalyzer *OrgLukhnosLucenestudyIndexer_getAnalyzer();
+FOUNDATION_EXPORT OrgApacheLuceneAnalysisAnalyzer *OrgLukhnosLucenestudyIndexer_getAnalyzer(void);
 
 FOUNDATION_EXPORT OrgApacheLuceneSearchQuery *OrgLukhnosLucenestudyIndexer_parseQueryWithOrgApacheLuceneAnalysisAnalyzer_withNSString_(OrgApacheLuceneAnalysisAnalyzer *analyzer, NSString *queryStr);
 

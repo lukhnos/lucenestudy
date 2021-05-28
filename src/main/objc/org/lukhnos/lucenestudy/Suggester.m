@@ -3,11 +3,8 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/Suggester.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
-#include "java/io/IOException.h"
 #include "java/lang/CharSequence.h"
-#include "java/lang/Exception.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashSet.h"
 #include "java/util/List.h"
@@ -28,6 +25,10 @@
 #include "org/lukhnos/portmobile/file/Files.h"
 #include "org/lukhnos/portmobile/file/Path.h"
 #include "org/lukhnos/portmobile/file/Paths.h"
+
+#if !__has_feature(objc_arc)
+#error "org/lukhnos/lucenestudy/Suggester must be compiled with ARC (-fobjc-arc)"
+#endif
 
 NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME = @"suggestion";
 
@@ -51,7 +52,7 @@ NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME = @"suggestion";
   id<JavaUtilList> suggestions = new_JavaUtilArrayList_init();
   for (OrgApacheLuceneSearchSuggestLookup_LookupResult * __strong result in nil_chk(results)) {
     if ([((OrgApacheLuceneSearchSuggestLookup_LookupResult *) nil_chk(result))->highlightKey_ isKindOfClass:[NSString class]]) {
-      [suggestions addWithId:(NSString *) cast_chk(result->highlightKey_, [NSString class])];
+      [suggestions addWithId:(NSString *) result->highlightKey_];
     }
     else {
       [suggestions addWithId:[((id<JavaLangCharSequence>) nil_chk(result->key_)) description]];
@@ -65,21 +66,31 @@ NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME = @"suggestion";
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "Suggester", NULL, 0x1, "Ljava.io.IOException;", NULL },
-    { "getSuggestionIndexPathWithOrgLukhnosPortmobileFilePath:", "getSuggestionIndexPath", "Lorg.lukhnos.portmobile.file.Path;", 0x8, NULL, NULL },
-    { "rebuildWithNSString:", "rebuild", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "suggestWithNSString:", "suggest", "Ljava.util.List;", 0x1, "Ljava.io.IOException;", "(Ljava/lang/String;)Ljava/util/List<Ljava/lang/String;>;" },
-    { "close", NULL, "V", 0x1, "Ljava.lang.Exception;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, 1, -1, -1, -1 },
+    { NULL, "LOrgLukhnosPortmobileFilePath;", 0x8, 2, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 4, 0, 1, -1, -1, -1 },
+    { NULL, "LJavaUtilList;", 0x1, 5, 0, 1, 6, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, 7, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithNSString:);
+  methods[1].selector = @selector(getSuggestionIndexPathWithOrgLukhnosPortmobileFilePath:);
+  methods[2].selector = @selector(rebuildWithNSString:);
+  methods[3].selector = @selector(suggestWithNSString:);
+  methods[4].selector = @selector(close);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "DEFAULT_SUGGESTION_COUNT", "DEFAULT_SUGGESTION_COUNT", 0x18, "I", NULL, NULL, .constantValue.asInt = OrgLukhnosLucenestudySuggester_DEFAULT_SUGGESTION_COUNT },
-    { "INDEX_NAME", "INDEX_NAME", 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudySuggester_INDEX_NAME, NULL, .constantValue.asLong = 0 },
-    { "indexRootPath_", NULL, 0x10, "Lorg.lukhnos.portmobile.file.Path;", NULL, NULL, .constantValue.asLong = 0 },
-    { "suggester_", NULL, 0x10, "Lorg.apache.lucene.search.suggest.analyzing.AnalyzingInfixSuggester;", NULL, NULL, .constantValue.asLong = 0 },
-    { "suggestionCount_", NULL, 0x0, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "DEFAULT_SUGGESTION_COUNT", "I", .constantValue.asInt = OrgLukhnosLucenestudySuggester_DEFAULT_SUGGESTION_COUNT, 0x18, -1, -1, -1, -1 },
+    { "INDEX_NAME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 8, -1, -1 },
+    { "indexRootPath_", "LOrgLukhnosPortmobileFilePath;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "suggester_", "LOrgApacheLuceneSearchSuggestAnalyzingAnalyzingInfixSuggester;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "suggestionCount_", "I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudySuggester = { 2, "Suggester", "org.lukhnos.lucenestudy", NULL, 0x1, 5, methods, 5, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;", "LJavaIoIOException;", "getSuggestionIndexPath", "LOrgLukhnosPortmobileFilePath;", "rebuild", "suggest", "(Ljava/lang/String;)Ljava/util/List<Ljava/lang/String;>;", "LJavaLangException;", &OrgLukhnosLucenestudySuggester_INDEX_NAME };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudySuggester = { "Suggester", "org.lukhnos.lucenestudy", ptrTable, methods, fields, 7, 0x1, 5, 5, -1, -1, -1, -1, -1 };
   return &_OrgLukhnosLucenestudySuggester;
 }
 

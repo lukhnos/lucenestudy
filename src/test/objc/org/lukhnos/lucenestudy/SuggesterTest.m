@@ -6,9 +6,7 @@
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
-#include "java/io/IOException.h"
 #include "java/io/PrintStream.h"
-#include "java/lang/Exception.h"
 #include "java/lang/System.h"
 #include "java/lang/annotation/Annotation.h"
 #include "java/util/Arrays.h"
@@ -24,7 +22,24 @@
 #include "org/lukhnos/portmobile/file/Files.h"
 #include "org/lukhnos/portmobile/file/Path.h"
 
+#if !__has_feature(objc_arc)
+#error "org/lukhnos/lucenestudy/SuggesterTest must be compiled with ARC (-fobjc-arc)"
+#endif
+
+__attribute__((unused)) static IOSObjectArray *OrgLukhnosLucenestudySuggesterTest__Annotations$0(void);
+
+__attribute__((unused)) static IOSObjectArray *OrgLukhnosLucenestudySuggesterTest__Annotations$1(void);
+
+__attribute__((unused)) static IOSObjectArray *OrgLukhnosLucenestudySuggesterTest__Annotations$2(void);
+
 @implementation OrgLukhnosLucenestudySuggesterTest
+
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype)init {
+  OrgLukhnosLucenestudySuggesterTest_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setUp {
   temp_ = OrgLukhnosPortmobileFileFiles_createTempDirectoryWithNSString_([OrgLukhnosLucenestudySuggesterTest_class_() getCanonicalName]);
@@ -46,36 +61,26 @@
   [suggester close];
 }
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  OrgLukhnosLucenestudySuggesterTest_init(self);
-  return self;
-}
-J2OBJC_IGNORE_DESIGNATED_END
-
-+ (IOSObjectArray *)__annotations_setUp {
-  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitBefore() } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (IOSObjectArray *)__annotations_tearDown {
-  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitAfter() } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (IOSObjectArray *)__annotations_basicTest {
-  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitTest(OrgJunitTest_None_class_(), 0LL) } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "setUp", NULL, "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "tearDown", NULL, "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "basicTest", NULL, "V", 0x1, "Ljava.lang.Exception;", NULL },
-    { "init", "SuggesterTest", NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, 0, -1, 1, -1 },
+    { NULL, "V", 0x1, -1, -1, 0, -1, 2, -1 },
+    { NULL, "V", 0x1, -1, -1, 3, -1, 4, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(setUp);
+  methods[2].selector = @selector(tearDown);
+  methods[3].selector = @selector(basicTest);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "temp_", NULL, 0x0, "Lorg.lukhnos.portmobile.file.Path;", NULL, NULL, .constantValue.asLong = 0 },
+    { "temp_", "LOrgLukhnosPortmobileFilePath;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudySuggesterTest = { 2, "SuggesterTest", "org.lukhnos.lucenestudy", NULL, 0x1, 4, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LJavaIoIOException;", (void *)&OrgLukhnosLucenestudySuggesterTest__Annotations$0, (void *)&OrgLukhnosLucenestudySuggesterTest__Annotations$1, "LJavaLangException;", (void *)&OrgLukhnosLucenestudySuggesterTest__Annotations$2 };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudySuggesterTest = { "SuggesterTest", "org.lukhnos.lucenestudy", ptrTable, methods, fields, 7, 0x1, 4, 1, -1, -1, -1, -1, -1 };
   return &_OrgLukhnosLucenestudySuggesterTest;
 }
 
@@ -91,6 +96,18 @@ OrgLukhnosLucenestudySuggesterTest *new_OrgLukhnosLucenestudySuggesterTest_init(
 
 OrgLukhnosLucenestudySuggesterTest *create_OrgLukhnosLucenestudySuggesterTest_init() {
   J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudySuggesterTest, init)
+}
+
+IOSObjectArray *OrgLukhnosLucenestudySuggesterTest__Annotations$0() {
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitBefore() } count:1 type:JavaLangAnnotationAnnotation_class_()];
+}
+
+IOSObjectArray *OrgLukhnosLucenestudySuggesterTest__Annotations$1() {
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitAfter() } count:1 type:JavaLangAnnotationAnnotation_class_()];
+}
+
+IOSObjectArray *OrgLukhnosLucenestudySuggesterTest__Annotations$2() {
+  return [IOSObjectArray newArrayWithObjects:(id[]){ create_OrgJunitTest(OrgJunitTest_None_class_(), 0LL) } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudySuggesterTest)

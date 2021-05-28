@@ -13,6 +13,12 @@
 #endif
 #undef RESTRICT_OrgLukhnosLucenestudySearcher
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (OrgLukhnosLucenestudySearcher_) && (INCLUDE_ALL_OrgLukhnosLucenestudySearcher || defined(INCLUDE_OrgLukhnosLucenestudySearcher))
 #define OrgLukhnosLucenestudySearcher_
 
@@ -57,6 +63,10 @@
                                                       withOrgApacheLuceneSearchSort:(OrgApacheLuceneSearchSort *)sort
                                                                             withInt:(jint)maxCount;
 
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(OrgLukhnosLucenestudySearcher)
@@ -81,6 +91,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudySearcher)
 #define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
 
+@class IOSObjectArray;
 @class OrgApacheLuceneSearchSort;
 
 typedef NS_ENUM(NSUInteger, OrgLukhnosLucenestudySearcher_SortBy_Enum) {
@@ -91,18 +102,20 @@ typedef NS_ENUM(NSUInteger, OrgLukhnosLucenestudySearcher_SortBy_Enum) {
   OrgLukhnosLucenestudySearcher_SortBy_Enum_RATING = 4,
 };
 
-@interface OrgLukhnosLucenestudySearcher_SortBy : JavaLangEnum < NSCopying > {
+@interface OrgLukhnosLucenestudySearcher_SortBy : JavaLangEnum {
  @public
   OrgApacheLuceneSearchSort *sort_;
 }
 
-#pragma mark Package-Private
-
-+ (IOSObjectArray *)values;
+#pragma mark Public
 
 + (OrgLukhnosLucenestudySearcher_SortBy *)valueOfWithNSString:(NSString *)name;
 
-- (id)copyWithZone:(NSZone *)zone;
++ (IOSObjectArray *)values;
+
+#pragma mark Package-Private
+
+- (OrgLukhnosLucenestudySearcher_SortBy_Enum)toNSEnum;
 
 @end
 
@@ -111,24 +124,24 @@ J2OBJC_STATIC_INIT(OrgLukhnosLucenestudySearcher_SortBy)
 /*! INTERNAL ONLY - Use enum accessors declared below. */
 FOUNDATION_EXPORT OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_values_[];
 
-inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_RELEVANCE();
+inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_RELEVANCE(void);
 J2OBJC_ENUM_CONSTANT(OrgLukhnosLucenestudySearcher_SortBy, RELEVANCE)
 
-inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_DOCUMENT_ORDER();
+inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_DOCUMENT_ORDER(void);
 J2OBJC_ENUM_CONSTANT(OrgLukhnosLucenestudySearcher_SortBy, DOCUMENT_ORDER)
 
-inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_TITLE();
+inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_TITLE(void);
 J2OBJC_ENUM_CONSTANT(OrgLukhnosLucenestudySearcher_SortBy, TITLE)
 
-inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_YEAR();
+inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_YEAR(void);
 J2OBJC_ENUM_CONSTANT(OrgLukhnosLucenestudySearcher_SortBy, YEAR)
 
-inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_RATING();
+inline OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_get_RATING(void);
 J2OBJC_ENUM_CONSTANT(OrgLukhnosLucenestudySearcher_SortBy, RATING)
 
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudySearcher_SortBy, sort_, OrgApacheLuceneSearchSort *)
 
-FOUNDATION_EXPORT IOSObjectArray *OrgLukhnosLucenestudySearcher_SortBy_values();
+FOUNDATION_EXPORT IOSObjectArray *OrgLukhnosLucenestudySearcher_SortBy_values(void);
 
 FOUNDATION_EXPORT OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_valueOfWithNSString_(NSString *name);
 
@@ -138,4 +151,8 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudySearcher_SortBy)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_OrgLukhnosLucenestudySearcher")

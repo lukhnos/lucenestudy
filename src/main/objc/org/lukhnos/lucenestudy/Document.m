@@ -7,6 +7,10 @@
 #include "java/lang/StringBuilder.h"
 #include "org/lukhnos/lucenestudy/Document.h"
 
+#if !__has_feature(objc_arc)
+#error "org/lukhnos/lucenestudy/Document must be compiled with ARC (-fobjc-arc)"
+#endif
+
 @implementation OrgLukhnosLucenestudyDocument
 
 - (instancetype)initWithNSString:(NSString *)title
@@ -26,19 +30,26 @@
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:withInt:withInt:withBoolean:withNSString:withNSString:", "Document", NULL, 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithNSString:withInt:withInt:withBoolean:withNSString:withNSString:);
+  methods[1].selector = @selector(description);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "title_", NULL, 0x11, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "year_", NULL, 0x11, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "rating_", NULL, 0x11, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "positive_", NULL, 0x11, "Z", NULL, NULL, .constantValue.asLong = 0 },
-    { "review_", NULL, 0x11, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "source_", NULL, 0x11, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "title_", "LNSString;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "year_", "I", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "rating_", "I", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "positive_", "Z", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "review_", "LNSString;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "source_", "LNSString;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudyDocument = { 2, "Document", "org.lukhnos.lucenestudy", NULL, 0x1, 2, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;IIZLNSString;LNSString;", "toString" };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudyDocument = { "Document", "org.lukhnos.lucenestudy", ptrTable, methods, fields, 7, 0x1, 2, 6, -1, -1, -1, -1, -1 };
   return &_OrgLukhnosLucenestudyDocument;
 }
 

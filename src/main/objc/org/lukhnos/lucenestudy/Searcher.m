@@ -3,13 +3,10 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/Searcher.java
 //
 
-#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
-#include "java/io/IOException.h"
 #include "java/lang/AssertionError.h"
 #include "java/lang/Enum.h"
-#include "java/lang/Exception.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/util/ArrayList.h"
 #include "java/util/List.h"
@@ -17,7 +14,6 @@
 #include "org/apache/lucene/document/Document.h"
 #include "org/apache/lucene/index/DirectoryReader.h"
 #include "org/apache/lucene/index/IndexReader.h"
-#include "org/apache/lucene/queryparser/classic/ParseException.h"
 #include "org/apache/lucene/search/IndexSearcher.h"
 #include "org/apache/lucene/search/Query.h"
 #include "org/apache/lucene/search/ScoreDoc.h"
@@ -34,6 +30,10 @@
 #include "org/lukhnos/lucenestudy/Searcher.h"
 #include "org/lukhnos/portmobile/file/Path.h"
 #include "org/lukhnos/portmobile/file/Paths.h"
+
+#if !__has_feature(objc_arc)
+#error "org/lukhnos/lucenestudy/Searcher must be compiled with ARC (-fobjc-arc)"
+#endif
 
 __attribute__((unused)) static void OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(OrgLukhnosLucenestudySearcher_SortBy *self, OrgApacheLuceneSearchSort *sort, NSString *__name, jint __ordinal);
 
@@ -109,7 +109,7 @@ __attribute__((unused)) static OrgLukhnosLucenestudySearcher_SortBy *new_OrgLukh
   else {
     topDocsLen = topDocs->scoreDocs_->size_;
   }
-  OrgLukhnosLucenestudyHighlightingHelper *highlightingHelper = new_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(query, analyzer_);
+  OrgLukhnosLucenestudyHighlightingHelper *highlightingHelper = new_OrgLukhnosLucenestudyHighlightingHelper_initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(query, analyzer_);
   id<JavaUtilList> docs = new_JavaUtilArrayList_init();
   for (jint i = 0; i < topDocsLen; i++) {
     OrgApacheLuceneDocumentDocument *luceneDoc = [((OrgApacheLuceneIndexIndexReader *) nil_chk(indexReader_)) documentWithInt:((OrgApacheLuceneSearchScoreDoc *) nil_chk(IOSObjectArray_Get(nil_chk(topDocs->scoreDocs_), i)))->doc_];
@@ -120,20 +120,30 @@ __attribute__((unused)) static OrgLukhnosLucenestudySearcher_SortBy *new_OrgLukh
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "Searcher", NULL, 0x1, "Ljava.io.IOException;", NULL },
-    { "searchWithNSString:withInt:", "search", "Lorg.lukhnos.lucenestudy.SearchResult;", 0x1, "Lorg.apache.lucene.queryparser.classic.ParseException;Ljava.io.IOException;", NULL },
-    { "searchWithNSString:withOrgLukhnosLucenestudySearcher_SortBy:withInt:", "search", "Lorg.lukhnos.lucenestudy.SearchResult;", 0x1, "Lorg.apache.lucene.queryparser.classic.ParseException;Ljava.io.IOException;", NULL },
-    { "searchAfterWithOrgLukhnosLucenestudySearchResult:withInt:", "searchAfter", "Lorg.lukhnos.lucenestudy.SearchResult;", 0x1, "Ljava.io.IOException;", NULL },
-    { "close", NULL, "V", 0x1, "Ljava.lang.Exception;", NULL },
-    { "searchAfterWithOrgApacheLuceneSearchScoreDoc:withOrgApacheLuceneSearchQuery:withOrgApacheLuceneSearchSort:withInt:", "searchAfter", "Lorg.lukhnos.lucenestudy.SearchResult;", 0x0, "Ljava.io.IOException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, 1, -1, -1, -1 },
+    { NULL, "LOrgLukhnosLucenestudySearchResult;", 0x1, 2, 3, 4, -1, -1, -1 },
+    { NULL, "LOrgLukhnosLucenestudySearchResult;", 0x1, 2, 5, 4, -1, -1, -1 },
+    { NULL, "LOrgLukhnosLucenestudySearchResult;", 0x1, 6, 7, 1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, 8, -1, -1, -1 },
+    { NULL, "LOrgLukhnosLucenestudySearchResult;", 0x0, 6, 9, 1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithNSString:);
+  methods[1].selector = @selector(searchWithNSString:withInt:);
+  methods[2].selector = @selector(searchWithNSString:withOrgLukhnosLucenestudySearcher_SortBy:withInt:);
+  methods[3].selector = @selector(searchAfterWithOrgLukhnosLucenestudySearchResult:withInt:);
+  methods[4].selector = @selector(close);
+  methods[5].selector = @selector(searchAfterWithOrgApacheLuceneSearchScoreDoc:withOrgApacheLuceneSearchQuery:withOrgApacheLuceneSearchSort:withInt:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "analyzer_", NULL, 0x10, "Lorg.apache.lucene.analysis.Analyzer;", NULL, NULL, .constantValue.asLong = 0 },
-    { "indexReader_", NULL, 0x10, "Lorg.apache.lucene.index.IndexReader;", NULL, NULL, .constantValue.asLong = 0 },
+    { "analyzer_", "LOrgApacheLuceneAnalysisAnalyzer;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "indexReader_", "LOrgApacheLuceneIndexIndexReader;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const char *inner_classes[] = {"Lorg.lukhnos.lucenestudy.Searcher$SortBy;"};
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudySearcher = { 2, "Searcher", "org.lukhnos.lucenestudy", NULL, 0x1, 6, methods, 2, fields, 0, NULL, 1, inner_classes, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;", "LJavaIoIOException;", "search", "LNSString;I", "LOrgApacheLuceneQueryparserClassicParseException;LJavaIoIOException;", "LNSString;LOrgLukhnosLucenestudySearcher_SortBy;I", "searchAfter", "LOrgLukhnosLucenestudySearchResult;I", "LJavaLangException;", "LOrgApacheLuceneSearchScoreDoc;LOrgApacheLuceneSearchQuery;LOrgApacheLuceneSearchSort;I", "LOrgLukhnosLucenestudySearcher_SortBy;" };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudySearcher = { "Searcher", "org.lukhnos.lucenestudy", ptrTable, methods, fields, 7, 0x1, 6, 2, -1, 10, -1, -1, -1 };
   return &_OrgLukhnosLucenestudySearcher;
 }
 
@@ -171,8 +181,32 @@ OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_value
   return OrgLukhnosLucenestudySearcher_SortBy_valueOfWithNSString_(name);
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-  return self;
+- (OrgLukhnosLucenestudySearcher_SortBy_Enum)toNSEnum {
+  return (OrgLukhnosLucenestudySearcher_SortBy_Enum)[self ordinal];
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "[LOrgLukhnosLucenestudySearcher_SortBy;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgLukhnosLucenestudySearcher_SortBy;", 0x9, 0, 1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(values);
+  methods[1].selector = @selector(valueOfWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "RELEVANCE", "LOrgLukhnosLucenestudySearcher_SortBy;", .constantValue.asLong = 0, 0x4019, -1, 2, -1, -1 },
+    { "DOCUMENT_ORDER", "LOrgLukhnosLucenestudySearcher_SortBy;", .constantValue.asLong = 0, 0x4019, -1, 3, -1, -1 },
+    { "TITLE", "LOrgLukhnosLucenestudySearcher_SortBy;", .constantValue.asLong = 0, 0x4019, -1, 4, -1, -1 },
+    { "YEAR", "LOrgLukhnosLucenestudySearcher_SortBy;", .constantValue.asLong = 0, 0x4019, -1, 5, -1, -1 },
+    { "RATING", "LOrgLukhnosLucenestudySearcher_SortBy;", .constantValue.asLong = 0, 0x4019, -1, 6, -1, -1 },
+    { "sort_", "LOrgApacheLuceneSearchSort;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "valueOf", "LNSString;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, RELEVANCE), &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, DOCUMENT_ORDER), &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, TITLE), &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, YEAR), &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, RATING), "LOrgLukhnosLucenestudySearcher;", "Ljava/lang/Enum<Lorg/lukhnos/lucenestudy/Searcher$SortBy;>;" };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudySearcher_SortBy = { "SortBy", "org.lukhnos.lucenestudy", ptrTable, methods, fields, 7, 0x4019, 2, 6, 7, -1, -1, 8, -1 };
+  return &_OrgLukhnosLucenestudySearcher_SortBy;
 }
 
 + (void)initialize {
@@ -184,20 +218,6 @@ OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_value
     JreEnum(OrgLukhnosLucenestudySearcher_SortBy, RATING) = new_OrgLukhnosLucenestudySearcher_SortBy_initWithOrgApacheLuceneSearchSort_withNSString_withInt_(new_OrgApacheLuceneSearchSort_initWithOrgApacheLuceneSearchSortField_(new_OrgApacheLuceneSearchSortField_initWithNSString_withOrgApacheLuceneSearchSortField_Type_withBoolean_(OrgLukhnosLucenestudyIndexer_RATING_FIELD_NAME, JreLoadEnum(OrgApacheLuceneSearchSortField_Type, INT), true)), @"RATING", 4);
     J2OBJC_SET_INITIALIZED(OrgLukhnosLucenestudySearcher_SortBy)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcFieldInfo fields[] = {
-    { "RELEVANCE", "RELEVANCE", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, RELEVANCE), NULL, .constantValue.asLong = 0 },
-    { "DOCUMENT_ORDER", "DOCUMENT_ORDER", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, DOCUMENT_ORDER), NULL, .constantValue.asLong = 0 },
-    { "TITLE", "TITLE", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, TITLE), NULL, .constantValue.asLong = 0 },
-    { "YEAR", "YEAR", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, YEAR), NULL, .constantValue.asLong = 0 },
-    { "RATING", "RATING", 0x4019, "Lorg.lukhnos.lucenestudy.Searcher$SortBy;", &JreEnum(OrgLukhnosLucenestudySearcher_SortBy, RATING), NULL, .constantValue.asLong = 0 },
-    { "sort_", NULL, 0x10, "Lorg.apache.lucene.search.Sort;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const char *superclass_type_args[] = {"Lorg.lukhnos.lucenestudy.Searcher$SortBy;"};
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudySearcher_SortBy = { 2, "SortBy", "org.lukhnos.lucenestudy", "Searcher", 0x4019, 0, NULL, 6, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lorg/lukhnos/lucenestudy/Searcher$SortBy;>;" };
-  return &_OrgLukhnosLucenestudySearcher_SortBy;
 }
 
 @end
@@ -224,7 +244,7 @@ OrgLukhnosLucenestudySearcher_SortBy *OrgLukhnosLucenestudySearcher_SortBy_value
       return e;
     }
   }
-  @throw [[JavaLangIllegalArgumentException alloc] initWithNSString:name];
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
   return nil;
 }
 

@@ -16,7 +16,6 @@
 #if !defined (OrgLukhnosLucenestudySuggesterTest_) && (INCLUDE_ALL_OrgLukhnosLucenestudySuggesterTest || defined(INCLUDE_OrgLukhnosLucenestudySuggesterTest))
 #define OrgLukhnosLucenestudySuggesterTest_
 
-@class IOSObjectArray;
 @class OrgLukhnosPortmobileFilePath;
 
 @interface OrgLukhnosLucenestudySuggesterTest : NSObject {
@@ -42,9 +41,9 @@ J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudySuggesterTest, temp_, OrgLukhnosPortmob
 
 FOUNDATION_EXPORT void OrgLukhnosLucenestudySuggesterTest_init(OrgLukhnosLucenestudySuggesterTest *self);
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudySuggesterTest *new_OrgLukhnosLucenestudySuggesterTest_init() NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT OrgLukhnosLucenestudySuggesterTest *new_OrgLukhnosLucenestudySuggesterTest_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudySuggesterTest *create_OrgLukhnosLucenestudySuggesterTest_init();
+FOUNDATION_EXPORT OrgLukhnosLucenestudySuggesterTest *create_OrgLukhnosLucenestudySuggesterTest_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudySuggesterTest)
 

@@ -31,6 +31,7 @@
   OrgApacheLuceneSearchQuery *query_;
   OrgApacheLuceneSearchSort *sort_;
   OrgLukhnosLucenestudyHighlightingHelper *highlightingHelper_;
+  jint fragmentLength_;
 }
 
 #pragma mark Public
@@ -43,6 +44,8 @@
 
 - (jboolean)hasMore;
 
+- (void)setFragmentLengthWithInt:(jint)length;
+
 #pragma mark Package-Private
 
 - (instancetype)initWithInt:(jint)totalHits
@@ -51,6 +54,10 @@ withOrgApacheLuceneSearchScoreDoc:(OrgApacheLuceneSearchScoreDoc *)lastScoreDoc
 withOrgApacheLuceneSearchQuery:(OrgApacheLuceneSearchQuery *)query
 withOrgApacheLuceneSearchSort:(OrgApacheLuceneSearchSort *)sort
 withOrgLukhnosLucenestudyHighlightingHelper:(OrgLukhnosLucenestudyHighlightingHelper *)highlightingHelper;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 

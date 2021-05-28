@@ -30,13 +30,13 @@
 
 J2OBJC_EMPTY_STATIC_INIT(OrgLukhnosLucenestudyUtil)
 
-FOUNDATION_EXPORT void OrgLukhnosLucenestudyUtil_deletePathWithOrgLukhnosPortmobileFilePath_(OrgLukhnosPortmobileFilePath *path);
-
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyUtil_init(OrgLukhnosLucenestudyUtil *self);
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudyUtil *new_OrgLukhnosLucenestudyUtil_init() NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT OrgLukhnosLucenestudyUtil *new_OrgLukhnosLucenestudyUtil_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudyUtil *create_OrgLukhnosLucenestudyUtil_init();
+FOUNDATION_EXPORT OrgLukhnosLucenestudyUtil *create_OrgLukhnosLucenestudyUtil_init(void);
+
+FOUNDATION_EXPORT void OrgLukhnosLucenestudyUtil_deletePathWithOrgLukhnosPortmobileFilePath_(OrgLukhnosPortmobileFilePath *path);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyUtil)
 

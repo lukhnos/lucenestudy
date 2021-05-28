@@ -45,6 +45,10 @@
 
 + (OrgLukhnosPortmobileFilePath *)getSuggestionIndexPathWithOrgLukhnosPortmobileFilePath:(OrgLukhnosPortmobileFilePath *)indexRoot;
 
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(OrgLukhnosLucenestudySuggester)
@@ -52,11 +56,11 @@ J2OBJC_EMPTY_STATIC_INIT(OrgLukhnosLucenestudySuggester)
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudySuggester, indexRootPath_, OrgLukhnosPortmobileFilePath *)
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudySuggester, suggester_, OrgApacheLuceneSearchSuggestAnalyzingAnalyzingInfixSuggester *)
 
-inline jint OrgLukhnosLucenestudySuggester_get_DEFAULT_SUGGESTION_COUNT();
+inline jint OrgLukhnosLucenestudySuggester_get_DEFAULT_SUGGESTION_COUNT(void);
 #define OrgLukhnosLucenestudySuggester_DEFAULT_SUGGESTION_COUNT 10
 J2OBJC_STATIC_FIELD_CONSTANT(OrgLukhnosLucenestudySuggester, DEFAULT_SUGGESTION_COUNT, jint)
 
-inline NSString *OrgLukhnosLucenestudySuggester_get_INDEX_NAME();
+inline NSString *OrgLukhnosLucenestudySuggester_get_INDEX_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *OrgLukhnosLucenestudySuggester_INDEX_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudySuggester, INDEX_NAME, NSString *)

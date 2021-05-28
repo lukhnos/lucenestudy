@@ -7,15 +7,11 @@
 #include "java/lang/StringBuilder.h"
 #include "org/lukhnos/lucenestudy/MinimalHTMLEncoder.h"
 
+#if !__has_feature(objc_arc)
+#error "org/lukhnos/lucenestudy/MinimalHTMLEncoder must be compiled with ARC (-fobjc-arc)"
+#endif
+
 @implementation OrgLukhnosLucenestudyMinimalHTMLEncoder
-
-+ (NSString *)htmlEncodeWithNSString:(NSString *)plainText {
-  return OrgLukhnosLucenestudyMinimalHTMLEncoder_htmlEncodeWithNSString_(plainText);
-}
-
-- (NSString *)encodeTextWithNSString:(NSString *)originalText {
-  return OrgLukhnosLucenestudyMinimalHTMLEncoder_htmlEncodeWithNSString_(originalText);
-}
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
@@ -24,25 +20,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "htmlEncodeWithNSString:", "htmlEncode", "Ljava.lang.String;", 0x19, NULL, NULL },
-    { "encodeTextWithNSString:", "encodeText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "init", "MinimalHTMLEncoder", NULL, 0x1, NULL, NULL },
-  };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudyMinimalHTMLEncoder = { 2, "MinimalHTMLEncoder", "org.lukhnos.lucenestudy", NULL, 0x1, 3, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgLukhnosLucenestudyMinimalHTMLEncoder;
+- (void)setNewlineToBrWithBoolean:(jboolean)newlineToBr {
+  self->newlineToBr_ = newlineToBr;
 }
 
-@end
-
-NSString *OrgLukhnosLucenestudyMinimalHTMLEncoder_htmlEncodeWithNSString_(NSString *plainText) {
-  OrgLukhnosLucenestudyMinimalHTMLEncoder_initialize();
-  if (plainText == nil || ((jint) [plainText length]) == 0) {
+- (NSString *)encodeTextWithNSString:(NSString *)plainText {
+  if (plainText == nil || [plainText java_length] == 0) {
     return @"";
   }
-  JavaLangStringBuilder *result = new_JavaLangStringBuilder_initWithInt_(((jint) [plainText length]));
-  for (jint index = 0; index < ((jint) [plainText length]); index++) {
+  JavaLangStringBuilder *result = new_JavaLangStringBuilder_initWithInt_([plainText java_length]);
+  for (jint index = 0; index < [plainText java_length]; index++) {
     jchar ch = [plainText charAtWithInt:index];
     switch (ch) {
       case '&':
@@ -55,14 +42,43 @@ NSString *OrgLukhnosLucenestudyMinimalHTMLEncoder_htmlEncodeWithNSString_(NSStri
       (void) [result appendWithNSString:@"&gt;"];
       break;
       default:
-      (void) [result appendWithChar:ch];
+      if (newlineToBr_ && ch == 0x000a) {
+        (void) [result appendWithNSString:@"<br>"];
+      }
+      else {
+        (void) [result appendWithChar:ch];
+      }
     }
   }
   return [result description];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 2, 3, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(setNewlineToBrWithBoolean:);
+  methods[2].selector = @selector(encodeTextWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "newlineToBr_", "Z", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "setNewlineToBr", "Z", "encodeText", "LNSString;" };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudyMinimalHTMLEncoder = { "MinimalHTMLEncoder", "org.lukhnos.lucenestudy", ptrTable, methods, fields, 7, 0x1, 3, 1, -1, -1, -1, -1, -1 };
+  return &_OrgLukhnosLucenestudyMinimalHTMLEncoder;
+}
+
+@end
+
 void OrgLukhnosLucenestudyMinimalHTMLEncoder_init(OrgLukhnosLucenestudyMinimalHTMLEncoder *self) {
   NSObject_init(self);
+  self->newlineToBr_ = false;
 }
 
 OrgLukhnosLucenestudyMinimalHTMLEncoder *new_OrgLukhnosLucenestudyMinimalHTMLEncoder_init() {

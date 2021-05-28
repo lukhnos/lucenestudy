@@ -3,7 +3,6 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/Study.java
 //
 
-#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
@@ -15,6 +14,7 @@
 #include "java/lang/Exception.h"
 #include "java/lang/Integer.h"
 #include "java/lang/System.h"
+#include "java/lang/Throwable.h"
 #include "java/util/ArrayList.h"
 #include "java/util/Collections.h"
 #include "java/util/List.h"
@@ -27,7 +27,18 @@
 #include "org/lukhnos/lucenestudy/Study.h"
 #include "org/lukhnos/lucenestudy/Suggester.h"
 
+#if !__has_feature(objc_arc)
+#error "org/lukhnos/lucenestudy/Study must be compiled with ARC (-fobjc-arc)"
+#endif
+
 @implementation OrgLukhnosLucenestudyStudy
+
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype)init {
+  OrgLukhnosLucenestudyStudy_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)mainWithNSStringArray:(IOSObjectArray *)args {
   OrgLukhnosLucenestudyStudy_mainWithNSStringArray_(args);
@@ -73,30 +84,49 @@
   OrgLukhnosLucenestudyStudy_addWithNSString_withNSString_withNSString_withNSString_withNSString_withNSString_withNSString_(indexPath, title, year, rating, positive, review, source);
 }
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  OrgLukhnosLucenestudyStudy_init(self);
-  return self;
-}
-J2OBJC_IGNORE_DESIGNATED_END
-
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "mainWithNSStringArray:", "main", "V", 0x9, "Ljava.lang.Exception;", NULL },
-    { "showHelpAndExit", NULL, "V", 0x8, NULL, NULL },
-    { "indexWithNSString:withNSString:", "index", "V", 0x8, NULL, NULL },
-    { "importDataWithJavaIoInputStream:withNSString:withBoolean:", "importData", "I", 0x9, "Ljava.lang.Exception;", NULL },
-    { "searchWithNSString:withNSString:", "search", "V", 0x8, "Ljava.lang.Exception;", NULL },
-    { "delete__WithNSString:withNSString:", "delete", "V", 0x8, "Ljava.lang.Exception;", NULL },
-    { "suggestWithNSString:withNSString:", "suggest", "V", 0x8, "Ljava.lang.Exception;", NULL },
-    { "addWithNSString:withNSString:withNSString:withNSString:withNSString:withNSString:withNSString:", "add", "V", 0x8, "Ljava.lang.Exception;", NULL },
-    { "init", "Study", NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 0, 1, 2, -1, -1, -1 },
+    { NULL, "V", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x8, 3, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 5, 6, 2, -1, -1, -1 },
+    { NULL, "V", 0x8, 7, 4, 2, -1, -1, -1 },
+    { NULL, "V", 0x8, 8, 4, 2, -1, -1, -1 },
+    { NULL, "V", 0x8, 9, 4, 2, -1, -1, -1 },
+    { NULL, "V", 0x8, 10, 11, 2, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudyStudy = { 2, "Study", "org.lukhnos.lucenestudy", NULL, 0x1, 9, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(mainWithNSStringArray:);
+  methods[2].selector = @selector(showHelpAndExit);
+  methods[3].selector = @selector(indexWithNSString:withNSString:);
+  methods[4].selector = @selector(importDataWithJavaIoInputStream:withNSString:withBoolean:);
+  methods[5].selector = @selector(searchWithNSString:withNSString:);
+  methods[6].selector = @selector(delete__WithNSString:withNSString:);
+  methods[7].selector = @selector(suggestWithNSString:withNSString:);
+  methods[8].selector = @selector(addWithNSString:withNSString:withNSString:withNSString:withNSString:withNSString:withNSString:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "main", "[LNSString;", "LJavaLangException;", "index", "LNSString;LNSString;", "importData", "LJavaIoInputStream;LNSString;Z", "search", "delete", "suggest", "add", "LNSString;LNSString;LNSString;LNSString;LNSString;LNSString;LNSString;" };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudyStudy = { "Study", "org.lukhnos.lucenestudy", ptrTable, methods, NULL, 7, 0x1, 9, 0, -1, -1, -1, -1, -1 };
   return &_OrgLukhnosLucenestudyStudy;
 }
 
 @end
+
+void OrgLukhnosLucenestudyStudy_init(OrgLukhnosLucenestudyStudy *self) {
+  NSObject_init(self);
+}
+
+OrgLukhnosLucenestudyStudy *new_OrgLukhnosLucenestudyStudy_init() {
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudyStudy, init)
+}
+
+OrgLukhnosLucenestudyStudy *create_OrgLukhnosLucenestudyStudy_init() {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyStudy, init)
+}
 
 void OrgLukhnosLucenestudyStudy_mainWithNSStringArray_(IOSObjectArray *args) {
   OrgLukhnosLucenestudyStudy_initialize();
@@ -104,22 +134,22 @@ void OrgLukhnosLucenestudyStudy_mainWithNSStringArray_(IOSObjectArray *args) {
     OrgLukhnosLucenestudyStudy_showHelpAndExit();
     return;
   }
-  if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) equalsIgnoreCase:@"index"]) {
+  if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) java_equalsIgnoreCase:@"index"]) {
     OrgLukhnosLucenestudyStudy_indexWithNSString_withNSString_(IOSObjectArray_Get(args, 1), IOSObjectArray_Get(args, 2));
   }
-  else if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) equalsIgnoreCase:@"search"]) {
+  else if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) java_equalsIgnoreCase:@"search"]) {
     OrgLukhnosLucenestudyStudy_searchWithNSString_withNSString_(IOSObjectArray_Get(args, 1), IOSObjectArray_Get(args, 2));
   }
-  else if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) equalsIgnoreCase:@"suggest"]) {
+  else if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) java_equalsIgnoreCase:@"suggest"]) {
     OrgLukhnosLucenestudyStudy_suggestWithNSString_withNSString_(IOSObjectArray_Get(args, 1), IOSObjectArray_Get(args, 2));
   }
-  else if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) equalsIgnoreCase:@"add"]) {
+  else if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) java_equalsIgnoreCase:@"add"]) {
     if (args->size_ < 8) {
       OrgLukhnosLucenestudyStudy_showHelpAndExit();
     }
     OrgLukhnosLucenestudyStudy_addWithNSString_withNSString_withNSString_withNSString_withNSString_withNSString_withNSString_(IOSObjectArray_Get(args, 1), IOSObjectArray_Get(args, 2), IOSObjectArray_Get(args, 3), IOSObjectArray_Get(args, 4), IOSObjectArray_Get(args, 5), IOSObjectArray_Get(args, 6), IOSObjectArray_Get(args, 7));
   }
-  else if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) equalsIgnoreCase:@"delete"]) {
+  else if ([((NSString *) nil_chk(IOSObjectArray_Get(args, 0))) java_equalsIgnoreCase:@"delete"]) {
     OrgLukhnosLucenestudyStudy_delete__WithNSString_withNSString_(IOSObjectArray_Get(args, 1), IOSObjectArray_Get(args, 2));
   }
   else {
@@ -130,11 +160,11 @@ void OrgLukhnosLucenestudyStudy_mainWithNSStringArray_(IOSObjectArray *args) {
 void OrgLukhnosLucenestudyStudy_showHelpAndExit() {
   OrgLukhnosLucenestudyStudy_initialize();
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:@"Usage: Study [index|search|suggest] arguments..."];
-  [JreLoadStatic(JavaLangSystem, err) printlnWithNSString:@"    index <source JSON> <index path>"];
-  [JreLoadStatic(JavaLangSystem, err) printlnWithNSString:@"    search <index path> <query>"];
-  [JreLoadStatic(JavaLangSystem, err) printlnWithNSString:@"    suggest <index path> <keyword(s)>"];
-  [JreLoadStatic(JavaLangSystem, err) printlnWithNSString:@"    add <index path> <title> <year> <rating> <positive> <review> <source>"];
-  [JreLoadStatic(JavaLangSystem, err) printlnWithNSString:@"    delete <index path> <query>"];
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:@"    index <source JSON> <index path>"];
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:@"    search <index path> <query>"];
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:@"    suggest <index path> <keyword(s)>"];
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:@"    add <index path> <title> <year> <rating> <positive> <review> <source>"];
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:@"    delete <index path> <query>"];
   JavaLangSystem_exitWithInt_(1);
 }
 
@@ -150,11 +180,11 @@ void OrgLukhnosLucenestudyStudy_indexWithNSString_withNSString_(NSString *source
   }
   @try {
     JavaIoFileInputStream *stream = new_JavaIoFileInputStream_initWithNSString_(sourcePath);
-    NSException *__primaryException1 = nil;
+    JavaLangThrowable *__primaryException1 = nil;
     @try {
       OrgLukhnosLucenestudyStudy_importDataWithJavaIoInputStream_withNSString_withBoolean_(stream, indexPath, true);
     }
-    @catch (NSException *e) {
+    @catch (JavaLangThrowable *e) {
       __primaryException1 = e;
       @throw e;
     }
@@ -163,17 +193,19 @@ void OrgLukhnosLucenestudyStudy_indexWithNSString_withNSString_(NSString *source
         if (__primaryException1 != nil) {
           @try {
             [stream close];
-          } @catch (NSException *e) {
-            [__primaryException1 addSuppressedWithNSException:e];
           }
-        } else {
+          @catch (JavaLangThrowable *e) {
+            [__primaryException1 addSuppressedWithJavaLangThrowable:e];
+          }
+        }
+        else {
           [stream close];
         }
       }
     }
   }
   @catch (JavaLangException *e) {
-    [((JavaLangException *) nil_chk(e)) printStackTrace];
+    [e printStackTrace];
     JavaLangSystem_exitWithInt_(1);
   }
 }
@@ -187,7 +219,7 @@ jint OrgLukhnosLucenestudyStudy_importDataWithJavaIoInputStream_withNSString_wit
   while ((read = [((JavaIoInputStream *) nil_chk(stream)) readWithByteArray:buf]) > 0) {
     [baos writeWithByteArray:buf withInt:0 withInt:read];
   }
-  NSString *dataStr = [NSString stringWithBytes:[baos toByteArray] charsetName:@"UTF-8"];
+  NSString *dataStr = [NSString java_stringWithBytes:[baos toByteArray] charsetName:@"UTF-8"];
   id<JavaUtilList> docs = new_JavaUtilArrayList_init();
   OrgJsonJSONArray *jsonArray = new_OrgJsonJSONArray_initWithNSString_(dataStr);
   for (jint i = 0, len = [jsonArray length]; i < len; i++) {
@@ -216,11 +248,11 @@ void OrgLukhnosLucenestudyStudy_searchWithNSString_withNSString_(NSString *index
   OrgLukhnosLucenestudySearchResult *result = [searcher searchWithNSString:query withOrgLukhnosLucenestudySearcher_SortBy:nil withInt:10];
   for (OrgLukhnosLucenestudyDocument * __strong doc in nil_chk(((OrgLukhnosLucenestudySearchResult *) nil_chk(result))->documents_)) {
     [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$$", @"title   : ", [result getHighlightedTitleWithOrgLukhnosLucenestudyDocument:doc])];
-    [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$I", @"year    : ", ((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->year_)];
-    [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$I", @"rating  : ", doc->rating_)];
-    [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$Z", @"positive: ", doc->positive_)];
-    [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$$", @"review  : ", [result getHighlightedReviewWithOrgLukhnosLucenestudyDocument:doc])];
-    [JreLoadStatic(JavaLangSystem, out) println];
+    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$I", @"year    : ", ((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->year_)];
+    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$I", @"rating  : ", doc->rating_)];
+    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$Z", @"positive: ", doc->positive_)];
+    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$$", @"review  : ", [result getHighlightedReviewWithOrgLukhnosLucenestudyDocument:doc])];
+    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) println];
   }
   [searcher close];
 }
@@ -245,23 +277,11 @@ void OrgLukhnosLucenestudyStudy_suggestWithNSString_withNSString_(NSString *inde
 
 void OrgLukhnosLucenestudyStudy_addWithNSString_withNSString_withNSString_withNSString_withNSString_withNSString_withNSString_(NSString *indexPath, NSString *title, NSString *year, NSString *rating, NSString *positive, NSString *review, NSString *source) {
   OrgLukhnosLucenestudyStudy_initialize();
-  OrgLukhnosLucenestudyDocument *doc = new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(title, JavaLangInteger_parseIntWithNSString_(year), JavaLangInteger_parseIntWithNSString_(year), [((NSString *) nil_chk(rating)) equalsIgnoreCase:@"true"], review, source);
+  OrgLukhnosLucenestudyDocument *doc = new_OrgLukhnosLucenestudyDocument_initWithNSString_withInt_withInt_withBoolean_withNSString_withNSString_(title, JavaLangInteger_parseIntWithNSString_(year), JavaLangInteger_parseIntWithNSString_(year), [((NSString *) nil_chk(rating)) java_equalsIgnoreCase:@"true"], review, source);
   OrgLukhnosLucenestudyIndexer *indexer = new_OrgLukhnosLucenestudyIndexer_initWithNSString_withBoolean_(indexPath, true);
   [indexer addDocumentsWithJavaUtilList:JavaUtilCollections_singletonListWithId_(doc)];
   [indexer close];
   OrgLukhnosLucenestudySuggester_rebuildWithNSString_(indexPath);
-}
-
-void OrgLukhnosLucenestudyStudy_init(OrgLukhnosLucenestudyStudy *self) {
-  NSObject_init(self);
-}
-
-OrgLukhnosLucenestudyStudy *new_OrgLukhnosLucenestudyStudy_init() {
-  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudyStudy, init)
-}
-
-OrgLukhnosLucenestudyStudy *create_OrgLukhnosLucenestudyStudy_init() {
-  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyStudy, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudyStudy)

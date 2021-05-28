@@ -3,7 +3,6 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/Util.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/io/IOException.h"
 #include "org/lukhnos/lucenestudy/Util.h"
@@ -13,7 +12,13 @@
 #include "org/lukhnos/portmobile/file/SimpleFileVisitor.h"
 #include "org/lukhnos/portmobile/file/attribute/BasicFileAttributes.h"
 
-@interface OrgLukhnosLucenestudyUtil_$1 : OrgLukhnosPortmobileFileSimpleFileVisitor
+#if !__has_feature(objc_arc)
+#error "org/lukhnos/lucenestudy/Util must be compiled with ARC (-fobjc-arc)"
+#endif
+
+@interface OrgLukhnosLucenestudyUtil_1 : OrgLukhnosPortmobileFileSimpleFileVisitor
+
+- (instancetype)init;
 
 - (OrgLukhnosPortmobileFileFileVisitResult *)visitFileWithId:(OrgLukhnosPortmobileFilePath *)file
     withOrgLukhnosPortmobileFileAttributeBasicFileAttributes:(OrgLukhnosPortmobileFileAttributeBasicFileAttributes *)attrs;
@@ -21,25 +26,17 @@
 - (OrgLukhnosPortmobileFileFileVisitResult *)postVisitDirectoryWithId:(OrgLukhnosPortmobileFilePath *)dir
                                                 withJavaIoIOException:(JavaIoIOException *)exc;
 
-- (instancetype)init;
-
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(OrgLukhnosLucenestudyUtil_$1)
+J2OBJC_EMPTY_STATIC_INIT(OrgLukhnosLucenestudyUtil_1)
 
-__attribute__((unused)) static void OrgLukhnosLucenestudyUtil_$1_init(OrgLukhnosLucenestudyUtil_$1 *self);
+__attribute__((unused)) static void OrgLukhnosLucenestudyUtil_1_init(OrgLukhnosLucenestudyUtil_1 *self);
 
-__attribute__((unused)) static OrgLukhnosLucenestudyUtil_$1 *new_OrgLukhnosLucenestudyUtil_$1_init() NS_RETURNS_RETAINED;
+__attribute__((unused)) static OrgLukhnosLucenestudyUtil_1 *new_OrgLukhnosLucenestudyUtil_1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static OrgLukhnosLucenestudyUtil_$1 *create_OrgLukhnosLucenestudyUtil_$1_init();
-
-J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyUtil_$1)
+__attribute__((unused)) static OrgLukhnosLucenestudyUtil_1 *create_OrgLukhnosLucenestudyUtil_1_init(void);
 
 @implementation OrgLukhnosLucenestudyUtil
-
-+ (void)deletePathWithOrgLukhnosPortmobileFilePath:(OrgLukhnosPortmobileFilePath *)path {
-  OrgLukhnosLucenestudyUtil_deletePathWithOrgLukhnosPortmobileFilePath_(path);
-}
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
@@ -48,21 +45,27 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
++ (void)deletePathWithOrgLukhnosPortmobileFilePath:(OrgLukhnosPortmobileFilePath *)path {
+  OrgLukhnosLucenestudyUtil_deletePathWithOrgLukhnosPortmobileFilePath_(path);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "deletePathWithOrgLukhnosPortmobileFilePath:", "deletePath", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "init", "Util", NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 0, 1, 2, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudyUtil = { 2, "Util", "org.lukhnos.lucenestudy", NULL, 0x1, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(deletePathWithOrgLukhnosPortmobileFilePath:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "deletePath", "LOrgLukhnosPortmobileFilePath;", "LJavaIoIOException;" };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudyUtil = { "Util", "org.lukhnos.lucenestudy", ptrTable, methods, NULL, 7, 0x1, 2, 0, -1, -1, -1, -1, -1 };
   return &_OrgLukhnosLucenestudyUtil;
 }
 
 @end
-
-void OrgLukhnosLucenestudyUtil_deletePathWithOrgLukhnosPortmobileFilePath_(OrgLukhnosPortmobileFilePath *path) {
-  OrgLukhnosLucenestudyUtil_initialize();
-  (void) OrgLukhnosPortmobileFileFiles_walkFileTreeWithOrgLukhnosPortmobileFilePath_withOrgLukhnosPortmobileFileFileVisitor_(path, new_OrgLukhnosLucenestudyUtil_$1_init());
-}
 
 void OrgLukhnosLucenestudyUtil_init(OrgLukhnosLucenestudyUtil *self) {
   NSObject_init(self);
@@ -76,53 +79,62 @@ OrgLukhnosLucenestudyUtil *create_OrgLukhnosLucenestudyUtil_init() {
   J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyUtil, init)
 }
 
+void OrgLukhnosLucenestudyUtil_deletePathWithOrgLukhnosPortmobileFilePath_(OrgLukhnosPortmobileFilePath *path) {
+  OrgLukhnosLucenestudyUtil_initialize();
+  (void) OrgLukhnosPortmobileFileFiles_walkFileTreeWithOrgLukhnosPortmobileFilePath_withOrgLukhnosPortmobileFileFileVisitor_(path, new_OrgLukhnosLucenestudyUtil_1_init());
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudyUtil)
 
-@implementation OrgLukhnosLucenestudyUtil_$1
+@implementation OrgLukhnosLucenestudyUtil_1
+
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype)init {
+  OrgLukhnosLucenestudyUtil_1_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgLukhnosPortmobileFileFileVisitResult *)visitFileWithId:(OrgLukhnosPortmobileFilePath *)file
     withOrgLukhnosPortmobileFileAttributeBasicFileAttributes:(OrgLukhnosPortmobileFileAttributeBasicFileAttributes *)attrs {
   OrgLukhnosPortmobileFileFiles_delete__WithOrgLukhnosPortmobileFilePath_(file);
-  return JreLoadEnum(OrgLukhnosPortmobileFileFileVisitResult, CONTINUE);
+  return JreRetainedLocalValue(JreLoadEnum(OrgLukhnosPortmobileFileFileVisitResult, CONTINUE));
 }
 
 - (OrgLukhnosPortmobileFileFileVisitResult *)postVisitDirectoryWithId:(OrgLukhnosPortmobileFilePath *)dir
                                                 withJavaIoIOException:(JavaIoIOException *)exc {
   OrgLukhnosPortmobileFileFiles_delete__WithOrgLukhnosPortmobileFilePath_(dir);
-  return JreLoadEnum(OrgLukhnosPortmobileFileFileVisitResult, CONTINUE);
+  return JreRetainedLocalValue(JreLoadEnum(OrgLukhnosPortmobileFileFileVisitResult, CONTINUE));
 }
-
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  OrgLukhnosLucenestudyUtil_$1_init(self);
-  return self;
-}
-J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "visitFileWithId:withOrgLukhnosPortmobileFileAttributeBasicFileAttributes:", "visitFile", "Lorg.lukhnos.portmobile.file.FileVisitResult;", 0x1, "Ljava.io.IOException;", "(Lorg/lukhnos/portmobile/file/Path;Lorg/lukhnos/portmobile/file/attribute/BasicFileAttributes;)Lorg/lukhnos/portmobile/file/FileVisitResult;" },
-    { "postVisitDirectoryWithId:withJavaIoIOException:", "postVisitDirectory", "Lorg.lukhnos.portmobile.file.FileVisitResult;", 0x1, "Ljava.io.IOException;", "(Lorg/lukhnos/portmobile/file/Path;Ljava/io/IOException;)Lorg/lukhnos/portmobile/file/FileVisitResult;" },
-    { "init", "", NULL, 0x0, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgLukhnosPortmobileFileFileVisitResult;", 0x1, 0, 1, 2, -1, -1, -1 },
+    { NULL, "LOrgLukhnosPortmobileFileFileVisitResult;", 0x1, 3, 4, 2, -1, -1, -1 },
   };
-  static const char *superclass_type_args[] = {"Lorg.lukhnos.portmobile.file.Path;"};
-  static const J2ObjCEnclosingMethodInfo enclosing_method = { "OrgLukhnosLucenestudyUtil", "deletePathWithOrgLukhnosPortmobileFilePath:" };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudyUtil_$1 = { 2, "", "org.lukhnos.lucenestudy", "Util", 0x8008, 3, methods, 0, NULL, 1, superclass_type_args, 0, NULL, &enclosing_method, "Lorg/lukhnos/portmobile/file/SimpleFileVisitor<Lorg/lukhnos/portmobile/file/Path;>;" };
-  return &_OrgLukhnosLucenestudyUtil_$1;
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(visitFileWithId:withOrgLukhnosPortmobileFileAttributeBasicFileAttributes:);
+  methods[2].selector = @selector(postVisitDirectoryWithId:withJavaIoIOException:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "visitFile", "LOrgLukhnosPortmobileFilePath;LOrgLukhnosPortmobileFileAttributeBasicFileAttributes;", "LJavaIoIOException;", "postVisitDirectory", "LOrgLukhnosPortmobileFilePath;LJavaIoIOException;", "LOrgLukhnosLucenestudyUtil;", "deletePathWithOrgLukhnosPortmobileFilePath:", "Lorg/lukhnos/portmobile/file/SimpleFileVisitor<Lorg/lukhnos/portmobile/file/Path;>;" };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudyUtil_1 = { "", "org.lukhnos.lucenestudy", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 5, -1, 6, 7, -1 };
+  return &_OrgLukhnosLucenestudyUtil_1;
 }
 
 @end
 
-void OrgLukhnosLucenestudyUtil_$1_init(OrgLukhnosLucenestudyUtil_$1 *self) {
+void OrgLukhnosLucenestudyUtil_1_init(OrgLukhnosLucenestudyUtil_1 *self) {
   OrgLukhnosPortmobileFileSimpleFileVisitor_init(self);
 }
 
-OrgLukhnosLucenestudyUtil_$1 *new_OrgLukhnosLucenestudyUtil_$1_init() {
-  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudyUtil_$1, init)
+OrgLukhnosLucenestudyUtil_1 *new_OrgLukhnosLucenestudyUtil_1_init() {
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudyUtil_1, init)
 }
 
-OrgLukhnosLucenestudyUtil_$1 *create_OrgLukhnosLucenestudyUtil_$1_init() {
-  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyUtil_$1, init)
+OrgLukhnosLucenestudyUtil_1 *create_OrgLukhnosLucenestudyUtil_1_init() {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyUtil_1, init)
 }
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudyUtil_$1)

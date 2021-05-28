@@ -55,9 +55,9 @@ J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudySearcherTest, docs_, IOSObjectArray *)
 
 FOUNDATION_EXPORT void OrgLukhnosLucenestudySearcherTest_init(OrgLukhnosLucenestudySearcherTest *self);
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudySearcherTest *new_OrgLukhnosLucenestudySearcherTest_init() NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT OrgLukhnosLucenestudySearcherTest *new_OrgLukhnosLucenestudySearcherTest_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudySearcherTest *create_OrgLukhnosLucenestudySearcherTest_init();
+FOUNDATION_EXPORT OrgLukhnosLucenestudySearcherTest *create_OrgLukhnosLucenestudySearcherTest_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudySearcherTest)
 

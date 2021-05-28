@@ -59,9 +59,15 @@
 
 J2OBJC_EMPTY_STATIC_INIT(OrgLukhnosLucenestudyStudy)
 
+FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_init(OrgLukhnosLucenestudyStudy *self);
+
+FOUNDATION_EXPORT OrgLukhnosLucenestudyStudy *new_OrgLukhnosLucenestudyStudy_init(void) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgLukhnosLucenestudyStudy *create_OrgLukhnosLucenestudyStudy_init(void);
+
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_mainWithNSStringArray_(IOSObjectArray *args);
 
-FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_showHelpAndExit();
+FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_showHelpAndExit(void);
 
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_indexWithNSString_withNSString_(NSString *sourcePath, NSString *indexPath);
 
@@ -74,12 +80,6 @@ FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_delete__WithNSString_withNSStr
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_suggestWithNSString_withNSString_(NSString *indexPath, NSString *query);
 
 FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_addWithNSString_withNSString_withNSString_withNSString_withNSString_withNSString_withNSString_(NSString *indexPath, NSString *title, NSString *year, NSString *rating, NSString *positive, NSString *review, NSString *source);
-
-FOUNDATION_EXPORT void OrgLukhnosLucenestudyStudy_init(OrgLukhnosLucenestudyStudy *self);
-
-FOUNDATION_EXPORT OrgLukhnosLucenestudyStudy *new_OrgLukhnosLucenestudyStudy_init() NS_RETURNS_RETAINED;
-
-FOUNDATION_EXPORT OrgLukhnosLucenestudyStudy *create_OrgLukhnosLucenestudyStudy_init();
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyStudy)
 

@@ -3,7 +3,6 @@
 //  source: src/main/java/org/lukhnos/lucenestudy/HighlightingHelper.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/io/IOException.h"
 #include "java/lang/AssertionError.h"
@@ -12,7 +11,6 @@
 #include "java/util/regex/Pattern.h"
 #include "org/apache/lucene/analysis/Analyzer.h"
 #include "org/apache/lucene/search/Query.h"
-#include "org/apache/lucene/search/highlight/Encoder.h"
 #include "org/apache/lucene/search/highlight/Formatter.h"
 #include "org/apache/lucene/search/highlight/Fragmenter.h"
 #include "org/apache/lucene/search/highlight/Highlighter.h"
@@ -23,6 +21,10 @@
 #include "org/lukhnos/lucenestudy/HighlightingHelper.h"
 #include "org/lukhnos/lucenestudy/MinimalHTMLEncoder.h"
 
+#if !__has_feature(objc_arc)
+#error "org/lukhnos/lucenestudy/HighlightingHelper must be compiled with ARC (-fobjc-arc)"
+#endif
+
 J2OBJC_INITIALIZED_DEFN(OrgLukhnosLucenestudyHighlightingHelper)
 
 JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern;
@@ -30,9 +32,9 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern;
 
 @implementation OrgLukhnosLucenestudyHighlightingHelper
 
-- (instancetype)initWithOrgApacheLuceneSearchQuery:(OrgApacheLuceneSearchQuery *)query
-               withOrgApacheLuceneAnalysisAnalyzer:(OrgApacheLuceneAnalysisAnalyzer *)analyzer {
-  OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(self, query, analyzer);
+- (instancetype)initPackagePrivateWithOrgApacheLuceneSearchQuery:(OrgApacheLuceneSearchQuery *)query
+                             withOrgApacheLuceneAnalysisAnalyzer:(OrgApacheLuceneAnalysisAnalyzer *)analyzer {
+  OrgLukhnosLucenestudyHighlightingHelper_initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(self, query, analyzer);
   return self;
 }
 
@@ -51,6 +53,10 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern;
   }
 }
 
+- (void)setLineFeedHTMLEscapeWithBoolean:(jboolean)newLineToBr {
+  [((OrgLukhnosLucenestudyMinimalHTMLEncoder *) nil_chk(encoder_)) setNewlineToBrWithBoolean:newLineToBr];
+}
+
 - (NSString *)highlightOrOriginalWithNSString:(NSString *)fieldName
                                  withNSString:(NSString *)text {
   if (text == nil) {
@@ -60,12 +66,12 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern;
   if (highlighted != nil) {
     return highlighted;
   }
-  jint cpCount = [text codePointCount:0 endIndex:((jint) [text length])];
+  jint cpCount = [text java_codePointCount:0 endIndex:[text java_length]];
   if (cpCount < fragmentLength_) {
     return text;
   }
-  jint index = [text offsetByCodePoints:0 codePointOffset:fragmentLength_ - 1];
-  return JreStrcat("$C", [text substring:0 endIndex:index], 0x2026);
+  jint index = [text java_offsetByCodePoints:0 codePointOffset:fragmentLength_ - 1];
+  return JreStrcat("$C", [text java_substring:0 endIndex:index], 0x2026);
 }
 
 - (NSString *)highlightWithNSString:(NSString *)fieldName
@@ -80,7 +86,7 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern;
     }
     highlighted = [((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern)) matcherWithJavaLangCharSequence:highlighted])) replaceAllWithNSString:@""];
     highlighted = [((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern)) matcherWithJavaLangCharSequence:highlighted])) replaceAllWithNSString:@" "];
-    if ([((NSString *) nil_chk(highlighted)) isEmpty]) {
+    if ([((NSString *) nil_chk(highlighted)) java_isEmpty]) {
       highlighted = nil;
     }
     return highlighted;
@@ -91,60 +97,70 @@ JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern;
   @catch (JavaIoIOException *e) {
     return nil;
   }
-  @catch (JavaLangException *e) {
-    return nil;
-  }
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 1, 2, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x0, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x0, 7, 6, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initPackagePrivateWithOrgApacheLuceneSearchQuery:withOrgApacheLuceneAnalysisAnalyzer:);
+  methods[1].selector = @selector(getFragmentLength);
+  methods[2].selector = @selector(setFragmentLengthWithInt:);
+  methods[3].selector = @selector(setLineFeedHTMLEscapeWithBoolean:);
+  methods[4].selector = @selector(highlightOrOriginalWithNSString:withNSString:);
+  methods[5].selector = @selector(highlightWithNSString:withNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "cleanUpPattern", "LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x18, -1, 8, -1, -1 },
+    { "replaceLFPattern", "LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x18, -1, 9, -1, -1 },
+    { "DEFAULT_FRAGMENT_LENGTH", "I", .constantValue.asInt = OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH, 0x19, -1, -1, -1, -1 },
+    { "encoder_", "LOrgLukhnosLucenestudyMinimalHTMLEncoder;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "scorer_", "LOrgApacheLuceneSearchHighlightQueryScorer;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "highlighter_", "LOrgApacheLuceneSearchHighlightHighlighter;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "analyzer_", "LOrgApacheLuceneAnalysisAnalyzer;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "fragmentLength_", "I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "LOrgApacheLuceneSearchQuery;LOrgApacheLuceneAnalysisAnalyzer;", "setFragmentLength", "I", "setLineFeedHTMLEscape", "Z", "highlightOrOriginal", "LNSString;LNSString;", "highlight", &OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern, &OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudyHighlightingHelper = { "HighlightingHelper", "org.lukhnos.lucenestudy", ptrTable, methods, fields, 7, 0x0, 6, 8, -1, -1, -1, -1, -1 };
+  return &_OrgLukhnosLucenestudyHighlightingHelper;
 }
 
 + (void)initialize {
   if (self == [OrgLukhnosLucenestudyHighlightingHelper class]) {
     OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern = JavaUtilRegexPattern_compileWithNSString_(@"^[\\s\\p{Punct}&&[^<]]+");
-    OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern = JavaUtilRegexPattern_compileWithNSString_(@"\\n");
+    OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern = JavaUtilRegexPattern_compileWithNSString_(@"\\s*\\n+\\s*");
     J2OBJC_SET_INITIALIZED(OrgLukhnosLucenestudyHighlightingHelper)
   }
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgApacheLuceneSearchQuery:withOrgApacheLuceneAnalysisAnalyzer:", "HighlightingHelper", NULL, 0x0, NULL, NULL },
-    { "getFragmentLength", NULL, "I", 0x0, NULL, NULL },
-    { "setFragmentLengthWithInt:", "setFragmentLength", "V", 0x0, NULL, NULL },
-    { "highlightOrOriginalWithNSString:withNSString:", "highlightOrOriginal", "Ljava.lang.String;", 0x0, NULL, NULL },
-    { "highlightWithNSString:withNSString:", "highlight", "Ljava.lang.String;", 0x0, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "cleanUpPattern", "cleanUpPattern", 0x18, "Ljava.util.regex.Pattern;", &OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern, NULL, .constantValue.asLong = 0 },
-    { "replaceLFPattern", "replaceLFPattern", 0x18, "Ljava.util.regex.Pattern;", &OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern, NULL, .constantValue.asLong = 0 },
-    { "DEFAULT_FRAGMENT_LENGTH", "DEFAULT_FRAGMENT_LENGTH", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH },
-    { "scorer_", NULL, 0x10, "Lorg.apache.lucene.search.highlight.QueryScorer;", NULL, NULL, .constantValue.asLong = 0 },
-    { "highlighter_", NULL, 0x10, "Lorg.apache.lucene.search.highlight.Highlighter;", NULL, NULL, .constantValue.asLong = 0 },
-    { "analyzer_", NULL, 0x10, "Lorg.apache.lucene.analysis.Analyzer;", NULL, NULL, .constantValue.asLong = 0 },
-    { "fragmentLength_", NULL, 0x0, "I", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudyHighlightingHelper = { 2, "HighlightingHelper", "org.lukhnos.lucenestudy", NULL, 0x0, 5, methods, 7, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgLukhnosLucenestudyHighlightingHelper;
-}
-
 @end
 
-void OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgLukhnosLucenestudyHighlightingHelper *self, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) {
+void OrgLukhnosLucenestudyHighlightingHelper_initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgLukhnosLucenestudyHighlightingHelper *self, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) {
   NSObject_init(self);
   self->analyzer_ = analyzer;
   id<OrgApacheLuceneSearchHighlightFormatter> formatter = new_OrgApacheLuceneSearchHighlightSimpleHTMLFormatter_init();
-  id<OrgApacheLuceneSearchHighlightEncoder> encoder = new_OrgLukhnosLucenestudyMinimalHTMLEncoder_init();
+  self->encoder_ = new_OrgLukhnosLucenestudyMinimalHTMLEncoder_init();
   self->scorer_ = new_OrgApacheLuceneSearchHighlightQueryScorer_initWithOrgApacheLuceneSearchQuery_(query);
-  self->highlighter_ = new_OrgApacheLuceneSearchHighlightHighlighter_initWithOrgApacheLuceneSearchHighlightFormatter_withOrgApacheLuceneSearchHighlightEncoder_withOrgApacheLuceneSearchHighlightScorer_(formatter, encoder, self->scorer_);
+  self->highlighter_ = new_OrgApacheLuceneSearchHighlightHighlighter_initWithOrgApacheLuceneSearchHighlightFormatter_withOrgApacheLuceneSearchHighlightEncoder_withOrgApacheLuceneSearchHighlightScorer_(formatter, self->encoder_, self->scorer_);
   self->fragmentLength_ = OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH;
   id<OrgApacheLuceneSearchHighlightFragmenter> fragmenter = new_OrgApacheLuceneSearchHighlightSimpleSpanFragmenter_initWithOrgApacheLuceneSearchHighlightQueryScorer_withInt_(self->scorer_, self->fragmentLength_);
   [self->highlighter_ setTextFragmenterWithOrgApacheLuceneSearchHighlightFragmenter:fragmenter];
 }
 
-OrgLukhnosLucenestudyHighlightingHelper *new_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) {
-  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudyHighlightingHelper, initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_, query, analyzer)
+OrgLukhnosLucenestudyHighlightingHelper *new_OrgLukhnosLucenestudyHighlightingHelper_initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) {
+  J2OBJC_NEW_IMPL(OrgLukhnosLucenestudyHighlightingHelper, initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_, query, analyzer)
 }
 
-OrgLukhnosLucenestudyHighlightingHelper *create_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) {
-  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyHighlightingHelper, initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_, query, analyzer)
+OrgLukhnosLucenestudyHighlightingHelper *create_OrgLukhnosLucenestudyHighlightingHelper_initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) {
+  J2OBJC_CREATE_IMPL(OrgLukhnosLucenestudyHighlightingHelper, initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_, query, analyzer)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgLukhnosLucenestudyHighlightingHelper)

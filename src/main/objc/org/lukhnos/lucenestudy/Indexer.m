@@ -6,8 +6,6 @@
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
-#include "java/io/IOException.h"
-#include "java/lang/Exception.h"
 #include "java/lang/Integer.h"
 #include "java/util/List.h"
 #include "org/apache/lucene/analysis/Analyzer.h"
@@ -23,7 +21,6 @@
 #include "org/apache/lucene/index/IndexWriterConfig.h"
 #include "org/apache/lucene/index/IndexableField.h"
 #include "org/apache/lucene/queryparser/classic/MultiFieldQueryParser.h"
-#include "org/apache/lucene/queryparser/classic/ParseException.h"
 #include "org/apache/lucene/queryparser/classic/QueryParser.h"
 #include "org/apache/lucene/search/Query.h"
 #include "org/apache/lucene/store/Directory.h"
@@ -33,6 +30,10 @@
 #include "org/lukhnos/lucenestudy/Indexer.h"
 #include "org/lukhnos/portmobile/file/Path.h"
 #include "org/lukhnos/portmobile/file/Paths.h"
+
+#if !__has_feature(objc_arc)
+#error "org/lukhnos/lucenestudy/Indexer must be compiled with ARC (-fobjc-arc)"
+#endif
 
 NSString *OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME = @"title";
 NSString *OrgLukhnosLucenestudyIndexer_YEAR_FIELD_NAME = @"year";
@@ -93,7 +94,7 @@ NSString *OrgLukhnosLucenestudyIndexer_INDEX_NAME = @"main";
   OrgApacheLuceneDocumentField *sourceField = new_OrgApacheLuceneDocumentStringField_initWithNSString_withNSString_withOrgApacheLuceneDocumentField_Store_(OrgLukhnosLucenestudyIndexer_SOURCE_FIELD_NAME, @"", JreLoadEnum(OrgApacheLuceneDocumentField_Store, YES));
   for (OrgLukhnosLucenestudyDocument * __strong doc in nil_chk(docs)) {
     OrgApacheLuceneDocumentDocument *luceneDoc = new_OrgApacheLuceneDocumentDocument_init();
-    if (((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->title_ != nil && ![doc->title_ isEmpty]) {
+    if (((OrgLukhnosLucenestudyDocument *) nil_chk(doc))->title_ != nil && ![doc->title_ java_isEmpty]) {
       [titleField setStringValueWithNSString:doc->title_];
       [luceneDoc addWithOrgApacheLuceneIndexIndexableField:titleField];
       [titleDocsValueField setBytesValueWithOrgApacheLuceneUtilBytesRef:new_OrgApacheLuceneUtilBytesRef_initWithJavaLangCharSequence_(doc->title_)];
@@ -109,11 +110,11 @@ NSString *OrgLukhnosLucenestudyIndexer_INDEX_NAME = @"main";
     [luceneDoc addWithOrgApacheLuceneIndexIndexableField:ratingDocsValueField];
     [positiveField setIntValueWithInt:doc->positive_ ? 1 : 0];
     [luceneDoc addWithOrgApacheLuceneIndexIndexableField:positiveField];
-    if (doc->review_ != nil && ![doc->review_ isEmpty]) {
+    if (doc->review_ != nil && ![doc->review_ java_isEmpty]) {
       [reviewField setStringValueWithNSString:doc->review_];
       [luceneDoc addWithOrgApacheLuceneIndexIndexableField:reviewField];
     }
-    if (doc->source_ != nil && ![doc->source_ isEmpty]) {
+    if (doc->source_ != nil && ![doc->source_ java_isEmpty]) {
       [sourceField setStringValueWithNSString:doc->source_];
       [luceneDoc addWithOrgApacheLuceneIndexIndexableField:sourceField];
     }
@@ -129,29 +130,44 @@ NSString *OrgLukhnosLucenestudyIndexer_INDEX_NAME = @"main";
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "Indexer", NULL, 0x1, "Ljava.io.IOException;", NULL },
-    { "initWithNSString:withBoolean:", "Indexer", NULL, 0x1, "Ljava.io.IOException;", NULL },
-    { "getAnalyzer", NULL, "Lorg.apache.lucene.analysis.Analyzer;", 0x9, NULL, NULL },
-    { "parseQueryWithOrgApacheLuceneAnalysisAnalyzer:withNSString:", "parseQuery", "Lorg.apache.lucene.search.Query;", 0x9, "Lorg.apache.lucene.queryparser.classic.ParseException;", NULL },
-    { "getIntegerWithOrgApacheLuceneDocumentDocument:withNSString:", "getInteger", "Ljava.lang.Integer;", 0x8, NULL, NULL },
-    { "fromLuceneDocumentWithOrgApacheLuceneDocumentDocument:", "fromLuceneDocument", "Lorg.lukhnos.lucenestudy.Document;", 0x8, NULL, NULL },
-    { "getMainIndexPathWithOrgLukhnosPortmobileFilePath:", "getMainIndexPath", "Lorg.lukhnos.portmobile.file.Path;", 0x8, NULL, NULL },
-    { "close", NULL, "V", 0x1, "Ljava.lang.Exception;", NULL },
-    { "addDocumentsWithJavaUtilList:", "addDocuments", "V", 0x1, "Ljava.io.IOException;", "(Ljava/util/List<Lorg/lukhnos/lucenestudy/Document;>;)V" },
-    { "deleteDocumentsByQueryWithNSString:", "deleteDocumentsByQuery", "V", 0x1, "Lorg.apache.lucene.queryparser.classic.ParseException;Ljava.io.IOException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, 1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 2, 1, -1, -1, -1 },
+    { NULL, "LOrgApacheLuceneAnalysisAnalyzer;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgApacheLuceneSearchQuery;", 0x9, 3, 4, 5, -1, -1, -1 },
+    { NULL, "LJavaLangInteger;", 0x8, 6, 7, -1, -1, -1, -1 },
+    { NULL, "LOrgLukhnosLucenestudyDocument;", 0x8, 8, 9, -1, -1, -1, -1 },
+    { NULL, "LOrgLukhnosPortmobileFilePath;", 0x8, 10, 11, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, 12, -1, -1, -1 },
+    { NULL, "V", 0x1, 13, 14, 1, 15, -1, -1 },
+    { NULL, "V", 0x1, 16, 0, 17, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithNSString:);
+  methods[1].selector = @selector(initWithNSString:withBoolean:);
+  methods[2].selector = @selector(getAnalyzer);
+  methods[3].selector = @selector(parseQueryWithOrgApacheLuceneAnalysisAnalyzer:withNSString:);
+  methods[4].selector = @selector(getIntegerWithOrgApacheLuceneDocumentDocument:withNSString:);
+  methods[5].selector = @selector(fromLuceneDocumentWithOrgApacheLuceneDocumentDocument:);
+  methods[6].selector = @selector(getMainIndexPathWithOrgLukhnosPortmobileFilePath:);
+  methods[7].selector = @selector(close);
+  methods[8].selector = @selector(addDocumentsWithJavaUtilList:);
+  methods[9].selector = @selector(deleteDocumentsByQueryWithNSString:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "TITLE_FIELD_NAME", "TITLE_FIELD_NAME", 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME, NULL, .constantValue.asLong = 0 },
-    { "YEAR_FIELD_NAME", "YEAR_FIELD_NAME", 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudyIndexer_YEAR_FIELD_NAME, NULL, .constantValue.asLong = 0 },
-    { "RATING_FIELD_NAME", "RATING_FIELD_NAME", 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudyIndexer_RATING_FIELD_NAME, NULL, .constantValue.asLong = 0 },
-    { "POSITIVE_FIELD_NAME", "POSITIVE_FIELD_NAME", 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudyIndexer_POSITIVE_FIELD_NAME, NULL, .constantValue.asLong = 0 },
-    { "REVIEW_FIELD_NAME", "REVIEW_FIELD_NAME", 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME, NULL, .constantValue.asLong = 0 },
-    { "SOURCE_FIELD_NAME", "SOURCE_FIELD_NAME", 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudyIndexer_SOURCE_FIELD_NAME, NULL, .constantValue.asLong = 0 },
-    { "INDEX_NAME", "INDEX_NAME", 0x18, "Ljava.lang.String;", &OrgLukhnosLucenestudyIndexer_INDEX_NAME, NULL, .constantValue.asLong = 0 },
-    { "indexWriter_", NULL, 0x10, "Lorg.apache.lucene.index.IndexWriter;", NULL, NULL, .constantValue.asLong = 0 },
+    { "TITLE_FIELD_NAME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 18, -1, -1 },
+    { "YEAR_FIELD_NAME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 19, -1, -1 },
+    { "RATING_FIELD_NAME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 20, -1, -1 },
+    { "POSITIVE_FIELD_NAME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 21, -1, -1 },
+    { "REVIEW_FIELD_NAME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 22, -1, -1 },
+    { "SOURCE_FIELD_NAME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 23, -1, -1 },
+    { "INDEX_NAME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 24, -1, -1 },
+    { "indexWriter_", "LOrgApacheLuceneIndexIndexWriter;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgLukhnosLucenestudyIndexer = { 2, "Indexer", "org.lukhnos.lucenestudy", NULL, 0x1, 10, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;", "LJavaIoIOException;", "LNSString;Z", "parseQuery", "LOrgApacheLuceneAnalysisAnalyzer;LNSString;", "LOrgApacheLuceneQueryparserClassicParseException;", "getInteger", "LOrgApacheLuceneDocumentDocument;LNSString;", "fromLuceneDocument", "LOrgApacheLuceneDocumentDocument;", "getMainIndexPath", "LOrgLukhnosPortmobileFilePath;", "LJavaLangException;", "addDocuments", "LJavaUtilList;", "(Ljava/util/List<Lorg/lukhnos/lucenestudy/Document;>;)V", "deleteDocumentsByQuery", "LOrgApacheLuceneQueryparserClassicParseException;LJavaIoIOException;", &OrgLukhnosLucenestudyIndexer_TITLE_FIELD_NAME, &OrgLukhnosLucenestudyIndexer_YEAR_FIELD_NAME, &OrgLukhnosLucenestudyIndexer_RATING_FIELD_NAME, &OrgLukhnosLucenestudyIndexer_POSITIVE_FIELD_NAME, &OrgLukhnosLucenestudyIndexer_REVIEW_FIELD_NAME, &OrgLukhnosLucenestudyIndexer_SOURCE_FIELD_NAME, &OrgLukhnosLucenestudyIndexer_INDEX_NAME };
+  static const J2ObjcClassInfo _OrgLukhnosLucenestudyIndexer = { "Indexer", "org.lukhnos.lucenestudy", ptrTable, methods, fields, 7, 0x1, 10, 8, -1, -1, -1, -1, -1 };
   return &_OrgLukhnosLucenestudyIndexer;
 }
 

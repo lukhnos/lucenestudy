@@ -21,9 +21,11 @@
 @class OrgApacheLuceneSearchHighlightHighlighter;
 @class OrgApacheLuceneSearchHighlightQueryScorer;
 @class OrgApacheLuceneSearchQuery;
+@class OrgLukhnosLucenestudyMinimalHTMLEncoder;
 
 @interface OrgLukhnosLucenestudyHighlightingHelper : NSObject {
  @public
+  OrgLukhnosLucenestudyMinimalHTMLEncoder *encoder_;
   OrgApacheLuceneSearchHighlightQueryScorer *scorer_;
   OrgApacheLuceneSearchHighlightHighlighter *highlighter_;
   OrgApacheLuceneAnalysisAnalyzer *analyzer_;
@@ -32,8 +34,8 @@
 
 #pragma mark Package-Private
 
-- (instancetype)initWithOrgApacheLuceneSearchQuery:(OrgApacheLuceneSearchQuery *)query
-               withOrgApacheLuceneAnalysisAnalyzer:(OrgApacheLuceneAnalysisAnalyzer *)analyzer;
+- (instancetype)initPackagePrivateWithOrgApacheLuceneSearchQuery:(OrgApacheLuceneSearchQuery *)query
+                             withOrgApacheLuceneAnalysisAnalyzer:(OrgApacheLuceneAnalysisAnalyzer *)analyzer;
 
 - (jint)getFragmentLength;
 
@@ -45,33 +47,40 @@
 
 - (void)setFragmentLengthWithInt:(jint)length;
 
+- (void)setLineFeedHTMLEscapeWithBoolean:(jboolean)newLineToBr;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
+
 @end
 
 J2OBJC_STATIC_INIT(OrgLukhnosLucenestudyHighlightingHelper)
 
+J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudyHighlightingHelper, encoder_, OrgLukhnosLucenestudyMinimalHTMLEncoder *)
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudyHighlightingHelper, scorer_, OrgApacheLuceneSearchHighlightQueryScorer *)
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudyHighlightingHelper, highlighter_, OrgApacheLuceneSearchHighlightHighlighter *)
 J2OBJC_FIELD_SETTER(OrgLukhnosLucenestudyHighlightingHelper, analyzer_, OrgApacheLuceneAnalysisAnalyzer *)
 
-inline JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_get_cleanUpPattern();
+inline JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_get_cleanUpPattern(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_cleanUpPattern;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyHighlightingHelper, cleanUpPattern, JavaUtilRegexPattern *)
 
-inline JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_get_replaceLFPattern();
+inline JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_get_replaceLFPattern(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT JavaUtilRegexPattern *OrgLukhnosLucenestudyHighlightingHelper_replaceLFPattern;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(OrgLukhnosLucenestudyHighlightingHelper, replaceLFPattern, JavaUtilRegexPattern *)
 
-inline jint OrgLukhnosLucenestudyHighlightingHelper_get_DEFAULT_FRAGMENT_LENGTH();
+inline jint OrgLukhnosLucenestudyHighlightingHelper_get_DEFAULT_FRAGMENT_LENGTH(void);
 #define OrgLukhnosLucenestudyHighlightingHelper_DEFAULT_FRAGMENT_LENGTH 120
 J2OBJC_STATIC_FIELD_CONSTANT(OrgLukhnosLucenestudyHighlightingHelper, DEFAULT_FRAGMENT_LENGTH, jint)
 
-FOUNDATION_EXPORT void OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgLukhnosLucenestudyHighlightingHelper *self, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer);
+FOUNDATION_EXPORT void OrgLukhnosLucenestudyHighlightingHelper_initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgLukhnosLucenestudyHighlightingHelper *self, OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer);
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudyHighlightingHelper *new_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT OrgLukhnosLucenestudyHighlightingHelper *new_OrgLukhnosLucenestudyHighlightingHelper_initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT OrgLukhnosLucenestudyHighlightingHelper *create_OrgLukhnosLucenestudyHighlightingHelper_initWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer);
+FOUNDATION_EXPORT OrgLukhnosLucenestudyHighlightingHelper *create_OrgLukhnosLucenestudyHighlightingHelper_initPackagePrivateWithOrgApacheLuceneSearchQuery_withOrgApacheLuceneAnalysisAnalyzer_(OrgApacheLuceneSearchQuery *query, OrgApacheLuceneAnalysisAnalyzer *analyzer);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgLukhnosLucenestudyHighlightingHelper)
 
