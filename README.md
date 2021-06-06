@@ -1,8 +1,6 @@
 A Study of Lucene (Mobile Version)
 ==================================
 
-[![Build Status](https://travis-ci.org/lukhnos/lucenestudy.svg)](https://travis-ci.org/lukhnos/lucenestudy)
-
 This project is a study of Lucene and serves as an example of how you can use
 Lucene to index documents, search with sorting and paging, highlight search
 results, and provide search suggestions (also known as "autocomplete").
@@ -126,8 +124,12 @@ checked out:
 
     git submodule update --init --recursive
 
-Then, run `setup-j2objc.sh` to make sure that you have the required version
-of j2objc.
+Next, set up the J2ObjC dependencies. If you haven't installed it,
+[download version 2.8](https://github.com/google/j2objc/releases/tag/2.8) from
+its GitHub releases page. After you have made sure that the command `j2objc`
+exists in your `PATH`, run:
+
+    ./setup-j2objc.sh
 
 Now you can build the targets in Xcode. The resulting OS X binary works just
 like its Java counterpart. Suppose the built product is in:
